@@ -1,4 +1,5 @@
 :root {
+  --font-sans: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-sans), monospace;
   --bg: #FFFAF0;
   --bg-elevated: #FFFFFF;
