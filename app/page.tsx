@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { NarrativeBackdrop } from "../components/NarrativeBackdrop";
 
@@ -20,22 +20,13 @@ function ScrollProgressBar() {
 
 function FloatingParticles() {
   const particles = [
-    { x: 8,  y: 15, size: 3,  delay: 0,   dur: 8,  gold: false },
-    { x: 23, y: 72, size: 2,  delay: 1.2, dur: 10, gold: true  },
-    { x: 42, y: 34, size: 4,  delay: 0.5, dur: 7,  gold: false },
-    { x: 61, y: 88, size: 2,  delay: 2,   dur: 9,  gold: true  },
-    { x: 76, y: 21, size: 3,  delay: 0.8, dur: 11, gold: false },
-    { x: 89, y: 55, size: 2,  delay: 1.6, dur: 8,  gold: true  },
-    { x: 15, y: 48, size: 2,  delay: 3,   dur: 10, gold: false },
-    { x: 55, y: 62, size: 3,  delay: 1.4, dur: 9,  gold: false },
-    { x: 32, y: 92, size: 2,  delay: 0.3, dur: 12, gold: true  },
-    { x: 68, y: 44, size: 2,  delay: 2.2, dur: 8,  gold: false },
-    { x: 12, y: 58, size: 2,  delay: 1.8, dur: 11, gold: true  },
-    { x: 47, y: 22, size: 3,  delay: 0.6, dur: 9,  gold: false },
-    { x: 83, y: 78, size: 2,  delay: 2.6, dur: 7,  gold: true  },
-    { x: 36, y: 50, size: 1.5,delay: 1.0, dur: 13, gold: false },
-    { x: 72, y: 35, size: 2,  delay: 3.4, dur: 10, gold: true  },
-    { x: 6,  y: 82, size: 3,  delay: 0.9, dur: 8,  gold: false },
+    { x: 8,  y: 15, size: 3, delay: 0,   dur: 9,  gold: false },
+    { x: 23, y: 72, size: 2, delay: 1.4, dur: 11, gold: true  },
+    { x: 61, y: 88, size: 2, delay: 2.2, dur: 10, gold: true  },
+    { x: 76, y: 21, size: 3, delay: 0.8, dur: 12, gold: false },
+    { x: 89, y: 55, size: 2, delay: 1.8, dur: 9,  gold: true  },
+    { x: 32, y: 44, size: 2, delay: 0.4, dur: 11, gold: false },
+    { x: 55, y: 62, size: 3, delay: 1.0, dur: 10, gold: false },
   ];
   return (
     <div className="floating-particles" aria-hidden="true">
@@ -52,7 +43,7 @@ function FloatingParticles() {
               ? "radial-gradient(circle, rgba(217,154,0,0.9), rgba(240,171,0,0.4))"
               : "radial-gradient(circle, rgba(0,143,211,0.9), rgba(0,123,181,0.4))",
           }}
-          animate={{ y: [0, -26, 0], opacity: [0.15, 0.7, 0.15], scale: [1, 1.2, 1] }}
+          animate={{ y: [0, -18, 0], opacity: [0.12, 0.55, 0.12] }}
           transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
         />
       ))}
@@ -60,13 +51,11 @@ function FloatingParticles() {
   );
 }
 
-function ParallaxOrbs({ y1, y2, y3, y4 }: { y1: any; y2: any; y3: any; y4: any }) {
+function ParallaxOrbs({ y1, y2 }: { y1: any; y2: any }) {
   return (
     <div className="parallax-orbs" aria-hidden="true">
       <motion.div className="parallax-orb parallax-orb--a" style={{ y: y1 }} />
       <motion.div className="parallax-orb parallax-orb--b" style={{ y: y2 }} />
-      <motion.div className="parallax-orb parallax-orb--c" style={{ y: y3 }} />
-      <motion.div className="parallax-orb parallax-orb--d" style={{ y: y4 }} />
     </div>
   );
 }
@@ -138,7 +127,19 @@ const trustBadges = [
   "D-U-N-S Registered Organization"
 ];
 
-const logoStrip = ["ABB", "ONGC Videsh", "Manipal Global", "AT&S"];
+const clientLogos = [
+  { name: "ABB",          abbr: "ABB",   accent: "#FF0000", textColor: "#fff", sector: "Industrial Automation" },
+  { name: "ONGC Videsh",  abbr: "OVL",   accent: "#1B6B3A", textColor: "#fff", sector: "Energy & Resources"    },
+  { name: "Manipal Global", abbr: "MG",  accent: "#003DA5", textColor: "#fff", sector: "Education & HR"        },
+  { name: "AT&S",         abbr: "AT&S",  accent: "#1A2B6B", textColor: "#fff", sector: "Technology"            },
+];
+
+const logoStripItems = [
+  { name: "ABB",          src: "/client-logos/abb.svg",          w: 96,  h: 40 },
+  { name: "ONGC Videsh",  src: "/client-logos/ongc-videsh.svg",  w: 148, h: 40 },
+  { name: "Manipal Global", src: "/client-logos/manipal.svg",    w: 160, h: 40 },
+  { name: "AT&S",         src: "/client-logos/at-s.svg",         w: 96,  h: 40 },
+];
 const heroTitle = ["Mastering Complexity.", "Driving Agility.", "Beyond ECC."];
 
 const services = [
@@ -146,14 +147,14 @@ const services = [
     tag: "Transformation",
     title: "S/4HANA Migration",
     description:
-      "We deliver S/4HANA migrations with rigorous governance and precision architecture, eliminating execution risk for complex enterprise footprints.",
+      "Rigorous governance and precision architecture for complex enterprise footprints — eliminating execution risk at every phase.",
     image: "/system-orbit.svg",
     photo: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "S/4HANA migration architecture",
     bullets: [
-      "Strategic discovery, fit-gap analysis, and migration roadmapping",
-      "Tailored brownfield, greenfield, and selective data transitions",
-      "Seamless cutover execution and post-go-live stabilization"
+      "Discovery, fit-gap analysis, and migration roadmapping",
+      "Brownfield, greenfield, and selective data transitions",
+      "Cutover execution and post-go-live stabilization"
     ],
     highlight: "Controlled data transition and cutover"
   },
@@ -161,14 +162,14 @@ const services = [
     tag: "Support",
     title: "SLA-Driven AMS Support",
     description:
-      "Engineered for enterprises demanding stable operations, transparent SLAs, and continuous optimization across their SAP landscape.",
+      "Stable operations, transparent SLAs, and continuous optimization — designed for enterprises that cannot afford disruption.",
     image: "/process-grid.svg",
     photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SAP AMS service framework",
     bullets: [
-      "Comprehensive functional and technical SAP landscape support",
-      "Rigorous incident, release, and enhancement governance",
-      "Seamless AMS transition and continuous system optimization"
+      "Functional and technical SAP landscape support",
+      "Incident, release, and enhancement governance",
+      "AMS transition and continuous system optimization"
     ],
     highlight: "Transparent SLAs and release governance"
   },
@@ -176,14 +177,14 @@ const services = [
     tag: "People Systems",
     title: "SuccessFactors Integration",
     description:
-      "Aligning SAP SuccessFactors to your enterprise HR transformation strategy, mitigating integration complexity and defining long-term operating models.",
+      "SAP SuccessFactors aligned to your HR transformation strategy — with structured integration and long-term operating model clarity.",
     image: "/insight-sheet.svg",
     photo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SuccessFactors HR ecosystem",
     bullets: [
-      "Core HR, talent acquisition, and employee lifecycle architecture",
-      "Complex hybrid SAP HCM and SuccessFactors integrations",
-      "Strategic rollout planning and enterprise change management"
+      "Core HR, talent acquisition, and employee lifecycle design",
+      "Hybrid SAP HCM and SuccessFactors integrations",
+      "Rollout planning and enterprise change management"
     ],
     highlight: "Unified HR architecture without integration drift"
   },
@@ -191,14 +192,14 @@ const services = [
     tag: "Payroll",
     title: "Global Payroll Operations",
     description:
-      "Architecting global payroll solutions for multi-country enterprises requiring absolute compliance, system discipline, and operational reliability.",
+      "Global payroll architecture for multi-country enterprises demanding compliance precision and operational reliability.",
     image: "/system-orbit.svg",
     photo: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "Global payroll compliance model",
     bullets: [
-      "Scalable payroll design and execution across 30+ countries",
-      "Deep integration with finance, reporting, and HR workflows",
-      "Stringent compliance controls and payroll readiness audits"
+      "Payroll design and execution across 30+ countries",
+      "Integration with finance, reporting, and HR workflows",
+      "Compliance controls and payroll readiness audits"
     ],
     highlight: "Cross-border compliance and execution"
   }
@@ -274,71 +275,77 @@ const heroNarrative = [
 
 const capabilityNotes = [
   {
+    num: "01",
     title: "Architecture first",
-    text: "We start with dependency mapping, risk controls, and rollout sequencing before execution pressure starts driving decisions."
+    metric: "Zero rework risk",
+    text: "Dependency mapping, risk controls, and rollout sequencing — before execution pressure drives decisions."
   },
   {
+    num: "02",
     title: "Cross-functional delivery",
-    text: "ERP, finance, HR, payroll, and support operations stay coordinated through one operating model instead of fragmented workstreams."
+    metric: "Single operating model",
+    text: "ERP, HR, payroll, and support in one operating model — no fragmented workstreams."
   },
   {
-    title: "Built for executive visibility",
-    text: "Program sponsors get a clear view of readiness, constraints, and stabilization priorities across the full SAP estate."
+    num: "03",
+    title: "Executive visibility",
+    metric: "Sponsor-ready dashboards",
+    text: "Readiness, constraints, and stabilization priorities — visible to program sponsors at every stage."
   }
 ];
 
 const reveal = {
-  hidden: { opacity: 0, y: 36, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1 }
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
 };
 
 const textGroup = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.09,
-      delayChildren: 0.05,
+      staggerChildren: 0.06,
+      delayChildren: 0.02,
     }
   }
 };
 
 const textItem = {
-  hidden: { opacity: 0, y: 44, rotateX: 32, filter: "blur(10px)" },
-  visible: { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
-};
-
-const textItemSimple = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 }
 };
 
+const textItemSimple = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0 }
+};
+
 const revealLeft = {
-  hidden: { opacity: 0, x: -48, scale: 0.96 },
-  visible: { opacity: 1, x: 0, scale: 1 }
+  hidden: { opacity: 0, x: -28 },
+  visible: { opacity: 1, x: 0 }
 };
 
 const revealLeftSimple = {
-  hidden: { opacity: 0, x: -24 },
+  hidden: { opacity: 0, x: -18 },
   visible: { opacity: 1, x: 0 }
 };
 
 const revealRight = {
-  hidden: { opacity: 0, x: 48, scale: 0.96 },
-  visible: { opacity: 1, x: 0, scale: 1 }
+  hidden: { opacity: 0, x: 28 },
+  visible: { opacity: 1, x: 0 }
 };
 
 const revealRightSimple = {
-  hidden: { opacity: 0, x: 24 },
+  hidden: { opacity: 0, x: 18 },
   visible: { opacity: 1, x: 0 }
 };
 
 const popCard = {
-  hidden: { opacity: 0, y: 56, scale: 0.88, rotateX: -18, filter: "blur(6px)" },
-  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: "blur(0px)" }
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 }
 };
 
 const popCardSimple = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 18 },
   visible: { opacity: 1, y: 0 }
 };
 
@@ -367,37 +374,10 @@ export default function HomePage() {
   const heroPanelY = useTransform(scrollYProgress, [0, 0.25], [0, allowComplexMotion ? -40 : -4]);
   const heroClusterY = useTransform(scrollYProgress, [0, 0.35], [0, allowComplexMotion ? -60 : -6]);
 
-  // Background parallax orbs at different depth speeds
-  const orbAY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -180 : 0]);
-  const orbBY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -100 : 0]);
-  const orbCY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -260 : 0]);
-  const orbDY = useTransform(scrollYProgress, [0.15, 1], [0, allowComplexMotion ? -140 : 0]);
+  // Background parallax orbs
+  const orbAY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -120 : 0]);
+  const orbBY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -60 : 0]);
 
-  // Section-level parallax offsets
-  const trustSectionY = useTransform(scrollYProgress, [0.05, 0.3], [24, allowComplexMotion ? -16 : 0]);
-  const servicesSectionY = useTransform(scrollYProgress, [0.2, 0.55], [18, allowComplexMotion ? -22 : 0]);
-  const caseSectionY = useTransform(scrollYProgress, [0.45, 0.75], [14, allowComplexMotion ? -18 : 0]);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { damping: 40, stiffness: 200 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { damping: 40, stiffness: 200 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (allowComplexMotion) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      mouseX.set(x);
-      mouseY.set(y);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
 
   return (
@@ -405,10 +385,10 @@ export default function HomePage() {
       <ScrollProgressBar />
       <NarrativeBackdrop variant="home" />
       {allowComplexMotion && (
-        <ParallaxOrbs y1={orbAY} y2={orbBY} y3={orbCY} y4={orbDY} />
+        <ParallaxOrbs y1={orbAY} y2={orbBY} />
       )}
 
-      <header className="topbar shell">
+      <header className={`topbar shell${mobileNavOpen ? " topbar--nav-open" : ""}`}>
         <Link href="/" className="brand brand--logo" aria-label="ITChamps Software homepage">
           <Image src="/itchamps-logo.png" alt="ITChamps Software logo" width={176} height={56} priority />
         </Link>
@@ -416,7 +396,7 @@ export default function HomePage() {
         <nav className={`topnav${mobileNavOpen ? " topnav--open" : ""}`} aria-label="Primary">
           <a href="#services" onClick={closeNav}>SAP Consulting Services</a>
           <a href="#case-studies" onClick={closeNav}>Case Studies</a>
-          <Link href="/academy" onClick={closeNav}>Academy</Link>
+          <Link href="/academy" onClick={closeNav} className="topnav__academy">Academy</Link>
           <a href="#contact" onClick={closeNav}>Schedule a Consultation</a>
           <a href="#contact" className="button button--primary mobile-nav-cta" onClick={closeNav}>
             Talk to an SAP Expert
@@ -453,8 +433,8 @@ export default function HomePage() {
               <motion.span
                 key={line}
                 className="hero-word"
-                initial={{ opacity: 0, y: 20, filter: allowComplexMotion ? "blur(10px)" : "none" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               >
                 {line}
@@ -503,12 +483,7 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
 
-        <div
-          className="hero__visual"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ perspective: 1400, position: "relative" }}
-        >
+        <div className="hero__visual" style={{ position: "relative" }}>
           {allowComplexMotion && <FloatingParticles />}
           <motion.div
             className="hero-tech-grid"
@@ -519,8 +494,7 @@ export default function HomePage() {
           >
             <motion.div
               className="system-panel"
-              style={{ y: heroPanelY, rotateX, rotateY }}
-              whileHover={allowComplexMotion ? { y: -2, scale: 1.01 } : undefined}
+              style={{ y: heroPanelY }}
             >
               <div className="system-panel__header">
                 <span>Enterprise SAP transformation model</span>
@@ -557,6 +531,71 @@ export default function HomePage() {
                 </div>
               </div>
 
+              <div className="system-vitals">
+                <div className="system-vitals__header">
+                  <span>Program velocity</span>
+                  <span className="system-vitals__live">
+                    <span className="system-vitals__dot" />Live
+                  </span>
+                </div>
+                <div className="system-vitals__stats">
+                  <div className="system-vital">
+                    <strong>12+</strong>
+                    <span>Active programs</span>
+                  </div>
+                  <div className="system-vital">
+                    <strong>30+</strong>
+                    <span>Countries live</span>
+                  </div>
+                  <div className="system-vital">
+                    <strong>100%</strong>
+                    <span>Go-live success</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="system-phases">
+                <p className="system-phases__label">Migration phase tracker</p>
+                {[
+                  { label: "Blueprint & discovery", pct: 100 },
+                  { label: "Architecture design",   pct: 84  },
+                  { label: "Data migration prep",   pct: 67  },
+                  { label: "Cutover execution",     pct: 42  },
+                ].map((phase) => (
+                  <div key={phase.label} className="system-phase">
+                    <span className="system-phase__label">{phase.label}</span>
+                    <div className="system-phase__bar">
+                      <motion.div
+                        className="system-phase__fill"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${phase.pct}%` }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                    </div>
+                    <span className="system-phase__pct">{phase.pct}%</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="system-readiness">
+                <p className="system-readiness__label">Delivery intelligence</p>
+                <div className="system-readiness__grid">
+                  {[
+                    { label: "Go-live success rate", value: "100%" },
+                    { label: "Rollback incidents",   value: "Zero"  },
+                    { label: "SLA adherence",        value: "100%"  },
+                    { label: "Avg. program span",    value: "14 mo." },
+                  ].map((item) => (
+                    <div key={item.label} className="system-readiness__item">
+                      <span className="system-readiness__dot" />
+                      <span className="system-readiness__item-label">{item.label}</span>
+                      <strong className="system-readiness__item-val">{item.value}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="system-lines">
                 <span />
                 <span />
@@ -564,41 +603,11 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            <div className="hero-visual-card hero-visual-card--orbit">
-              <div className="hero-visual-card__meta">
-                <span>System topology</span>
-                <strong>Connected landscape</strong>
-              </div>
-              <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_main.png" alt="Enterprise systems illustration" width={320} height={360} priority sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
-              </div>
-            </div>
-
-            <div className="hero-visual-card hero-visual-card--process">
-              <div className="hero-visual-card__meta">
-                <span>Delivery sequence</span>
-                <strong>Discover → align → rollout</strong>
-              </div>
-              <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_process.png" alt="SAP delivery sequence diagram" width={220} height={150} sizes="(max-width: 767px) 100vw, 25vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
-              </div>
-            </div>
-
-            <div className="hero-visual-card hero-visual-card--insight">
-              <div className="hero-visual-card__meta">
-                <span>Readiness brief</span>
-                <strong>Governance, data, stabilization</strong>
-              </div>
-              <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_insight.png" alt="Migration readiness checklist illustration" width={170} height={210} sizes="(max-width: 767px) 100vw, 25vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
-              </div>
-            </div>
-
           </motion.div>
         </div>
       </section>
 
-      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title" style={{ y: trustSectionY }}>
+      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title">
         <motion.div
           className="section-heading section-heading--compact"
           variants={textGroup}
@@ -616,9 +625,9 @@ export default function HomePage() {
         </motion.div>
         <div className="logo-strip">
           <div className="logo-strip__track">
-            {[...logoStrip, ...logoStrip].map((logo, i) => (
-              <span key={`${logo}-${i}`} className="logo-chip">
-                {logo}
+            {[...logoStripItems, ...logoStripItems].map((logo, i) => (
+              <span key={`${logo.name}-${i}`} className="logo-chip">
+                <img src={logo.src} alt={logo.name} width={logo.w} height={logo.h} loading="lazy" draggable={false} />
               </span>
             ))}
           </div>
@@ -632,8 +641,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        style={{ y: servicesSectionY }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div className="section-heading section-heading--services" variants={textGroup}>
           <div className="section-heading__copy">
@@ -645,73 +653,142 @@ export default function HomePage() {
               From navigating legacy brownfield migrations to standardizing HR systems across 30+ borders,
               we deliver technical precision that mitigates risk.
             </motion.p>
+            <motion.p className="capability-intro" variants={allowComplexMotion ? textItem : textItemSimple}>
+              Three principles that govern every SAP program we deliver — from initial discovery to post-go-live stabilization:
+            </motion.p>
             <motion.div className="capability-notes" variants={allowComplexMotion ? textItem : textItemSimple}>
               {capabilityNotes.map((item) => (
                 <article key={item.title} className="capability-note">
+                  <div className="capability-note__top">
+                    <span className="capability-note__num">{item.num}</span>
+                    <span className="capability-note__badge">{item.metric}</span>
+                  </div>
                   <span>{item.title}</span>
                   <p>{item.text}</p>
                 </article>
               ))}
             </motion.div>
+            <motion.div className="delivery-guarantees" variants={allowComplexMotion ? textItem : textItemSimple}>
+              <p className="delivery-guarantees__label">What every engagement guarantees</p>
+              <div className="delivery-guarantee">
+                <div className="delivery-guarantee__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>No-disruption execution</strong>
+                  <span>Every milestone validated before progression — rollback risk eliminated by design, not by chance.</span>
+                </div>
+              </div>
+              <div className="delivery-guarantee">
+                <div className="delivery-guarantee__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Fixed-scope delivery ownership</strong>
+                  <span>One accountable team across ERP, HR, payroll, and AMS — no vendor handoff gaps or accountability gaps.</span>
+                </div>
+              </div>
+              <div className="delivery-guarantee">
+                <div className="delivery-guarantee__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Global compliance by design</strong>
+                  <span>Payroll and HR operations built for multi-jurisdiction compliance across 30+ countries from day one.</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.p className="capability-proof" variants={allowComplexMotion ? textItem : textItemSimple}>
+              Adopted by Fortune 500 manufacturers, global energy enterprises, and multi-country HR organizations demanding zero-disruption SAP delivery across 30+ countries.
+            </motion.p>
           </div>
 
           <motion.div
-            className="services-overview"
+            className="services-stat-panel"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: isMobile ? 0.05 : 0.25 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            <div className="services-overview__panel">
-              <div className="services-overview__header">
-                <span>Capability mesh</span>
-                <strong>4 enterprise towers</strong>
+            <div className="services-stat-panel__header">
+              <span>Capability mesh</span>
+              <strong>4 enterprise towers</strong>
+            </div>
+            <p className="services-stat-panel__intro">
+              Migration, support, people systems, and payroll — one structured SAP delivery model.
+            </p>
+            <div className="services-stat-panel__stats">
+              <div><span>Migration</span><strong>ECC to S/4</strong></div>
+              <div><span>Support</span><strong>SLA-led AMS</strong></div>
+              <div><span>People</span><strong>SuccessFactors</strong></div>
+              <div><span>Payroll</span><strong>30+ countries</strong></div>
+            </div>
+
+            <div className="services-delivery-record">
+              <p className="services-delivery-record__label">Delivery track record</p>
+              <div className="services-delivery-record__grid">
+                <div className="services-record-item">
+                  <strong>20+</strong>
+                  <span>Years SAP expertise</span>
+                </div>
+                <div className="services-record-item">
+                  <strong>30+</strong>
+                  <span>Countries in payroll</span>
+                </div>
+                <div className="services-record-item">
+                  <strong>100%</strong>
+                  <span>SLA adherence</span>
+                </div>
+                <div className="services-record-item">
+                  <strong>Zero</strong>
+                  <span>Rollback incidents</span>
+                </div>
               </div>
-              <p className="services-overview__intro">
-                A structured SAP service architecture spanning migration, support, people systems, and payroll delivery.
-              </p>
-              <div className="services-overview__stats">
-                <div>
-                  <span>Migration</span>
-                  <strong>ECC to S/4</strong>
-                </div>
-                <div>
-                  <span>Support</span>
-                  <strong>SLA-led AMS</strong>
-                </div>
-                <div>
-                  <span>People</span>
-                  <strong>SuccessFactors</strong>
-                </div>
-                <div>
-                  <span>Payroll</span>
-                  <strong>30+ countries</strong>
-                </div>
+              <div className="services-methodology">
+                {[
+                  { num: "01", label: "Discovery & governance" },
+                  { num: "02", label: "Architecture design"    },
+                  { num: "03", label: "Cutover control"        },
+                  { num: "04", label: "Post go-live AMS"       },
+                ].map((step) => (
+                  <div key={step.num} className="services-methodology-step">
+                    <span className="services-methodology-step__num">{step.num}</span>
+                    <span className="services-methodology-step__label">{step.label}</span>
+                    <span className="services-methodology-step__line" />
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="services-overview__card services-overview__card--orbit">
-              <div className="services-overview__card-meta">
-                <span>Landscape model</span>
-                <strong>Connected enterprise landscape</strong>
+            <div className="services-stat-panel__proof">
+              <p className="services-stat-panel__proof-label">Enterprise clients delivered</p>
+              <div className="services-stat-panel__client-logos">
+                {logoStripItems.map((logo) => (
+                  <div key={logo.name} className="services-client-logo">
+                    <img src={logo.src} alt={logo.name} width={logo.w} height={logo.h} loading="lazy" />
+                  </div>
+                ))}
               </div>
-              <Image src="/hero_main.png" alt="Enterprise landscape model" width={400} height={300} className="card-image" />
-            </div>
-
-            <div className="services-overview__card services-overview__card--process">
-              <div className="services-overview__card-meta">
-                <span>Delivery sequence</span>
-                <strong>Discover, align, rollout</strong>
+              <div className="services-stat-panel__sap-badge">
+                <div className="services-stat-panel__sap-badge-mark">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <div className="services-stat-panel__sap-badge-text">
+                  <strong>SAP Extended Business Member + VAR</strong>
+                  <span>Certified · 20+ years · 30+ countries</span>
+                </div>
               </div>
-              <Image src="/hero_cloud.png" alt="Delivery sequence visualization" width={400} height={300} className="card-image" />
-            </div>
-
-            <div className="services-overview__card services-overview__card--insight">
-              <div className="services-overview__card-meta">
-                <span>Readiness brief</span>
-                <strong>Controls and stabilization view</strong>
-              </div>
-              <Image src="/hero_analytics.png" alt="Readiness brief illustration" width={400} height={300} className="card-image" />
             </div>
           </motion.div>
         </motion.div>
@@ -725,7 +802,7 @@ export default function HomePage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: isMobile ? 0.08 : 0.2 }}
-              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.42, delay: isMobile ? 0 : index * 0.07, ease: [0.22, 1, 0.36, 1] }}
               whileHover={allowComplexMotion ? { y: -10, scale: 1.015 } : undefined}
             >
               <div className="service-card__photo">
@@ -741,13 +818,9 @@ export default function HomePage() {
 
               <div className="service-card__content-wrapper">
                 <div className="service-card__header-col">
-                  <motion.div
-                    className="service-card__visual"
-                    animate={allowComplexMotion ? { rotateZ: [0, 0.8, 0] } : undefined}
-                    transition={allowComplexMotion ? { duration: 9 + index, repeat: Infinity, ease: "easeInOut" } : undefined}
-                  >
+                  <div className="service-card__visual">
                     <Image src={service.image} alt={service.alt} width={140} height={140} />
-                  </motion.div>
+                  </div>
                   <div className="service-card__meta">
                     <span className="service-chip">{service.tag}</span>
                     <span className="service-highlight">{service.highlight}</span>
@@ -755,12 +828,8 @@ export default function HomePage() {
                 </div>
 
                 <div className="service-card__text-col">
-                  <motion.h3 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                    {service.title}
-                  </motion.h3>
-                  <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                    {service.description}
-                  </motion.p>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
                   <ul className="service-list">
                     {service.bullets.map((item) => (
                       <li key={item}>
@@ -771,13 +840,13 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <motion.a href="#contact" className="card-link" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                  <a href="#contact" className="card-link">
                     Discuss this service
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
-                  </motion.a>
+                  </a>
                 </div>
               </div>
             </motion.article>
@@ -792,8 +861,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        style={{ y: caseSectionY }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div className="section-heading" variants={textGroup}>
           <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
@@ -819,7 +887,7 @@ export default function HomePage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: isMobile ? 0.08 : 0.3 }}
-              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.42, delay: isMobile ? 0 : index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="case-card__visual">
@@ -837,58 +905,6 @@ export default function HomePage() {
       </motion.section>
 
       <motion.section
-        className="section shell media-lab"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
-        variants={reveal}
-      >
-        <motion.div className="section-heading" variants={textGroup}>
-          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
-            Operational Telemetry
-          </motion.p>
-          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Real-time visibility into your SAP transformation ecosystem.</motion.h2>
-          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Visualize your integration pipelines, track critical migration dependencies, and gain
-            executive oversight across complex, multi-layered SAP deployments.
-          </motion.p>
-        </motion.div>
-
-        <div className="media-lab__grid">
-          {mediaPanels.map((panel, index) => (
-            <motion.article
-              key={panel.title}
-              className="media-panel"
-              variants={allowComplexMotion ? popCard : popCardSimple}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: isMobile ? 0.08 : 0.25 }}
-              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
-            >
-              <div className="media-panel__screen">
-                <Image
-                  src={panel.image}
-                  alt={panel.alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 33vw"
-                  style={{ objectFit: "cover", borderRadius: "24px" }}
-                />
-                <span className="media-panel__label">{panel.label}</span>
-                <div className="media-panel__hud">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-              <h3>{panel.title}</h3>
-              <p>{panel.text}</p>
-            </motion.article>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
         className="section shell section--split"
         initial="hidden"
         whileInView="visible"
@@ -900,12 +916,11 @@ export default function HomePage() {
             The 2027 Horizon
           </motion.p>
           <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>
-            The ECC support deadline is closing in. Delaying your migration strategy amplifies costs and operational risk.
+            The ECC deadline is closing in. Delay amplifies costs and operational risk.
           </motion.h2>
           <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Enterprises postponing their S/4HANA transition are forced to compress critical architecture and
-            cutover planning into shrinking windows. Partner with ITChamps to execute your migration with
-            structured governance and zero disruption.
+            Enterprises that postpone their S/4HANA transition are forced to compress critical architecture
+            and cutover planning into shrinking windows. Execute with structured governance and zero disruption.
           </motion.p>
         </motion.div>
 
@@ -930,8 +945,8 @@ export default function HomePage() {
             </motion.p>
             <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>SAP S/4HANA Migration Readiness Framework</motion.h2>
             <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-              An executive planning resource for IT leaders evaluating scope, program governance,
-              data dependencies, and risk mitigation strategies in S/4HANA migration programs.
+              A planning resource for IT leaders evaluating scope, governance, data dependencies,
+              and risk mitigation in S/4HANA migration programs.
             </motion.p>
           </motion.div>
 
@@ -955,11 +970,63 @@ export default function HomePage() {
             <label className="sr-only" htmlFor="work-email">
               Work email
             </label>
-            <input id="work-email" name="work-email" type="email" placeholder="Work email" />
-            <button type="submit" className="button button--primary">
+            <input id="work-email" name="work-email" type="email" placeholder="Work email" suppressHydrationWarning />
+            <button type="submit" className="button button--primary" suppressHydrationWarning>
               Get the Checklist
             </button>
           </form>
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="section shell media-lab"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
+        variants={reveal}
+      >
+        <motion.div className="section-heading" variants={textGroup}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
+            Operational Telemetry
+          </motion.p>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Real-time visibility into your SAP transformation ecosystem.</motion.h2>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
+            Visualize integration pipelines, track migration dependencies, and maintain executive oversight
+            across complex, multi-layered SAP deployments.
+          </motion.p>
+        </motion.div>
+
+        <div className="media-lab__grid">
+          {mediaPanels.map((panel, index) => (
+            <motion.article
+              key={panel.title}
+              className="media-panel"
+              variants={allowComplexMotion ? popCard : popCardSimple}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: isMobile ? 0.08 : 0.25 }}
+              transition={{ duration: 0.42, delay: isMobile ? 0 : index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
+            >
+              <div className="media-panel__screen">
+                <Image
+                  src={panel.image}
+                  alt={panel.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 33vw"
+                  style={{ objectFit: "cover", borderRadius: "24px" }}
+                />
+                <span className="media-panel__label">{panel.label}</span>
+                <div className="media-panel__hud">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
+              <h3>{panel.title}</h3>
+              <p>{panel.text}</p>
+            </motion.article>
+          ))}
         </div>
       </motion.section>
 
