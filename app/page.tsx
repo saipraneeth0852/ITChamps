@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { NarrativeBackdrop } from "../components/NarrativeBackdrop";
 
-function ScrollProgressBar() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 300, damping: 40 });
+function ScrollProgressBar({ scrollYProgress }: { scrollYProgress: any }) {
+  const scaleX = useSpring(scrollYProgress, { stiffness: 400, damping: 50, restDelta: 0.001 });
   return (
     <motion.div
       className="scroll-progress-bar"
@@ -51,14 +50,6 @@ function FloatingParticles() {
   );
 }
 
-function ParallaxOrbs({ y1, y2 }: { y1: any; y2: any }) {
-  return (
-    <div className="parallax-orbs" aria-hidden="true">
-      <motion.div className="parallax-orb parallax-orb--a" style={{ y: y1 }} />
-      <motion.div className="parallax-orb parallax-orb--b" style={{ y: y2 }} />
-    </div>
-  );
-}
 
 function AnimatedStat({
   value,
@@ -371,22 +362,13 @@ export default function HomePage() {
 
   const allowComplexMotion = !prefersReducedMotion && !isMobile;
   const { scrollYProgress } = useScroll();
-  const heroPanelY = useTransform(scrollYProgress, [0, 0.25], [0, allowComplexMotion ? -40 : -4]);
-  const heroClusterY = useTransform(scrollYProgress, [0, 0.35], [0, allowComplexMotion ? -60 : -6]);
-
-  // Background parallax orbs
-  const orbAY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -120 : 0]);
-  const orbBY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -60 : 0]);
 
 
 
   return (
     <main className="home-page">
-      <ScrollProgressBar />
+      <ScrollProgressBar scrollYProgress={scrollYProgress} />
       <NarrativeBackdrop variant="home" />
-      {allowComplexMotion && (
-        <ParallaxOrbs y1={orbAY} y2={orbBY} />
-      )}
 
       <header className={`topbar shell${mobileNavOpen ? " topbar--nav-open" : ""}`}>
         <Link href="/" className="brand brand--logo" aria-label="ITChamps Software homepage">
@@ -484,18 +466,13 @@ export default function HomePage() {
         </motion.div>
 
         <div className="hero__visual" style={{ position: "relative" }}>
-          {allowComplexMotion && <FloatingParticles />}
           <motion.div
             className="hero-tech-grid"
-            style={{ y: heroClusterY }}
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           >
-            <motion.div
-              className="system-panel"
-              style={{ y: heroPanelY }}
-            >
+            <div className="system-panel">
               <div className="system-panel__header">
                 <span>Enterprise SAP transformation model</span>
                 <span className="system-status">ECC to S/4HANA readiness</span>
@@ -601,7 +578,7 @@ export default function HomePage() {
                 <span />
                 <span />
               </div>
-            </motion.div>
+            </div>
 
           </motion.div>
         </div>
