@@ -604,12 +604,12 @@ export default function HomePage() {
           variants={textGroup}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: isMobile ? 0.1 : 0.4 }}
         >
-          <motion.p className="eyebrow" id="trusted-by-title" variants={textItem}>
+          <motion.p className="eyebrow" id="trusted-by-title" variants={allowComplexMotion ? textItem : textItemSimple}>
             Trusted by enterprise teams across industries
           </motion.p>
-          <motion.p variants={textItem}>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
             Fortune 500 references, repeat consulting engagements, certified SAP partnership status, and a strong
             delivery track record across manufacturing, energy, professional services, and global HR operations.
           </motion.p>
@@ -791,16 +791,16 @@ export default function HomePage() {
         variants={reveal}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{ y: caseSectionY }}
       >
         <motion.div className="section-heading" variants={textGroup}>
-          <motion.p className="eyebrow" variants={textItem}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             Proven Outcomes
           </motion.p>
-          <motion.h2 variants={textItem}>Delivering operational resilience for industry leaders.</motion.h2>
-          <motion.p variants={textItem}>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Delivering operational resilience for industry leaders.</motion.h2>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
             Enterprise buyers demand visible proof. Explore how we've engineered solutions for
             manufacturing, energy, and global education leaders.
           </motion.p>
@@ -840,15 +840,15 @@ export default function HomePage() {
         className="section shell media-lab"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
         variants={reveal}
       >
         <motion.div className="section-heading" variants={textGroup}>
-          <motion.p className="eyebrow" variants={textItem}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             Operational Telemetry
           </motion.p>
-          <motion.h2 variants={textItem}>Real-time visibility into your SAP transformation ecosystem.</motion.h2>
-          <motion.p variants={textItem}>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Real-time visibility into your SAP transformation ecosystem.</motion.h2>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
             Visualize your integration pipelines, track critical migration dependencies, and gain
             executive oversight across complex, multi-layered SAP deployments.
           </motion.p>
@@ -892,24 +892,24 @@ export default function HomePage() {
         className="section shell section--split"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.2 }}
         variants={reveal}
       >
         <motion.div className="section-heading" variants={textGroup}>
-          <motion.p className="eyebrow" variants={textItem}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             The 2027 Horizon
           </motion.p>
-          <motion.h2 variants={textItem}>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>
             The ECC support deadline is closing in. Delaying your migration strategy amplifies costs and operational risk.
           </motion.h2>
-          <motion.p variants={textItem}>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
             Enterprises postponing their S/4HANA transition are forced to compress critical architecture and
             cutover planning into shrinking windows. Partner with ITChamps to execute your migration with
             structured governance and zero disruption.
           </motion.p>
         </motion.div>
 
-        <motion.div className="urgency-panel" variants={textItem}>
+        <motion.div className="urgency-panel" variants={allowComplexMotion ? textItem : textItemSimple}>
           {urgencyMetrics.map((metric, index) => (
             <AnimatedStat
               key={metric.label}
@@ -924,12 +924,12 @@ export default function HomePage() {
 
       <motion.section id="insights" className="section shell">
         <div className="lead-magnet holo-panel">
-          <motion.div className="lead-magnet__copy" variants={textGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
-            <motion.p className="eyebrow" variants={textItem}>
+          <motion.div className="lead-magnet__copy" variants={textGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}>
+            <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
               Executive resource
             </motion.p>
-            <motion.h2 variants={textItem}>SAP S/4HANA Migration Readiness Framework</motion.h2>
-            <motion.p variants={textItem}>
+            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>SAP S/4HANA Migration Readiness Framework</motion.h2>
+            <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
               An executive planning resource for IT leaders evaluating scope, program governance,
               data dependencies, and risk mitigation strategies in S/4HANA migration programs.
             </motion.p>
@@ -939,7 +939,7 @@ export default function HomePage() {
             className="lead-magnet__visual"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
             transition={{ duration: 0.7 }}
           >
             <motion.div
@@ -968,19 +968,19 @@ export default function HomePage() {
         className="section shell section--last"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.35 }}
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.25 }}
         variants={reveal}
       >
         <motion.div className="final-cta" variants={textGroup}>
-          <motion.p className="eyebrow" variants={textItem}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             Speak with delivery leadership
           </motion.p>
-          <motion.h2 variants={textItem}>Ready to engineer your transformation?</motion.h2>
-          <motion.p variants={textItem}>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Ready to engineer your transformation?</motion.h2>
+          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
             Whether you are evaluating a greenfield S/4HANA rollout or seeking reliable global payroll governance,
             our delivery leadership is ready to align with your enterprise objectives.
           </motion.p>
-          <motion.div className="hero-actions" variants={textItem}>
+          <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
             <a href="mailto:info@itchamps.com" className="button button--primary">
               Schedule a Consultation
             </a>
