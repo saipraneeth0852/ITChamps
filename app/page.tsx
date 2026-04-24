@@ -3,8 +3,133 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NarrativeBackdrop } from "../components/NarrativeBackdrop";
+
+function ScrollProgressBar() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 300, damping: 40 });
+  return (
+    <motion.div
+      className="scroll-progress-bar"
+      style={{ scaleX, transformOrigin: "0%" }}
+      aria-hidden="true"
+    />
+  );
+}
+
+function FloatingParticles() {
+  const particles = [
+    { x: 8,  y: 15, size: 3,  delay: 0,   dur: 8,  gold: false },
+    { x: 23, y: 72, size: 2,  delay: 1.2, dur: 10, gold: true  },
+    { x: 42, y: 34, size: 4,  delay: 0.5, dur: 7,  gold: false },
+    { x: 61, y: 88, size: 2,  delay: 2,   dur: 9,  gold: true  },
+    { x: 76, y: 21, size: 3,  delay: 0.8, dur: 11, gold: false },
+    { x: 89, y: 55, size: 2,  delay: 1.6, dur: 8,  gold: true  },
+    { x: 15, y: 48, size: 2,  delay: 3,   dur: 10, gold: false },
+    { x: 55, y: 62, size: 3,  delay: 1.4, dur: 9,  gold: false },
+    { x: 32, y: 92, size: 2,  delay: 0.3, dur: 12, gold: true  },
+    { x: 68, y: 44, size: 2,  delay: 2.2, dur: 8,  gold: false },
+    { x: 12, y: 58, size: 2,  delay: 1.8, dur: 11, gold: true  },
+    { x: 47, y: 22, size: 3,  delay: 0.6, dur: 9,  gold: false },
+    { x: 83, y: 78, size: 2,  delay: 2.6, dur: 7,  gold: true  },
+    { x: 36, y: 50, size: 1.5,delay: 1.0, dur: 13, gold: false },
+    { x: 72, y: 35, size: 2,  delay: 3.4, dur: 10, gold: true  },
+    { x: 6,  y: 82, size: 3,  delay: 0.9, dur: 8,  gold: false },
+  ];
+  return (
+    <div className="floating-particles" aria-hidden="true">
+      {particles.map((p, i) => (
+        <motion.span
+          key={i}
+          className="particle"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+            background: p.gold
+              ? "radial-gradient(circle, rgba(217,154,0,0.9), rgba(240,171,0,0.4))"
+              : "radial-gradient(circle, rgba(0,143,211,0.9), rgba(0,123,181,0.4))",
+          }}
+          animate={{ y: [0, -26, 0], opacity: [0.15, 0.7, 0.15], scale: [1, 1.2, 1] }}
+          transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ParallaxOrbs({ y1, y2, y3, y4 }: { y1: any; y2: any; y3: any; y4: any }) {
+  return (
+    <div className="parallax-orbs" aria-hidden="true">
+      <motion.div className="parallax-orb parallax-orb--a" style={{ y: y1 }} />
+      <motion.div className="parallax-orb parallax-orb--b" style={{ y: y2 }} />
+      <motion.div className="parallax-orb parallax-orb--c" style={{ y: y3 }} />
+      <motion.div className="parallax-orb parallax-orb--d" style={{ y: y4 }} />
+    </div>
+  );
+}
+
+function AnimatedStat({
+  value,
+  label,
+  allowAnimation,
+  delay = 0,
+}: {
+  value: string;
+  label: string;
+  allowAnimation: boolean;
+  delay?: number;
+}) {
+  const numericValue = parseInt(value.replace(/\D/g, ""), 10);
+  const suffix = value.replace(/[0-9]/g, "");
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    let rafId: number;
+    let startTime: number | null = null;
+    const duration = 1600;
+    const animate = (ts: number) => {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * numericValue));
+      if (progress < 1) rafId = requestAnimationFrame(animate);
+    };
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
+  }, [started, numericValue]);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="urgency-stat"
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={allowAnimation ? { y: -6, scale: 1.02 } : undefined}
+    >
+      <strong>{count}{suffix}</strong>
+      <span>{label}</span>
+    </motion.div>
+  );
+}
 
 const trustBadges = [
   "SAP Extended Business Member + VAR",
@@ -23,6 +148,7 @@ const services = [
     description:
       "We deliver S/4HANA migrations with rigorous governance and precision architecture, eliminating execution risk for complex enterprise footprints.",
     image: "/system-orbit.svg",
+    photo: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "S/4HANA migration architecture",
     bullets: [
       "Strategic discovery, fit-gap analysis, and migration roadmapping",
@@ -37,6 +163,7 @@ const services = [
     description:
       "Engineered for enterprises demanding stable operations, transparent SLAs, and continuous optimization across their SAP landscape.",
     image: "/process-grid.svg",
+    photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SAP AMS service framework",
     bullets: [
       "Comprehensive functional and technical SAP landscape support",
@@ -51,6 +178,7 @@ const services = [
     description:
       "Aligning SAP SuccessFactors to your enterprise HR transformation strategy, mitigating integration complexity and defining long-term operating models.",
     image: "/insight-sheet.svg",
+    photo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SuccessFactors HR ecosystem",
     bullets: [
       "Core HR, talent acquisition, and employee lifecycle architecture",
@@ -65,6 +193,7 @@ const services = [
     description:
       "Architecting global payroll solutions for multi-country enterprises requiring absolute compliance, system discipline, and operational reliability.",
     image: "/system-orbit.svg",
+    photo: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "Global payroll compliance model",
     bullets: [
       "Scalable payroll design and execution across 30+ countries",
@@ -113,21 +242,21 @@ const mediaPanels = [
     title: "Transformation Telemetry",
     label: "Live Pipeline",
     text: "Visualize your S/4HANA migration pipeline with real-time operational telemetry and deployment status.",
-    image: "/system-orbit.svg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&h=400&fit=crop&q=80&auto=format",
     alt: "Transformation pipeline dashboard"
   },
   {
     title: "Program Control Matrix",
     label: "Workflow Mesh",
     text: "Track complex sequences, critical dependencies, and executive visibility metrics across your SAP ecosystem.",
-    image: "/process-grid.svg",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=400&fit=crop&q=80&auto=format",
     alt: "Program control metrics"
   },
   {
     title: "Executive Readiness Brief",
     label: "Data Audit",
     text: "Gain immediate oversight into cutover readiness, system health, and post-go-live stabilization metrics.",
-    image: "/insight-sheet.svg",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&h=400&fit=crop&q=80&auto=format",
     alt: "Executive data brief"
   }
 ];
@@ -159,42 +288,44 @@ const capabilityNotes = [
 ];
 
 const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 }
+  hidden: { opacity: 0, y: 36, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1 }
 };
 
 const textGroup = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08
+      staggerChildren: 0.09,
+      delayChildren: 0.05,
     }
   }
 };
 
 const textItem = {
-  hidden: { opacity: 0, y: 40, rotateX: 30, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 44, rotateX: 32, filter: "blur(10px)" },
   visible: { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
 };
 
 const revealLeft = {
-  hidden: { opacity: 0, x: -36, rotateX: -10 },
-  visible: { opacity: 1, x: 0, rotateX: 0 }
+  hidden: { opacity: 0, x: -48, scale: 0.96 },
+  visible: { opacity: 1, x: 0, scale: 1 }
 };
 
 const revealRight = {
-  hidden: { opacity: 0, x: 36, rotateX: -10 },
-  visible: { opacity: 1, x: 0, rotateX: 0 }
+  hidden: { opacity: 0, x: 48, scale: 0.96 },
+  visible: { opacity: 1, x: 0, scale: 1 }
 };
 
 const popCard = {
-  hidden: { opacity: 0, y: 42, scale: 0.92, rotateX: -16 },
-  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0 }
+  hidden: { opacity: 0, y: 56, scale: 0.88, rotateX: -18, filter: "blur(6px)" },
+  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: "blur(0px)" }
 };
 
 export default function HomePage() {
   const prefersReducedMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
@@ -204,10 +335,28 @@ export default function HomePage() {
     return () => media.removeEventListener("change", update);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileNavOpen]);
+
+  const closeNav = () => setMobileNavOpen(false);
+
   const allowComplexMotion = !prefersReducedMotion && !isMobile;
   const { scrollYProgress } = useScroll();
   const heroPanelY = useTransform(scrollYProgress, [0, 0.25], [0, allowComplexMotion ? -40 : -4]);
   const heroClusterY = useTransform(scrollYProgress, [0, 0.35], [0, allowComplexMotion ? -60 : -6]);
+
+  // Background parallax orbs at different depth speeds
+  const orbAY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -180 : 0]);
+  const orbBY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -100 : 0]);
+  const orbCY = useTransform(scrollYProgress, [0, 1], [0, allowComplexMotion ? -260 : 0]);
+  const orbDY = useTransform(scrollYProgress, [0.15, 1], [0, allowComplexMotion ? -140 : 0]);
+
+  // Section-level parallax offsets
+  const trustSectionY = useTransform(scrollYProgress, [0.05, 0.3], [24, allowComplexMotion ? -16 : 0]);
+  const servicesSectionY = useTransform(scrollYProgress, [0.2, 0.55], [18, allowComplexMotion ? -22 : 0]);
+  const caseSectionY = useTransform(scrollYProgress, [0.45, 0.75], [14, allowComplexMotion ? -18 : 0]);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -230,25 +379,42 @@ export default function HomePage() {
     mouseY.set(0);
   };
 
+
   return (
     <main className="home-page">
+      <ScrollProgressBar />
       <NarrativeBackdrop variant="home" />
+      {allowComplexMotion && (
+        <ParallaxOrbs y1={orbAY} y2={orbBY} y3={orbCY} y4={orbDY} />
+      )}
 
       <header className="topbar shell">
         <Link href="/" className="brand brand--logo" aria-label="ITChamps Software homepage">
           <Image src="/itchamps-logo.png" alt="ITChamps Software logo" width={176} height={56} priority />
         </Link>
 
-        <nav className="topnav" aria-label="Primary">
-          <a href="#services">SAP Consulting Services</a>
-          <a href="#case-studies">Case Studies</a>
-          <Link href="/academy">Academy</Link>
-          <a href="#contact">Schedule a Consultation</a>
+        <nav className={`topnav${mobileNavOpen ? " topnav--open" : ""}`} aria-label="Primary">
+          <a href="#services" onClick={closeNav}>SAP Consulting Services</a>
+          <a href="#case-studies" onClick={closeNav}>Case Studies</a>
+          <Link href="/academy" onClick={closeNav}>Academy</Link>
+          <a href="#contact" onClick={closeNav}>Schedule a Consultation</a>
+          <a href="#contact" className="button button--primary mobile-nav-cta" onClick={closeNav}>
+            Talk to an SAP Expert
+          </a>
         </nav>
 
-        <a href="#contact" className="button button--primary button--compact">
+        <a href="#contact" className="button button--primary button--compact topbar-cta">
           Talk to an SAP Expert
         </a>
+
+        <button
+          className={`mobile-menu-btn${mobileNavOpen ? " mobile-menu-btn--open" : ""}`}
+          onClick={() => setMobileNavOpen(v => !v)}
+          aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={mobileNavOpen}
+        >
+          <span />
+        </button>
       </header>
 
       <section className="hero shell">
@@ -302,20 +468,28 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div className="trust-badges" aria-label="Trust badges" variants={textItem}>
-            {trustBadges.map((badge) => (
-              <motion.span key={badge} className="trust-badge" whileHover={{ y: -3 }}>
+            {trustBadges.map((badge, i) => (
+              <motion.span
+                key={badge}
+                className="trust-badge"
+                initial={{ opacity: 0, scale: 0.88 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9 + i * 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -3, scale: 1.04 }}
+              >
                 {badge}
               </motion.span>
             ))}
           </motion.div>
         </motion.div>
 
-        <div 
-          className="hero__visual" 
-          onMouseMove={handleMouseMove} 
+        <div
+          className="hero__visual"
+          onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          style={{ perspective: 1400 }}
+          style={{ perspective: 1400, position: "relative" }}
         >
+          {allowComplexMotion && <FloatingParticles />}
           <motion.div
             className="hero-tech-grid"
             style={{ y: heroClusterY }}
@@ -404,7 +578,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title">
+      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title" style={{ y: trustSectionY }}>
         <motion.div
           className="section-heading section-heading--compact"
           variants={textGroup}
@@ -421,19 +595,13 @@ export default function HomePage() {
           </motion.p>
         </motion.div>
         <div className="logo-strip">
-          {logoStrip.map((logo) => (
-            <motion.span
-              key={logo}
-              className="logo-chip"
-              initial={{ opacity: 0, y: 18, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.45 }}
-              whileHover={allowComplexMotion ? { y: -4, scale: 1.02 } : undefined}
-            >
-              {logo}
-            </motion.span>
-          ))}
+          <div className="logo-strip__track">
+            {[...logoStrip, ...logoStrip].map((logo, i) => (
+              <span key={`${logo}-${i}`} className="logo-chip">
+                {logo}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.section>
 
@@ -444,7 +612,8 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        style={{ y: servicesSectionY }}
       >
         <motion.div className="section-heading section-heading--services" variants={textGroup}>
           <div className="section-heading__copy">
@@ -535,10 +704,21 @@ export default function HomePage() {
               variants={popCard}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={allowComplexMotion ? { y: -8, scale: 1.01 } : undefined}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={allowComplexMotion ? { y: -10, scale: 1.015 } : undefined}
             >
+              <div className="service-card__photo">
+                <Image
+                  src={service.photo}
+                  alt={service.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
+                <div className="service-card__photo-overlay" />
+              </div>
+
               <div className="service-card__content-wrapper">
                 <div className="service-card__header-col">
                   <motion.div
@@ -592,7 +772,8 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        style={{ y: caseSectionY }}
       >
         <motion.div className="section-heading" variants={textGroup}>
           <motion.p className="eyebrow" variants={textItem}>
@@ -662,10 +843,14 @@ export default function HomePage() {
               whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="media-panel__screen">
+                <Image
+                  src={panel.image}
+                  alt={panel.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 33vw"
+                  style={{ objectFit: "cover", borderRadius: "24px" }}
+                />
                 <span className="media-panel__label">{panel.label}</span>
-                <div className="media-panel__image media-panel__image--float">
-                  <Image src={panel.image} alt={panel.alt} width={320} height={220} />
-                </div>
                 <div className="media-panel__hud">
                   <span />
                   <span />
@@ -702,18 +887,13 @@ export default function HomePage() {
 
         <motion.div className="urgency-panel" variants={textItem}>
           {urgencyMetrics.map((metric, index) => (
-            <motion.div
+            <AnimatedStat
               key={metric.label}
-              className="urgency-stat"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
-            >
-              <strong>{metric.value}</strong>
-              <span>{metric.label}</span>
-            </motion.div>
+              value={metric.value}
+              label={metric.label}
+              allowAnimation={allowComplexMotion}
+              delay={index * 0.08}
+            />
           ))}
         </motion.div>
       </motion.section>
@@ -726,7 +906,7 @@ export default function HomePage() {
             </motion.p>
             <motion.h2 variants={textItem}>SAP S/4HANA Migration Readiness Framework</motion.h2>
             <motion.p variants={textItem}>
-              An executive planning resource for IT leaders evaluating scope, program governance, 
+              An executive planning resource for IT leaders evaluating scope, program governance,
               data dependencies, and risk mitigation strategies in S/4HANA migration programs.
             </motion.p>
           </motion.div>
