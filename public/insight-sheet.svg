@@ -1,0 +1,24 @@
+<svg width="340" height="420" viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="340" height="420" rx="28" fill="url(#bg)"/>
+  <rect x="28" y="24" width="284" height="372" rx="22" fill="white" fill-opacity="0.84" stroke="#DDE8F2"/>
+  <text x="54" y="74" fill="#102941" font-family="Arial, sans-serif" font-size="18" font-weight="700">Migration Readiness</text>
+  <text x="54" y="98" fill="#6A7D91" font-family="Arial, sans-serif" font-size="12">Executive checklist</text>
+  <rect x="54" y="128" width="232" height="42" rx="14" fill="#EEF4FA"/>
+  <rect x="54" y="188" width="232" height="42" rx="14" fill="#EEF4FA"/>
+  <rect x="54" y="248" width="232" height="42" rx="14" fill="#EEF4FA"/>
+  <rect x="54" y="308" width="232" height="42" rx="14" fill="#FFF4DE"/>
+  <circle cx="78" cy="149" r="8" fill="#4A8DFF"/>
+  <circle cx="78" cy="209" r="8" fill="#7AA8FF"/>
+  <circle cx="78" cy="269" r="8" fill="#A6C7FF"/>
+  <circle cx="78" cy="329" r="8" fill="#F1B85B"/>
+  <text x="96" y="153" fill="#102941" font-family="Arial, sans-serif" font-size="13" font-weight="700">Program governance</text>
+  <text x="96" y="213" fill="#102941" font-family="Arial, sans-serif" font-size="13" font-weight="700">System dependencies</text>
+  <text x="96" y="273" fill="#102941" font-family="Arial, sans-serif" font-size="13" font-weight="700">Data readiness</text>
+  <text x="96" y="333" fill="#102941" font-family="Arial, sans-serif" font-size="13" font-weight="700">Cutover and stabilization</text>
+  <defs>
+    <linearGradient id="bg" x1="14" y1="12" x2="308" y2="404" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFF5FD"/>
+      <stop offset="1" stop-color="#FFF8EA"/>
+    </linearGradient>
+  </defs>
+</svg>

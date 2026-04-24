@@ -1,0 +1,47 @@
+<svg width="680" height="760" viewBox="0 0 680 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="760" rx="40" fill="url(#bg)"/>
+  <rect x="34" y="34" width="612" height="692" rx="32" fill="white" fill-opacity="0.55" stroke="#D8E5F4"/>
+  <g opacity="0.55">
+    <path d="M112 174C196 132 256 224 336 198C406 176 440 96 520 118C592 138 606 232 544 280C470 338 384 294 306 330C214 372 186 474 94 448" stroke="url(#line)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M146 498C220 450 274 536 354 522C442 508 470 420 560 412" stroke="url(#line)" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="96" y="126" width="166" height="106" rx="24" fill="white" fill-opacity="0.8"/>
+    <rect x="310" y="190" width="180" height="118" rx="24" fill="white" fill-opacity="0.84"/>
+    <rect x="160" y="392" width="196" height="124" rx="24" fill="white" fill-opacity="0.82"/>
+    <rect x="396" y="456" width="156" height="100" rx="24" fill="white" fill-opacity="0.8"/>
+  </g>
+  <circle cx="178" cy="180" r="10" fill="#4A8DFF"/>
+  <circle cx="338" cy="198" r="9" fill="#78A8FF"/>
+  <circle cx="520" cy="120" r="10" fill="#F1B85B"/>
+  <circle cx="546" cy="414" r="8" fill="#F1B85B"/>
+  <circle cx="186" cy="446" r="10" fill="#4A8DFF"/>
+  <text x="124" y="164" fill="#0E2741" font-family="Arial, sans-serif" font-size="15" font-weight="700">ERP</text>
+  <text x="124" y="190" fill="#5E7186" font-family="Arial, sans-serif" font-size="12">Governance layer</text>
+  <text x="338" y="228" fill="#0E2741" font-family="Arial, sans-serif" font-size="16" font-weight="700">SuccessFactors</text>
+  <text x="338" y="254" fill="#5E7186" font-family="Arial, sans-serif" font-size="12">People transformation</text>
+  <text x="194" y="432" fill="#0E2741" font-family="Arial, sans-serif" font-size="16" font-weight="700">Finance</text>
+  <text x="194" y="458" fill="#5E7186" font-family="Arial, sans-serif" font-size="12">Control and reporting</text>
+  <text x="420" y="490" fill="#0E2741" font-family="Arial, sans-serif" font-size="15" font-weight="700">Payroll</text>
+  <text x="420" y="516" fill="#5E7186" font-family="Arial, sans-serif" font-size="12">Global delivery</text>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="48" x2="596" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF5FD"/>
+      <stop offset="0.58" stop-color="#F7FAFD"/>
+      <stop offset="1" stop-color="#FFF6E4"/>
+    </linearGradient>
+    <linearGradient id="line" x1="106" y1="160" x2="578" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4A8DFF"/>
+      <stop offset="1" stop-color="#F1B85B"/>
+    </linearGradient>
+    <filter id="shadow" x="72" y="108" width="504" height="472" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="12"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.356863 0 0 0 0 0.466667 0 0 0 0 0.572549 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
+  </defs>
+</svg>
