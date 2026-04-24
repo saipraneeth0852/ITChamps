@@ -2903,7 +2903,7 @@ h3 {
   }
 
   .system-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .system-lines {
@@ -2977,6 +2977,303 @@ h3 {
   /* ─ Media panels ─ */
   .media-panel__screen {
     min-height: 200px;
+  }
+
+  /* ─ Capability notes ─ */
+  .capability-notes {
+    gap: 10px;
+  }
+
+  .capability-note {
+    padding: 16px 18px;
+  }
+
+  .capability-note__top {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .capability-note p {
+    font-size: 0.82rem;
+  }
+
+  /* ─ Delivery guarantees ─ */
+  .delivery-guarantees {
+    gap: 8px;
+  }
+
+  .delivery-guarantee {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .delivery-guarantee__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .delivery-guarantee strong {
+    font-size: 0.82rem;
+  }
+
+  .delivery-guarantee span {
+    font-size: 0.76rem;
+  }
+
+  /* ─ System readiness (already hidden vitals/phases) ─ */
+  .system-readiness {
+    display: none;
+  }
+
+  /* ─ Hero narrative ─ */
+  .hero-narrative {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  /* ─ Hero actions stacking ─ */
+  .hero-actions {
+    margin-top: 28px;
+  }
+
+  /* ─ Capability proof text ─ */
+  .capability-proof {
+    font-size: 0.76rem;
+    padding: 10px 12px;
+  }
+
+  /* ─ Trust strip ─ */
+  .trust-strip {
+    padding-bottom: 56px;
+  }
+
+  /* ─ Lead magnet visual: hide on small screens ─ */
+  .lead-magnet__visual {
+    display: none;
+  }
+
+  .lead-magnet {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  /* ─ Logo chips ─ */
+  .logo-chip {
+    min-height: 52px;
+    padding: 8px 16px;
+  }
+
+  .logo-chip img {
+    height: 28px;
+  }
+
+  /* ─ Services stat panel client logos ─ */
+  .services-stat-panel__client-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ─ Case card padding ─ */
+  .case-card {
+    padding: 24px !important;
+    border-radius: 22px;
+  }
+
+  /* ─ Urgency stat numbers ─ */
+  .urgency-stat strong {
+    font-size: 2rem;
+  }
+
+  /* ─ Section heading copy gap ─ */
+  .section-heading--services .section-heading__copy {
+    gap: 14px;
+  }
+
+  /* ─ Lead form full-width ─ */
+  .lead-form {
+    width: 100%;
+  }
+
+  .lead-form input,
+  .lead-form .button {
+    width: 100%;
+  }
+}
+
+/* ── Small phone (≤480px) ────────────────────────────── */
+@media (max-width: 480px) {
+  .shell {
+    width: min(100vw - 20px, 480px);
+  }
+
+  h1 { font-size: clamp(1.9rem, 9.5vw, 2.8rem); }
+  h2 { font-size: clamp(1.5rem, 8vw, 2.1rem); }
+  h3 { font-size: 1.22rem; }
+
+  .topbar {
+    padding: 10px 14px;
+    gap: 10px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hero {
+    padding-top: 20px;
+    padding-bottom: 52px;
+    gap: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-actions .button {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+
+  .trust-badges {
+    margin-top: 28px;
+    gap: 8px;
+  }
+
+  .service-card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .service-card__photo {
+    height: 140px;
+    width: calc(100% + 36px);
+    margin: -18px -18px 16px -18px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .case-card {
+    padding: 18px !important;
+    border-radius: 18px;
+  }
+
+  .media-panel {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .media-panel__screen {
+    min-height: 170px;
+  }
+
+  .system-panel {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .system-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .system-grid__module {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .system-panel__header {
+    font-size: 0.64rem;
+    margin-bottom: 16px;
+  }
+
+  .system-title {
+    font-size: 1.5rem;
+  }
+
+  .system-panel__badge {
+    min-width: 100px;
+    padding: 10px 12px;
+  }
+
+  .section,
+  .trust-strip {
+    padding-bottom: 52px;
+  }
+
+  .section + .section,
+  .trust-strip + .section,
+  .section--last {
+    padding-top: 28px;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .services-stat-panel {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .services-stat-panel__stats div {
+    padding: 10px 8px;
+  }
+
+  .services-stat-panel__stats strong {
+    font-size: 0.82rem;
+  }
+
+  .urgency-panel {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .urgency-stat {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .urgency-stat strong {
+    font-size: 1.75rem;
+  }
+
+  .lead-magnet {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .lead-form input {
+    min-height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+  }
+
+  .final-cta {
+    padding: 32px 16px;
+    border-radius: 22px;
+  }
+
+  .capability-note {
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .delivery-guarantee {
+    padding: 12px 12px;
+    gap: 10px;
+  }
+
+  .delivery-guarantee__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer-section {
+    padding: 44px 0 24px;
+  }
+
+  .footer-section__links {
+    gap: 28px;
   }
 }
 

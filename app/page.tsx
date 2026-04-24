@@ -73,7 +73,7 @@ function AnimatedStat({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setStarted(true); },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -101,8 +101,8 @@ function AnimatedStat({
       className="urgency-stat"
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, delay }}
       whileHover={allowAnimation ? { y: -6, scale: 1.02 } : undefined}
     >
       <strong>{count}{suffix}</strong>
