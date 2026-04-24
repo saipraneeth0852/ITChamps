@@ -307,9 +307,19 @@ const textItem = {
   visible: { opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }
 };
 
+const textItemSimple = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
 const revealLeft = {
   hidden: { opacity: 0, x: -48, scale: 0.96 },
   visible: { opacity: 1, x: 0, scale: 1 }
+};
+
+const revealLeftSimple = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, x: 0 }
 };
 
 const revealRight = {
@@ -317,9 +327,19 @@ const revealRight = {
   visible: { opacity: 1, x: 0, scale: 1 }
 };
 
+const revealRightSimple = {
+  hidden: { opacity: 0, x: 24 },
+  visible: { opacity: 1, x: 0 }
+};
+
 const popCard = {
   hidden: { opacity: 0, y: 56, scale: 0.88, rotateX: -18, filter: "blur(6px)" },
   visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, filter: "blur(0px)" }
+};
+
+const popCardSimple = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 }
 };
 
 export default function HomePage() {
@@ -425,31 +445,31 @@ export default function HomePage() {
           animate="visible"
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.p className="eyebrow" variants={textItem}>
+          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             Certified SAP Enterprise Partner
           </motion.p>
-          <motion.h1 className="hero-title" variants={textItem}>
+          <motion.h1 className="hero-title" variants={allowComplexMotion ? textItem : textItemSimple}>
             {heroTitle.map((line, index) => (
               <motion.span
                 key={line}
                 className="hero-word"
-                initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
+                initial={{ opacity: 0, y: 20, filter: allowComplexMotion ? "blur(10px)" : "none" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.55, delay: 0.12 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
               >
                 {line}
               </motion.span>
             ))}
           </motion.h1>
-          <motion.p className="hero__subtext" variants={textItem}>
+          <motion.p className="hero__subtext" variants={allowComplexMotion ? textItem : textItemSimple}>
             S/4HANA Migration • AMS Support • SuccessFactors • Global Payroll
           </motion.p>
-          <motion.p className="lede" variants={textItem}>
+          <motion.p className="lede" variants={allowComplexMotion ? textItem : textItemSimple}>
             We guide global enterprises through critical S/4HANA migrations, standardize complex payroll architectures,
             and deliver uncompromising SLA-driven support. Precision SAP engineering, designed for scale.
           </motion.p>
 
-          <motion.div className="hero-narrative" variants={textItem}>
+          <motion.div className="hero-narrative" variants={allowComplexMotion ? textItem : textItemSimple}>
             {heroNarrative.map((item) => (
               <div key={item.label} className="hero-narrative__item">
                 <span>{item.label}</span>
@@ -458,7 +478,7 @@ export default function HomePage() {
             ))}
           </motion.div>
 
-          <motion.div className="hero-actions" variants={textItem}>
+          <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
             <a href="#contact" className="button button--primary">
               Talk to an SAP Expert
             </a>
@@ -467,7 +487,7 @@ export default function HomePage() {
             </a>
           </motion.div>
 
-          <motion.div className="trust-badges" aria-label="Trust badges" variants={textItem}>
+          <motion.div className="trust-badges" aria-label="Trust badges" variants={allowComplexMotion ? textItem : textItemSimple}>
             {trustBadges.map((badge, i) => (
               <motion.span
                 key={badge}
@@ -475,7 +495,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.88 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9 + i * 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -3, scale: 1.04 }}
+                whileHover={allowComplexMotion ? { y: -3, scale: 1.04 } : undefined}
               >
                 {badge}
               </motion.span>
@@ -611,21 +631,21 @@ export default function HomePage() {
         variants={reveal}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: isMobile ? 0.05 : 0.15 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{ y: servicesSectionY }}
       >
         <motion.div className="section-heading section-heading--services" variants={textGroup}>
           <div className="section-heading__copy">
-            <motion.p className="eyebrow" variants={textItem}>
+            <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
               Core Capabilities
             </motion.p>
-            <motion.h2 variants={textItem}>SAP engineering built for enterprise scale.</motion.h2>
-            <motion.p variants={textItem}>
+            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>SAP engineering built for enterprise scale.</motion.h2>
+            <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
               From navigating legacy brownfield migrations to standardizing HR systems across 30+ borders,
               we deliver technical precision that mitigates risk.
             </motion.p>
-            <motion.div className="capability-notes" variants={textItem}>
+            <motion.div className="capability-notes" variants={allowComplexMotion ? textItem : textItemSimple}>
               {capabilityNotes.map((item) => (
                 <article key={item.title} className="capability-note">
                   <span>{item.title}</span>
@@ -639,7 +659,7 @@ export default function HomePage() {
             className="services-overview"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: isMobile ? 0.05 : 0.25 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
             <div className="services-overview__panel">
@@ -701,11 +721,11 @@ export default function HomePage() {
             <motion.article
               key={service.title}
               className="service-card"
-              variants={popCard}
+              variants={allowComplexMotion ? popCard : popCardSimple}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: isMobile ? 0.08 : 0.2 }}
+              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.1, ease: [0.22, 1, 0.36, 1] }}
               whileHover={allowComplexMotion ? { y: -10, scale: 1.015 } : undefined}
             >
               <div className="service-card__photo">
@@ -791,11 +811,15 @@ export default function HomePage() {
             <motion.article
               key={study.title}
               className="case-card"
-              variants={index % 2 === 0 ? revealLeft : revealRight}
+              variants={
+                allowComplexMotion
+                  ? (index % 2 === 0 ? revealLeft : revealRight)
+                  : (index % 2 === 0 ? revealLeftSimple : revealRightSimple)
+              }
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: isMobile ? 0.08 : 0.3 }}
+              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="case-card__visual">
@@ -835,11 +859,11 @@ export default function HomePage() {
             <motion.article
               key={panel.title}
               className="media-panel"
-              variants={popCard}
+              variants={allowComplexMotion ? popCard : popCardSimple}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: isMobile ? 0.08 : 0.25 }}
+              transition={{ duration: 0.55, delay: isMobile ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="media-panel__screen">

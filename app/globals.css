@@ -2193,6 +2193,7 @@ h3 {
 @media (max-width: 767px) {
   .shell {
     width: min(100vw - 28px, 1180px);
+    perspective: none;
   }
 
   /* ─ Mobile nav overlay ─ */
@@ -2472,6 +2473,16 @@ h3 {
   .media-panel__screen {
     min-height: 200px;
   }
+}
+
+/* ── GPU compositing hints ───────────────────────────── */
+.service-card,
+.case-card,
+.media-panel,
+.hero-visual-card,
+.urgency-stat {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* ── Extra animation enhancements ────────────────────── */
