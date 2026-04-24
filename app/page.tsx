@@ -132,6 +132,32 @@ const mediaPanels = [
   }
 ];
 
+const heroNarrative = [
+  {
+    label: "Migration governance",
+    text: "Program design, architecture sequencing, and cutover control for enterprise SAP landscapes."
+  },
+  {
+    label: "Operational continuity",
+    text: "AMS, payroll, and HR transformation support shaped for systems that cannot afford disruption."
+  }
+];
+
+const capabilityNotes = [
+  {
+    title: "Architecture first",
+    text: "We start with dependency mapping, risk controls, and rollout sequencing before execution pressure starts driving decisions."
+  },
+  {
+    title: "Cross-functional delivery",
+    text: "ERP, finance, HR, payroll, and support operations stay coordinated through one operating model instead of fragmented workstreams."
+  },
+  {
+    title: "Built for executive visibility",
+    text: "Program sponsors get a clear view of readiness, constraints, and stabilization priorities across the full SAP estate."
+  }
+];
+
 const reveal = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 }
@@ -182,19 +208,6 @@ export default function HomePage() {
   const { scrollYProgress } = useScroll();
   const heroPanelY = useTransform(scrollYProgress, [0, 0.25], [0, allowComplexMotion ? -40 : -4]);
   const heroClusterY = useTransform(scrollYProgress, [0, 0.35], [0, allowComplexMotion ? -60 : -6]);
-  const trustY = useTransform(scrollYProgress, [0.05, 0.25], [allowComplexMotion ? 40 : 0, allowComplexMotion ? -30 : 0]);
-  const trustRotateX = useTransform(scrollYProgress, [0.05, 0.15, 0.25], [allowComplexMotion ? 4 : 0, 0, allowComplexMotion ? -2 : 0]);
-  
-  const servicesY = useTransform(scrollYProgress, [0.15, 0.5], [allowComplexMotion ? 70 : 0, allowComplexMotion ? -50 : 0]);
-  const servicesRotateX = useTransform(scrollYProgress, [0.15, 0.32, 0.5], [allowComplexMotion ? 6 : 0, 0, allowComplexMotion ? -4 : 0]);
-  
-  const casesY = useTransform(scrollYProgress, [0.25, 0.7], [allowComplexMotion ? 60 : 0, allowComplexMotion ? -40 : 0]);
-  const casesRotateX = useTransform(scrollYProgress, [0.25, 0.45, 0.7], [allowComplexMotion ? 5 : 0, 0, allowComplexMotion ? -3 : 0]);
-  
-  const urgencyY = useTransform(scrollYProgress, [0.35, 0.8], [allowComplexMotion ? 65 : 0, allowComplexMotion ? -45 : 0]);
-  const urgencyRotateX = useTransform(scrollYProgress, [0.35, 0.55, 0.8], [allowComplexMotion ? 6 : 0, 0, allowComplexMotion ? -4 : 0]);
-  
-  const insightY = useTransform(scrollYProgress, [0.5, 1], [allowComplexMotion ? 30 : 0, allowComplexMotion ? -15 : 0]);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -269,6 +282,15 @@ export default function HomePage() {
             We guide global enterprises through critical S/4HANA migrations, standardize complex payroll architectures,
             and deliver uncompromising SLA-driven support. Precision SAP engineering, designed for scale.
           </motion.p>
+
+          <motion.div className="hero-narrative" variants={textItem}>
+            {heroNarrative.map((item) => (
+              <div key={item.label} className="hero-narrative__item">
+                <span>{item.label}</span>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </motion.div>
 
           <motion.div className="hero-actions" variants={textItem}>
             <a href="#contact" className="button button--primary">
@@ -348,80 +370,41 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            <motion.div
-              className="hero-visual-card hero-visual-card--orbit"
-              animate={allowComplexMotion ? { y: [0, -8, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 12, repeat: Infinity, ease: "easeInOut" } : undefined}
-            >
+            <div className="hero-visual-card hero-visual-card--orbit">
               <div className="hero-visual-card__meta">
                 <span>System topology</span>
                 <strong>Connected landscape</strong>
               </div>
               <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_main.png" alt="Enterprise systems illustration" width={320} height={360} priority style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
+                <Image src="/hero_main.png" alt="Enterprise systems illustration" width={320} height={360} priority sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="hero-visual-card hero-visual-card--process"
-              animate={allowComplexMotion ? { y: [0, 7, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 13, repeat: Infinity, ease: "easeInOut", delay: 1.2 } : undefined}
-            >
+            <div className="hero-visual-card hero-visual-card--process">
               <div className="hero-visual-card__meta">
                 <span>Delivery sequence</span>
                 <strong>Discover → align → rollout</strong>
               </div>
               <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_process.png" alt="SAP delivery sequence diagram" width={220} height={150} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
+                <Image src="/hero_process.png" alt="SAP delivery sequence diagram" width={220} height={150} sizes="(max-width: 767px) 100vw, 25vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="hero-visual-card hero-visual-card--insight"
-              animate={allowComplexMotion ? { y: [0, -6, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 11, repeat: Infinity, ease: "easeInOut", delay: 0.6 } : undefined}
-            >
+            <div className="hero-visual-card hero-visual-card--insight">
               <div className="hero-visual-card__meta">
                 <span>Readiness brief</span>
                 <strong>Governance, data, stabilization</strong>
               </div>
               <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_insight.png" alt="Migration readiness checklist illustration" width={170} height={210} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
+                <Image src="/hero_insight.png" alt="Migration readiness checklist illustration" width={170} height={210} sizes="(max-width: 767px) 100vw, 25vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="hero-visual-card hero-visual-card--cloud"
-              animate={allowComplexMotion ? { y: [0, 9, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2.1 } : undefined}
-            >
-              <div className="hero-visual-card__meta">
-                <span>Cloud Infrastructure</span>
-                <strong>Scalable SAP Core</strong>
-              </div>
-              <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_cloud.png" alt="Cloud infrastructure nodes" width={200} height={180} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="hero-visual-card hero-visual-card--analytics"
-              animate={allowComplexMotion ? { y: [0, -5, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1.8 } : undefined}
-            >
-              <div className="hero-visual-card__meta">
-                <span>Real-time Insights</span>
-                <strong>Enterprise Analytics</strong>
-              </div>
-              <div className="hero-visual-card__img-wrapper">
-                <Image src="/hero_analytics.png" alt="Data analytics dashboard" width={240} height={160} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '16px' }} />
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title" style={{ y: trustY, rotateX: trustRotateX }}>
+      <motion.section className="trust-strip shell" aria-labelledby="trusted-by-title">
         <motion.div
           className="section-heading section-heading--compact"
           variants={textGroup}
@@ -457,7 +440,6 @@ export default function HomePage() {
       <motion.section
         id="services"
         className="section shell"
-        style={{ y: servicesY, rotateX: servicesRotateX }}
         variants={reveal}
         initial="hidden"
         whileInView="visible"
@@ -474,6 +456,14 @@ export default function HomePage() {
               From navigating legacy brownfield migrations to standardizing HR systems across 30+ borders,
               we deliver technical precision that mitigates risk.
             </motion.p>
+            <motion.div className="capability-notes" variants={textItem}>
+              {capabilityNotes.map((item) => (
+                <article key={item.title} className="capability-note">
+                  <span>{item.title}</span>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </motion.div>
           </div>
 
           <motion.div
@@ -598,7 +588,6 @@ export default function HomePage() {
       <motion.section
         id="case-studies"
         className="section shell"
-        style={{ y: casesY, rotateX: casesRotateX }}
         variants={reveal}
         initial="hidden"
         whileInView="visible"
@@ -626,10 +615,10 @@ export default function HomePage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={allowComplexMotion ? { y: -10, rotateX: -6, rotateY: index % 2 === 0 ? 5 : -5, scale: 1.02 } : undefined}
+              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="case-card__visual">
-                <Image src={study.image} alt={`${study.client} case study`} width={400} height={200} style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '12px' }} />
+                <Image src={study.image} alt={`${study.client} case study`} width={400} height={200} sizes="(max-width: 900px) 50vw, 33vw" style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '12px' }} />
               </div>
               <div className="case-card__meta">
                 <span>{study.client}</span>
@@ -670,17 +659,13 @@ export default function HomePage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={allowComplexMotion ? { y: -12, rotateX: -7, rotateY: index % 2 === 0 ? 6 : -6, scale: 1.02 } : undefined}
+              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <div className="media-panel__screen">
                 <span className="media-panel__label">{panel.label}</span>
-                <motion.div
-                  className="media-panel__image"
-                  animate={allowComplexMotion ? { y: [0, -8, 0], scale: [1, 1.02, 1] } : undefined}
-                  transition={allowComplexMotion ? { duration: 10 + index, repeat: Infinity, ease: "easeInOut" } : undefined}
-                >
+                <div className="media-panel__image media-panel__image--float">
                   <Image src={panel.image} alt={panel.alt} width={320} height={220} />
-                </motion.div>
+                </div>
                 <div className="media-panel__hud">
                   <span />
                   <span />
@@ -696,7 +681,6 @@ export default function HomePage() {
 
       <motion.section
         className="section shell section--split"
-        style={{ y: urgencyY, rotateX: urgencyRotateX }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -721,11 +705,11 @@ export default function HomePage() {
             <motion.div
               key={metric.label}
               className="urgency-stat"
-              initial={{ opacity: 0, x: 20, rotateX: -18, scale: 0.94 }}
-              whileInView={{ opacity: 1, x: 0, rotateX: 0, scale: 1 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={allowComplexMotion ? { y: -8, rotateX: -5, scale: 1.02 } : undefined}
+              whileHover={allowComplexMotion ? { y: -6, scale: 1.02 } : undefined}
             >
               <strong>{metric.value}</strong>
               <span>{metric.label}</span>
@@ -734,7 +718,7 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      <motion.section id="insights" className="section shell" style={{ y: insightY }}>
+      <motion.section id="insights" className="section shell">
         <div className="lead-magnet holo-panel">
           <motion.div className="lead-magnet__copy" variants={textGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
             <motion.p className="eyebrow" variants={textItem}>

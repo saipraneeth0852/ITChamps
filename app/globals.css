@@ -84,6 +84,7 @@ input {
 .story-page {
   position: relative;
   overflow-x: clip;
+  padding-top: 24px;
 }
 
 .topbar,
@@ -106,7 +107,7 @@ input {
   gap: 24px;
   padding: 14px 32px;
   margin: 0 auto;
-  margin-bottom: 32px;
+  margin-bottom: 56px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(24px) saturate(1.5);
   -webkit-backdrop-filter: blur(24px) saturate(1.5);
@@ -261,10 +262,10 @@ input:focus-visible {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(380px, 1.08fr);
-  gap: 56px;
-  align-items: start;
+  gap: clamp(40px, 4vw, 64px);
+  align-items: stretch;
   min-height: auto;
-  padding: 88px 0 132px;
+  padding-bottom: 132px;
 }
 
 .hero--migration {
@@ -274,8 +275,11 @@ input:focus-visible {
 }
 
 .hero__copy {
+  display: flex;
+  flex-direction: column;
   max-width: 640px;
-  padding-top: 24px;
+  min-height: 100%;
+  padding-top: 18px;
 }
 
 .eyebrow {
@@ -358,6 +362,38 @@ h3 {
   margin-top: 24px;
 }
 
+.hero-narrative {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-narrative__item,
+.capability-note {
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 143, 211, 0.1);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.025);
+}
+
+.hero-narrative__item span,
+.capability-note span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(33, 61, 89, 0.56);
+}
+
+.hero-narrative__item p,
+.capability-note p {
+  margin: 0;
+  color: rgba(33, 61, 89, 0.78);
+  line-height: 1.6;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -369,7 +405,8 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 52px;
+  margin-top: auto;
+  padding-top: 52px;
 }
 
 .trust-badge,
@@ -396,16 +433,16 @@ h3 {
   justify-content: center;
   position: relative;
   min-height: 0;
+  padding-top: 18px;
 }
 
 .hero-tech-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     "panel panel panel"
-    "orbit process cloud"
-    "orbit insight analytics";
+    "orbit process insight";
   gap: 18px;
   align-items: stretch;
   width: min(100%, 820px);
@@ -629,7 +666,7 @@ h3 {
 }
 
 .hero-visual-card--orbit .hero-visual-card__img-wrapper {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
 }
 
 .hero-visual-card--process {
@@ -643,15 +680,6 @@ h3 {
   background: #FFFFFF;
 }
 
-.hero-visual-card--cloud {
-  grid-area: cloud;
-  background: #FFFFFF;
-}
-
-.hero-visual-card--analytics {
-  grid-area: analytics;
-  background: #FFFFFF;
-}
 
 .system-lines span {
   position: absolute;
@@ -678,7 +706,7 @@ h3 {
 .section,
 .trust-strip,
 .footer {
-  padding: 0 0 104px;
+  padding-bottom: 104px;
 }
 
 .trust-strip {
@@ -698,8 +726,21 @@ h3 {
 
 .section-heading--services {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  align-items: start;
+  align-items: stretch;
   gap: 40px;
+}
+
+.section-heading--services .section-heading__copy {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.capability-notes {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 28px;
 }
 
 .section-heading--compact {
@@ -1395,7 +1436,8 @@ h3 {
   gap: 40px;
   align-items: center;
   min-height: calc(100svh - 96px);
-  padding: 84px 0 110px;
+  padding-top: 84px;
+  padding-bottom: 110px;
 }
 
 .academy-hero__copy {
@@ -1587,7 +1629,7 @@ h3 {
     radial-gradient(circle at 16% 20%, rgba(72, 117, 191, 0.2), transparent 0 30%),
     radial-gradient(circle at 80% 70%, rgba(242, 193, 96, calc(0.14 + var(--story-progress) * 0.22)), transparent 0 32%),
     radial-gradient(circle at 56% 32%, rgba(255, 255, 255, 0.56), transparent 0 22%);
-  transform: scale(1.04);
+  transform: translateY(calc(var(--story-progress) * -30px)) scale(1.04);
 }
 
 .story-layer--orb {
@@ -1602,16 +1644,19 @@ h3 {
   left: -10vw;
   top: 6vh;
   background: rgba(122, 168, 255, 0.14);
+  transform: translateY(calc(var(--story-progress) * -30px));
 }
 
 .story-layer--orb-b {
   right: -12vw;
   bottom: -10vh;
   background: rgba(242, 193, 96, 0.12);
+  transform: translateY(calc(var(--story-progress) * -20px));
 }
 
 .story-layer--timeline {
   opacity: calc(var(--story-progress) * 0.16);
+  transform: translateX(calc(var(--story-progress) * 2%));
   background:
     linear-gradient(90deg, transparent 0 10%, rgba(216, 116, 87, 0.09) 10% 11%, transparent 11% 30%, rgba(242, 193, 96, 0.12) 30% 31%, transparent 31% 100%),
     linear-gradient(rgba(92, 129, 166, 0.06) 1px, transparent 1px);
@@ -1718,6 +1763,31 @@ h3 {
   background: rgba(242, 193, 96, 0.12);
 }
 
+@keyframes card-float-up {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes card-float-down {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(7px); }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  .hero-visual-card--orbit {
+    animation: card-float-up 12s ease-in-out infinite;
+  }
+  .hero-visual-card--process {
+    animation: card-float-down 13s ease-in-out infinite 1.2s;
+  }
+  .hero-visual-card--insight {
+    animation: card-float-up 11s ease-in-out infinite 0.6s;
+  }
+  .media-panel__image--float {
+    animation: card-float-up 10s ease-in-out infinite;
+  }
+}
+
 @media (max-width: 1100px) {
   .hero,
   .section--split,
@@ -1729,11 +1799,12 @@ h3 {
 
   .hero {
     gap: 40px;
-    padding-top: 64px;
+    padding-top: 0;
   }
 
   .hero__copy {
     max-width: 100%;
+    min-height: auto;
     padding-top: 0;
   }
 
@@ -1762,6 +1833,7 @@ h3 {
   .hero__visual {
     justify-content: flex-start;
     min-height: 0;
+    padding-top: 0;
   }
 
   .hero-tech-grid {
@@ -1817,8 +1889,7 @@ h3 {
     grid-template-areas:
       "panel panel"
       "orbit process"
-      "insight cloud"
-      "analytics analytics";
+      "orbit insight";
     width: 100%;
   }
 
@@ -1870,7 +1941,13 @@ h3 {
   .hero {
     min-height: auto;
     gap: 40px;
-    padding: 54px 0 88px;
+    padding-top: 54px;
+    padding-bottom: 88px;
+  }
+
+  .home-page,
+  .story-page {
+    padding-top: 0;
   }
 
   .section,
@@ -1884,7 +1961,8 @@ h3 {
   }
 
   .academy-hero {
-    padding: 52px 0 88px;
+    padding-top: 52px;
+    padding-bottom: 88px;
   }
 
   .topbar {
@@ -1899,6 +1977,11 @@ h3 {
   .trust-badges,
   .hero-actions {
     gap: 10px;
+  }
+
+  .trust-badges {
+    margin-top: 52px;
+    padding-top: 0;
   }
 
   .lead-magnet,
@@ -1931,6 +2014,7 @@ h3 {
       "orbit"
       "process"
       "insight";
+    width: 100%;
   }
 
   .services-overview {
