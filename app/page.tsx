@@ -14,121 +14,121 @@ const trustBadges = [
 ];
 
 const logoStrip = ["ABB", "ONGC Videsh", "Manipal Global", "AT&S"];
-const heroTitle = ["S/4HANA Migration", "Services for Enterprises", "Beyond ECC"];
+const heroTitle = ["Mastering Complexity.", "Driving Agility.", "Beyond ECC."];
 
 const services = [
   {
     tag: "Transformation",
-    title: "S/4HANA Migration Services",
+    title: "S/4HANA Migration",
     description:
-      "ITChamps delivers S/4HANA migration services for enterprises planning SAP ECC to S/4HANA migration with stronger governance and lower execution risk.",
+      "We deliver S/4HANA migrations with rigorous governance and precision architecture, eliminating execution risk for complex enterprise footprints.",
     image: "/system-orbit.svg",
-    alt: "S/4HANA migration service illustration",
+    alt: "S/4HANA migration architecture",
     bullets: [
-      "Discovery, fit-gap, migration roadmap and architecture planning",
-      "Brownfield, greenfield and selective data transition approaches",
-      "Cutover planning, testing strategy and post-go-live stabilization"
+      "Strategic discovery, fit-gap analysis, and migration roadmapping",
+      "Tailored brownfield, greenfield, and selective data transitions",
+      "Seamless cutover execution and post-go-live stabilization"
     ],
-    highlight: "Roadmap, data transition, and cutover control"
+    highlight: "Controlled data transition and cutover"
   },
   {
     tag: "Support",
-    title: "SAP AMS Services India",
+    title: "SLA-Driven AMS Support",
     description:
-      "SAP Application Maintenance and Support built for enterprises that need stable operations, clear SLAs, and continuous improvement after implementation.",
+      "Engineered for enterprises demanding stable operations, transparent SLAs, and continuous optimization across their SAP landscape.",
     image: "/process-grid.svg",
-    alt: "SAP AMS service illustration",
+    alt: "SAP AMS service framework",
     bullets: [
-      "Functional and technical SAP support services",
-      "Incident, enhancement, release and service governance",
-      "AMS transition, steady-state support and optimization"
+      "Comprehensive functional and technical SAP landscape support",
+      "Rigorous incident, release, and enhancement governance",
+      "Seamless AMS transition and continuous system optimization"
     ],
-    highlight: "SLA-led support with release governance"
+    highlight: "Transparent SLAs and release governance"
   },
   {
     tag: "People Systems",
-    title: "SAP SuccessFactors Consulting",
+    title: "SuccessFactors Integration",
     description:
-      "SAP SuccessFactors consulting aligned to enterprise HR transformation, integration complexity, and long-term operating model design.",
+      "Aligning SAP SuccessFactors to your enterprise HR transformation strategy, mitigating integration complexity and defining long-term operating models.",
     image: "/insight-sheet.svg",
-    alt: "SuccessFactors consulting illustration",
+    alt: "SuccessFactors HR ecosystem",
     bullets: [
-      "Core HR, talent, onboarding and employee lifecycle programs",
-      "Hybrid SAP HCM and SuccessFactors integration support",
-      "Rollout planning, adoption and change management"
+      "Core HR, talent acquisition, and employee lifecycle architecture",
+      "Complex hybrid SAP HCM and SuccessFactors integrations",
+      "Strategic rollout planning and enterprise change management"
     ],
-    highlight: "HR transformation without integration drift"
+    highlight: "Unified HR architecture without integration drift"
   },
   {
     tag: "Payroll",
-    title: "Global Payroll Solutions",
+    title: "Global Payroll Operations",
     description:
-      "SAP global payroll solutions for multi-country enterprises that need compliance, integration discipline, and reliable operational delivery.",
+      "Architecting global payroll solutions for multi-country enterprises requiring absolute compliance, system discipline, and operational reliability.",
     image: "/system-orbit.svg",
-    alt: "Global payroll solution illustration",
+    alt: "Global payroll compliance model",
     bullets: [
-      "Payroll design and execution support across 30+ countries",
-      "Integration with HR, finance and reporting processes",
-      "Compliance controls, governance and payroll operating readiness"
+      "Scalable payroll design and execution across 30+ countries",
+      "Deep integration with finance, reporting, and HR workflows",
+      "Stringent compliance controls and payroll readiness audits"
     ],
-    highlight: "Cross-country control, readiness, and execution"
+    highlight: "Cross-border compliance and execution"
   }
 ];
 
 const caseStudies = [
   {
     client: "ABB",
-    title: "Global SAP rollout for ABB",
-    result: "40% operational efficiency improvement",
+    title: "Standardizing Global Operations for ABB",
+    result: "40% increase in operational efficiency",
     description:
-      "Standardized process flows and deployment governance across distributed teams, improving rollout predictability and post-go-live support readiness.",
+      "Deployed standardized process flows and rigorous deployment governance across distributed teams, dramatically improving rollout predictability.",
     image: "/case_abb.png"
   },
   {
     client: "ONGC Videsh",
-    title: "Enterprise modernization for a complex energy operation",
-    result: "Unified reporting and stronger control across business units",
+    title: "Modernizing a Complex Energy Enterprise",
+    result: "Unified reporting across global business units",
     description:
-      "Aligned regional requirements to a more structured enterprise model, reducing fragmentation across finance, operations, and support workflows.",
+      "Engineered a structured enterprise model that eliminated workflow fragmentation across finance, operations, and support networks.",
     image: "/case_ongc.png"
   },
   {
     client: "Manipal Global",
-    title: "HR and payroll transformation at group scale",
-    result: "Greater payroll consistency and cleaner cross-system coordination",
+    title: "Scaling HR & Payroll Transformation",
+    result: "Flawless cross-system data coordination",
     description:
-      "Improved HR process structure and payroll integration for a multi-entity organization managing sensitive employee operations.",
+      "Architected a unified HR structure and robust payroll integration for a multi-entity organization managing highly sensitive employee operations.",
     image: "/case_manipal.png"
   }
 ];
 
 const urgencyMetrics = [
-  { value: "2027", label: "ECC mainstream maintenance deadline" },
-  { value: "67%", label: "of companies are still behind on migration readiness" },
-  { value: "30+", label: "countries supported in payroll delivery programs" }
+  { value: "2027", label: "ECC mainstream support deadline" },
+  { value: "67%", label: "of enterprises lag in migration readiness" },
+  { value: "30+", label: "countries unified in our payroll programs" }
 ];
 
 const mediaPanels = [
   {
-    title: "Transformation pulse",
-    label: "Live signal",
-    text: "A motion-led visual panel that reads like a futuristic operations stream instead of a static brochure block.",
+    title: "Transformation Telemetry",
+    label: "Live Pipeline",
+    text: "Visualize your S/4HANA migration pipeline with real-time operational telemetry and deployment status.",
     image: "/system-orbit.svg",
-    alt: "Transformation pulse illustration"
+    alt: "Transformation pipeline dashboard"
   },
   {
-    title: "Program control wall",
-    label: "Workflow mesh",
-    text: "Sequencing, dependencies, and executive visibility shown as an animated media surface.",
+    title: "Program Control Matrix",
+    label: "Workflow Mesh",
+    text: "Track complex sequences, critical dependencies, and executive visibility metrics across your SAP ecosystem.",
     image: "/process-grid.svg",
-    alt: "Workflow mesh illustration"
+    alt: "Program control metrics"
   },
   {
-    title: "Executive insight feed",
-    label: "Data brief",
-    text: "A card that feels closer to a product preview or dashboard tile than a plain marketing section.",
+    title: "Executive Readiness Brief",
+    label: "Data Audit",
+    text: "Gain immediate oversight into cutover readiness, system health, and post-go-live stabilization metrics.",
     image: "/insight-sheet.svg",
-    alt: "Executive data brief illustration"
+    alt: "Executive data brief"
   }
 ];
 
@@ -247,7 +247,7 @@ export default function HomePage() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.p className="eyebrow" variants={textItem}>
-            SAP implementation partner India
+            Certified SAP Enterprise Partner
           </motion.p>
           <motion.h1 className="hero-title" variants={textItem}>
             {heroTitle.map((line, index) => (
@@ -263,12 +263,11 @@ export default function HomePage() {
             ))}
           </motion.h1>
           <motion.p className="hero__subtext" variants={textItem}>
-            SAP consulting services • SAP AMS services India • SAP SuccessFactors consulting • SAP global payroll solutions
+            S/4HANA Migration • AMS Support • SuccessFactors • Global Payroll
           </motion.p>
           <motion.p className="lede" variants={textItem}>
-            ITChamps Software is a certified SAP partner helping enterprises execute SAP ECC to S/4HANA migration,
-            implementation, support, SuccessFactors programs, and multi-country payroll transformation with the
-            discipline expected from high-value enterprise delivery teams.
+            We guide global enterprises through critical S/4HANA migrations, standardize complex payroll architectures,
+            and deliver uncompromising SLA-driven support. Precision SAP engineering, designed for scale.
           </motion.p>
 
           <motion.div className="hero-actions" variants={textItem}>
@@ -468,12 +467,12 @@ export default function HomePage() {
         <motion.div className="section-heading section-heading--services" variants={textGroup}>
           <div className="section-heading__copy">
             <motion.p className="eyebrow" variants={textItem}>
-              Core services
+              Core Capabilities
             </motion.p>
-            <motion.h2 variants={textItem}>SAP consulting services structured around enterprise transformation outcomes.</motion.h2>
+            <motion.h2 variants={textItem}>SAP engineering built for enterprise scale.</motion.h2>
             <motion.p variants={textItem}>
-              The offer is intentionally focused for B2B buyers: S/4HANA migration services, SAP AMS services India,
-              SAP SuccessFactors consulting, and SAP global payroll solutions.
+              From navigating legacy brownfield migrations to standardizing HR systems across 30+ borders,
+              we deliver technical precision that mitigates risk.
             </motion.p>
           </div>
 
@@ -608,12 +607,12 @@ export default function HomePage() {
       >
         <motion.div className="section-heading" variants={textGroup}>
           <motion.p className="eyebrow" variants={textItem}>
-            Case studies
+            Proven Outcomes
           </motion.p>
-          <motion.h2 variants={textItem}>Proof that ITChamps can handle complex SAP implementation and support environments.</motion.h2>
+          <motion.h2 variants={textItem}>Delivering operational resilience for industry leaders.</motion.h2>
           <motion.p variants={textItem}>
-            Enterprise buyers need visible delivery proof. These examples show the kind of consulting outcomes ITChamps
-            is built to support across rollout, modernization, support, HR, and payroll programs.
+            Enterprise buyers demand visible proof. Explore how we've engineered solutions for
+            manufacturing, energy, and global education leaders.
           </motion.p>
         </motion.div>
 
@@ -652,12 +651,12 @@ export default function HomePage() {
       >
         <motion.div className="section-heading" variants={textGroup}>
           <motion.p className="eyebrow" variants={textItem}>
-            Futuristic media layer
+            Operational Telemetry
           </motion.p>
-          <motion.h2 variants={textItem}>Media-style panels that feel closer to a product environment than a static website.</motion.h2>
+          <motion.h2 variants={textItem}>Real-time visibility into your SAP transformation ecosystem.</motion.h2>
           <motion.p variants={textItem}>
-            Since the project does not currently ship real video assets, this section uses animated image panels,
-            signal overlays, and motion-driven framing to create the same futuristic effect.
+            Visualize your integration pipelines, track critical migration dependencies, and gain
+            executive oversight across complex, multi-layered SAP deployments.
           </motion.p>
         </motion.div>
 
@@ -705,15 +704,15 @@ export default function HomePage() {
       >
         <motion.div className="section-heading" variants={textGroup}>
           <motion.p className="eyebrow" variants={textItem}>
-            ECC 2027 urgency
+            The 2027 Horizon
           </motion.p>
           <motion.h2 variants={textItem}>
-            SAP ECC 2027 is approaching. Delayed migration planning increases cost, delivery pressure, and business risk.
+            The ECC support deadline is closing in. Delaying your migration strategy amplifies costs and operational risk.
           </motion.h2>
           <motion.p variants={textItem}>
-            Enterprises that postpone SAP ECC to S/4HANA migration often compress assessment, architecture, and
-            cutover planning into shorter windows. ITChamps positions itself as the SAP implementation partner India
-            teams can use to move with more structure and less disruption.
+            Enterprises postponing their S/4HANA transition are forced to compress critical architecture and
+            cutover planning into shrinking windows. Partner with ITChamps to execute your migration with
+            structured governance and zero disruption.
           </motion.p>
         </motion.div>
 
@@ -741,10 +740,10 @@ export default function HomePage() {
             <motion.p className="eyebrow" variants={textItem}>
               Executive resource
             </motion.p>
-            <motion.h2 variants={textItem}>SAP S/4HANA Migration Readiness Checklist</motion.h2>
+            <motion.h2 variants={textItem}>SAP S/4HANA Migration Readiness Framework</motion.h2>
             <motion.p variants={textItem}>
-              A concise planning resource for CIOs, IT heads, and procurement teams evaluating scope, program
-              governance, data dependencies, support readiness, and risk in SAP ECC to S/4HANA migration programs.
+              An executive planning resource for IT leaders evaluating scope, program governance, 
+              data dependencies, and risk mitigation strategies in S/4HANA migration programs.
             </motion.p>
           </motion.div>
 
@@ -788,11 +787,10 @@ export default function HomePage() {
           <motion.p className="eyebrow" variants={textItem}>
             Speak with delivery leadership
           </motion.p>
-          <motion.h2 variants={textItem}>Schedule a Consultation with an SAP Expert</motion.h2>
+          <motion.h2 variants={textItem}>Ready to engineer your transformation?</motion.h2>
           <motion.p variants={textItem}>
-            If you need a credible SAP consulting partner for S/4HANA migration services, SAP AMS services, SAP
-            SuccessFactors consulting, or SAP global payroll solutions, ITChamps is structured to engage at enterprise
-            buying level.
+            Whether you are evaluating a greenfield S/4HANA rollout or seeking reliable global payroll governance,
+            our delivery leadership is ready to align with your enterprise objectives.
           </motion.p>
           <motion.div className="hero-actions" variants={textItem}>
             <a href="mailto:info@itchamps.com" className="button button--primary">

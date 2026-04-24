@@ -73,8 +73,8 @@ input {
 
 .shell {
   width: 100%;
-  max-width: 1180px;
-  padding: 0 24px;
+  max-width: 1560px;
+  padding: 0 4vw;
   margin: 0 auto;
   perspective: 1400px;
 }
@@ -103,7 +103,7 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 12px 20px;
+  padding: 14px 32px;
   margin: 0 auto;
   margin-bottom: 32px;
   background: rgba(255, 255, 255, 0.7);
@@ -114,8 +114,8 @@ input {
     0 8px 32px rgba(0, 143, 211, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-  width: calc(100% - 48px);
-  max-width: 1140px;
+  width: calc(100% - 8vw);
+  max-width: 1520px;
   border-radius: 999px;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
