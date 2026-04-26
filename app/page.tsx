@@ -133,6 +133,48 @@ const logoStripItems = [
 ];
 const heroTitle = ["Mastering Complexity.", "Driving Agility.", "Beyond ECC."];
 
+const servicesNavItems = [
+  {
+    category: "SAP Solutions",
+    href: "/services#sap-solutions",
+    items: [
+      { label: "S/4HANA Migration", href: "/services#s4hana-migration" },
+      { label: "S/4HANA Implementation", href: "/services#s4-implementation" },
+      { label: "SAP Application Maintenance", href: "/services#sap-ams" },
+      { label: "SAP BTP Implementation", href: "/services#sap-btp" },
+      { label: "SAP Audit & Value Discovery", href: "/services#sap-audit" },
+    ],
+  },
+  {
+    category: "HR & Payroll",
+    href: "/services#hr-payroll",
+    items: [
+      { label: "Global Payroll Operations", href: "/services#global-payroll" },
+      { label: "SuccessFactors Integration", href: "/services#successfactors" },
+      { label: "ESS & MSS Portals", href: "/services#ess-mss" },
+      { label: "Payroll Outsourcing", href: "/services#payroll-outsourcing" },
+    ],
+  },
+  {
+    category: "Enterprise Automation",
+    href: "/services#automation",
+    items: [
+      { label: "PEGA Automation", href: "/services#pega" },
+      { label: "Camunda Workflow", href: "/services#camunda" },
+      { label: "DCS Integration", href: "/services#dcs" },
+      { label: "IOT Integration", href: "/services#iot" },
+    ],
+  },
+  {
+    category: "Security",
+    href: "/services#security",
+    items: [
+      { label: "Cyber Security", href: "/services#cyber-security" },
+      { label: "EHS Compliance", href: "/services#ehs" },
+    ],
+  },
+];
+
 const services = [
   {
     tag: "Transformation",
@@ -344,6 +386,7 @@ export default function HomePage() {
   const prefersReducedMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
@@ -358,7 +401,7 @@ export default function HomePage() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileNavOpen]);
 
-  const closeNav = () => setMobileNavOpen(false);
+  const closeNav = () => { setMobileNavOpen(false); setMobileServicesOpen(false); };
 
   const allowComplexMotion = !prefersReducedMotion && !isMobile;
   const { scrollYProgress } = useScroll();
@@ -376,8 +419,41 @@ export default function HomePage() {
         </Link>
 
         <nav className={`topnav${mobileNavOpen ? " topnav--open" : ""}`} aria-label="Primary">
-          <a href="#services" onClick={closeNav}>SAP Consulting Services</a>
-          <a href="#case-studies" onClick={closeNav}>Case Studies</a>
+          <div className="nav-dropdown-wrap">
+            <button
+              className="nav-dropdown__trigger"
+              onClick={() => setMobileServicesOpen(v => !v)}
+              aria-expanded={mobileServicesOpen}
+              aria-haspopup="true"
+              suppressHydrationWarning
+            >
+              Services
+              <svg
+                className={`nav-dropdown__caret${mobileServicesOpen ? " nav-dropdown__caret--open" : ""}`}
+                viewBox="0 0 12 8"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <div className={`nav-dropdown__panel${mobileServicesOpen ? " nav-dropdown__panel--open" : ""}`}>
+              {servicesNavItems.map(group => (
+                <div className="nav-dropdown__group" key={group.category}>
+                  <Link href={group.href} className="nav-dropdown__group-title nav-dropdown__group-title--link" onClick={closeNav}>{group.category}</Link>
+                  {group.items.map(item => (
+                    <Link key={item.label} href={item.href} className="nav-dropdown__item" onClick={closeNav}>{item.label}</Link>
+                  ))}
+                </div>
+              ))}
+              <div className="nav-dropdown__footer">
+                <Link href="/services" className="nav-dropdown__all" onClick={closeNav}>
+                  View all services &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+          <Link href="/case-studies" onClick={closeNav}>Case Studies</Link>
           <Link href="/academy" onClick={closeNav} className="topnav__academy">Academy</Link>
           <a href="#contact" onClick={closeNav}>Schedule a Consultation</a>
           <a href="#contact" className="button button--primary mobile-nav-cta" onClick={closeNav}>
@@ -465,121 +541,61 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
 
-        <div className="hero__visual" style={{ position: "relative" }}>
+        <div className="hero__visual">
           <motion.div
-            className="hero-tech-grid"
+            className="hero-visual-collage"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           >
-            <div className="system-panel">
-              <div className="system-panel__header">
-                <span>Enterprise SAP transformation model</span>
-                <span className="system-status">ECC to S/4HANA readiness</span>
-              </div>
-
-              <div className="system-hero">
-                <div>
-                  <p className="system-kicker">Program architecture</p>
-                  <h2 className="system-title">Structured migration control across core enterprise functions.</h2>
-                </div>
-                <div className="system-panel__badge">
-                  <span>Execution view</span>
-                  <strong>4 workstreams</strong>
-                </div>
-              </div>
-
-              <div className="system-grid">
-                <div className="system-grid__module">
-                  <strong>ERP Core</strong>
-                  <span>S/4HANA migration program</span>
-                </div>
-                <div className="system-grid__module">
-                  <strong>SuccessFactors</strong>
-                  <span>HR transformation and integration</span>
-                </div>
-                <div className="system-grid__module">
-                  <strong>Finance</strong>
-                  <span>Controls, reporting and governance</span>
-                </div>
-                <div className="system-grid__module">
-                  <strong>Payroll</strong>
-                  <span>Global payroll delivery across 30+ countries</span>
-                </div>
-              </div>
-
-              <div className="system-vitals">
-                <div className="system-vitals__header">
-                  <span>Program velocity</span>
-                  <span className="system-vitals__live">
-                    <span className="system-vitals__dot" />Live
-                  </span>
-                </div>
-                <div className="system-vitals__stats">
-                  <div className="system-vital">
-                    <strong>12+</strong>
-                    <span>Active programs</span>
-                  </div>
-                  <div className="system-vital">
-                    <strong>30+</strong>
-                    <span>Countries live</span>
-                  </div>
-                  <div className="system-vital">
-                    <strong>100%</strong>
-                    <span>Go-live success</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="system-phases">
-                <p className="system-phases__label">Migration phase tracker</p>
-                {[
-                  { label: "Blueprint & discovery", pct: 100 },
-                  { label: "Architecture design",   pct: 84  },
-                  { label: "Data migration prep",   pct: 67  },
-                  { label: "Cutover execution",     pct: 42  },
-                ].map((phase) => (
-                  <div key={phase.label} className="system-phase">
-                    <span className="system-phase__label">{phase.label}</span>
-                    <div className="system-phase__bar">
-                      <motion.div
-                        className="system-phase__fill"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${phase.pct}%` }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                      />
-                    </div>
-                    <span className="system-phase__pct">{phase.pct}%</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="system-readiness">
-                <p className="system-readiness__label">Delivery intelligence</p>
-                <div className="system-readiness__grid">
-                  {[
-                    { label: "Go-live success rate", value: "100%" },
-                    { label: "Rollback incidents",   value: "Zero"  },
-                    { label: "SLA adherence",        value: "100%"  },
-                    { label: "Avg. program span",    value: "14 mo." },
-                  ].map((item) => (
-                    <div key={item.label} className="system-readiness__item">
-                      <span className="system-readiness__dot" />
-                      <span className="system-readiness__item-label">{item.label}</span>
-                      <strong className="system-readiness__item-val">{item.value}</strong>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="system-lines">
-                <span />
-                <span />
-                <span />
-              </div>
+            <div className="hero-collage__main">
+              <Image
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&h=780&fit=crop&q=85&auto=format"
+                alt="Global enterprise headquarters"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 55vw"
+                style={{ objectFit: "cover" }}
+              />
+              <div className="hero-collage__main-overlay" />
             </div>
 
+            <div className="hero-collage__secondary">
+              <Image
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=560&h=380&fit=crop&q=80&auto=format"
+                alt="Strategic enterprise consulting team"
+                fill
+                sizes="(max-width: 900px) 50vw, 28vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+
+            <motion.div
+              className="hero-collage__badge hero-collage__badge--a"
+              animate={allowComplexMotion ? { y: [0, -6, 0] } : undefined}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <strong>100%</strong>
+              <span>Go-live success</span>
+            </motion.div>
+
+            <motion.div
+              className="hero-collage__badge hero-collage__badge--b"
+              animate={allowComplexMotion ? { y: [0, -5, 0] } : undefined}
+              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            >
+              <strong>30+</strong>
+              <span>Countries delivered</span>
+            </motion.div>
+
+            <motion.div
+              className="hero-collage__badge hero-collage__badge--c"
+              animate={allowComplexMotion ? { y: [0, -4, 0] } : undefined}
+              transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            >
+              <strong>20+</strong>
+              <span>Years of expertise</span>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -690,82 +706,95 @@ export default function HomePage() {
           </div>
 
           <motion.div
-            className="services-stat-panel"
+            className="cap-hub"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: isMobile ? 0.05 : 0.25 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            <div className="services-stat-panel__header">
-              <span>Capability mesh</span>
-              <strong>4 enterprise towers</strong>
-            </div>
-            <p className="services-stat-panel__intro">
-              Migration, support, people systems, and payroll — one structured SAP delivery model.
-            </p>
-            <div className="services-stat-panel__stats">
-              <div><span>Migration</span><strong>ECC to S/4</strong></div>
-              <div><span>Support</span><strong>SLA-led AMS</strong></div>
-              <div><span>People</span><strong>SuccessFactors</strong></div>
-              <div><span>Payroll</span><strong>30+ countries</strong></div>
+            <div className="cap-hub__bg">
+              <Image
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=720&h=700&fit=crop&q=80&auto=format"
+                alt=""
+                fill
+                sizes="(max-width: 1100px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
+              <div className="cap-hub__bg-overlay" />
             </div>
 
-            <div className="services-delivery-record">
-              <p className="services-delivery-record__label">Delivery track record</p>
-              <div className="services-delivery-record__grid">
-                <div className="services-record-item">
-                  <strong>20+</strong>
-                  <span>Years SAP expertise</span>
-                </div>
-                <div className="services-record-item">
-                  <strong>30+</strong>
-                  <span>Countries in payroll</span>
-                </div>
-                <div className="services-record-item">
-                  <strong>100%</strong>
-                  <span>SLA adherence</span>
-                </div>
-                <div className="services-record-item">
-                  <strong>Zero</strong>
-                  <span>Rollback incidents</span>
-                </div>
-              </div>
-              <div className="services-methodology">
-                {[
-                  { num: "01", label: "Discovery & governance" },
-                  { num: "02", label: "Architecture design"    },
-                  { num: "03", label: "Cutover control"        },
-                  { num: "04", label: "Post go-live AMS"       },
-                ].map((step) => (
-                  <div key={step.num} className="services-methodology-step">
-                    <span className="services-methodology-step__num">{step.num}</span>
-                    <span className="services-methodology-step__label">{step.label}</span>
-                    <span className="services-methodology-step__line" />
-                  </div>
-                ))}
-              </div>
+            <div className="cap-hub__header">
+              <p className="cap-hub__eyebrow">SAP Enterprise Capability Model</p>
+              <p className="cap-hub__title">4 towers. One delivery team.</p>
+              <p className="cap-hub__sub">Migration, support, HR, and payroll — end-to-end, with no handoff gaps.</p>
             </div>
 
-            <div className="services-stat-panel__proof">
-              <p className="services-stat-panel__proof-label">Enterprise clients delivered</p>
-              <div className="services-stat-panel__client-logos">
-                {logoStripItems.map((logo) => (
-                  <div key={logo.name} className="services-client-logo">
-                    <img src={logo.src} alt={logo.name} width={logo.w} height={logo.h} loading="lazy" />
-                  </div>
-                ))}
-              </div>
-              <div className="services-stat-panel__sap-badge">
-                <div className="services-stat-panel__sap-badge-mark">
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
+            <div className="cap-hub__tiles">
+              {[
+                {
+                  name: "SAP S/4HANA Migration",
+                  metric: "Brownfield · Greenfield · Selective",
+                  desc: "Full-cycle ECC to S/4HANA migration — from fit-gap analysis and architecture design through cutover execution and post-go-live stabilization.",
+                  accent: "blue",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" />
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                    </svg>
+                  ),
+                },
+                {
+                  name: "SAP AMS Support",
+                  metric: "100% SLA adherence · Zero disruption",
+                  desc: "SLA-driven Application Management Services covering incident handling, release governance, and continuous SAP landscape optimization.",
+                  accent: "gold",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <polyline points="9 12 11 14 15 10" />
+                    </svg>
+                  ),
+                },
+                {
+                  name: "SAP SuccessFactors",
+                  metric: "Core HR · Talent · Employee Lifecycle",
+                  desc: "End-to-end SuccessFactors consulting for HR transformation — including hybrid SAP HCM integration, rollout planning, and change management.",
+                  accent: "blue",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  ),
+                },
+                {
+                  name: "Global Payroll Solutions",
+                  metric: "30+ countries · Multi-jurisdiction compliance",
+                  desc: "SAP-based global payroll architecture with cross-border compliance controls, finance integration, and payroll readiness audits across 30+ countries.",
+                  accent: "gold",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                  ),
+                },
+              ].map((tile) => (
+                <div key={tile.name} className={`cap-hub__tile cap-hub__tile--${tile.accent}`}>
+                  <div className="cap-hub__tile-icon">{tile.icon}</div>
+                  <strong>{tile.name}</strong>
+                  <span>{tile.metric}</span>
+                  <p className="cap-hub__tile-desc">{tile.desc}</p>
                 </div>
-                <div className="services-stat-panel__sap-badge-text">
-                  <strong>SAP Extended Business Member + VAR</strong>
-                  <span>Certified · 20+ years · 30+ countries</span>
-                </div>
-              </div>
+              ))}
+            </div>
+
+            <div className="cap-hub__stats">
+              <div className="cap-hub__stat"><strong>20+</strong><span>Years expertise</span></div>
+              <div className="cap-hub__stat-divider" />
+              <div className="cap-hub__stat"><strong>100%</strong><span>Go-live success</span></div>
+              <div className="cap-hub__stat-divider" />
+              <div className="cap-hub__stat"><strong>Zero</strong><span>Rollbacks</span></div>
             </div>
           </motion.div>
         </motion.div>
@@ -791,37 +820,28 @@ export default function HomePage() {
                   style={{ objectFit: "cover" }}
                 />
                 <div className="service-card__photo-overlay" />
+                <span className="service-chip service-chip--photo">{service.tag}</span>
               </div>
 
-              <div className="service-card__content-wrapper">
-                <div className="service-card__header-col">
-                  <div className="service-card__visual">
-                    <Image src={service.image} alt={service.alt} width={140} height={140} />
-                  </div>
-                  <div className="service-card__meta">
-                    <span className="service-chip">{service.tag}</span>
-                    <span className="service-highlight">{service.highlight}</span>
-                  </div>
-                </div>
-
-                <div className="service-card__text-col">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <ul className="service-list">
-                    {service.bullets.map((item) => (
-                      <li key={item}>
-                        <svg className="service-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="service-card__body">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul className="service-list">
+                  {service.bullets.map((item) => (
+                    <li key={item}>
+                      <svg className="service-list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="service-card__footer">
+                  <span className="service-highlight">{service.highlight}</span>
                   <a href="#contact" className="card-link">
                     Discuss this service
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>
                   </a>
                 </div>
