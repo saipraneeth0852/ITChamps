@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ContactSection } from "../components/ContactSection";
 import { NarrativeBackdrop } from "../components/NarrativeBackdrop";
+import { academyHref } from "../lib/site";
 
 function ScrollProgressBar({ scrollYProgress }: { scrollYProgress: any }) {
   const scaleX = useSpring(scrollYProgress, { stiffness: 400, damping: 50, restDelta: 0.001 });
@@ -454,14 +456,15 @@ export default function HomePage() {
             </div>
           </div>
           <Link href="/case-studies" onClick={closeNav}>Case Studies</Link>
-          <Link href="/academy" onClick={closeNav} className="topnav__academy">Academy</Link>
-          <a href="#contact" onClick={closeNav}>Schedule a Consultation</a>
-          <a href="#contact" className="button button--primary mobile-nav-cta" onClick={closeNav}>
+          <Link href="/blogs" onClick={closeNav}>Blogs</Link>
+          <Link href={academyHref} onClick={closeNav} className="topnav__academy">Academy</Link>
+          <a href="#contact-form" onClick={closeNav}>Schedule a Consultation</a>
+          <a href="#contact-form" className="button button--primary mobile-nav-cta" onClick={closeNav}>
             Talk to an SAP Expert
           </a>
         </nav>
 
-        <a href="#contact" className="button button--primary button--compact topbar-cta">
+        <a href="#contact-form" className="button button--primary button--compact topbar-cta">
           Talk to an SAP Expert
         </a>
 
@@ -517,7 +520,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
-            <a href="#contact" className="button button--primary">
+            <a href="#contact-form" className="button button--primary">
               Talk to an SAP Expert
             </a>
             <a href="#case-studies" className="button button--ghost">
@@ -838,7 +841,7 @@ export default function HomePage() {
                 </ul>
                 <div className="service-card__footer">
                   <span className="service-highlight">{service.highlight}</span>
-                  <a href="#contact" className="card-link">
+                  <a href="#contact-form" className="card-link">
                     Discuss this service
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -1027,33 +1030,12 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      <motion.section
-        id="contact"
-        className="section shell section--last"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: isMobile ? 0.05 : 0.25 }}
-        variants={reveal}
-      >
-        <motion.div className="final-cta" variants={textGroup}>
-          <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
-            Speak with delivery leadership
-          </motion.p>
-          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Ready to engineer your transformation?</motion.h2>
-          <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Whether you are evaluating a greenfield S/4HANA rollout or seeking reliable global payroll governance,
-            our delivery leadership is ready to align with your enterprise objectives.
-          </motion.p>
-          <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
-            <a href="mailto:info@itchamps.com" className="button button--primary">
-              Schedule a Consultation
-            </a>
-            <Link href="/academy" className="button button--ghost">
-              Visit ITChamps Academy
-            </Link>
-          </motion.div>
-        </motion.div>
-      </motion.section>
+      <ContactSection
+        eyebrow="Speak with delivery leadership"
+        title="Ready to engineer your transformation?"
+        description="Whether you are evaluating a greenfield S/4HANA rollout or seeking reliable global payroll governance, our delivery leadership is ready to align with your enterprise objectives."
+        source="homepage"
+      />
 
       <footer className="footer-section">
         <div className="shell">
@@ -1076,7 +1058,7 @@ export default function HomePage() {
               <div>
                 <h3>Company</h3>
                 <a href="#case-studies">Case Studies</a>
-                <Link href="/academy">ITChamps Academy</Link>
+                <Link href={academyHref}>ITChamps Academy</Link>
                 <a href="https://itchamps.com/company/" target="_blank" rel="noreferrer">
                   Company Details
                 </a>

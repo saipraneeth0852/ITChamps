@@ -6,12 +6,15 @@
     "node": "20.x || 22.x"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "lint": "node node_modules/next/dist/bin/next lint",
+    "seed:firebase": "node --env-file=.env.local scripts/seed-firestore.mjs"
   },
   "dependencies": {
+    "firebase": "^12.12.1",
+    "firebase-admin": "^13.5.0",
     "framer-motion": "^12.9.4",
     "next": "^15.0.0",
     "pdfkit": "^0.18.0",

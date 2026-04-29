@@ -1,0 +1,5 @@
+{
+  "/case-studies/page": "app/case-studies/page.js",
+  "/case-studies/[slug]/page": "app/case-studies/[slug]/page.js",
+  "/page": "app/page.js"
+}

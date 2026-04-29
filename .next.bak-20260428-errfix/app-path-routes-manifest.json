@@ -1,0 +1,20 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/admin/logout/route": "/api/admin/logout",
+  "/api/content/blogs/route": "/api/content/blogs",
+  "/api/admin/login/route": "/api/admin/login",
+  "/api/admin/upload-image/route": "/api/admin/upload-image",
+  "/api/content/blogs/[id]/route": "/api/content/blogs/[id]",
+  "/api/content/case-studies/[id]/route": "/api/content/case-studies/[id]",
+  "/api/content/case-studies/route": "/api/content/case-studies",
+  "/academy/page": "/academy",
+  "/page": "/",
+  "/migration/page": "/migration",
+  "/admin/login/page": "/admin/login",
+  "/services/page": "/services",
+  "/admin/page": "/admin",
+  "/blogs/page": "/blogs",
+  "/case-studies/page": "/case-studies",
+  "/case-studies/[slug]/page": "/case-studies/[slug]",
+  "/blogs/[slug]/page": "/blogs/[slug]"
+}

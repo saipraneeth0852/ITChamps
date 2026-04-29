@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ContactSection } from "../../components/ContactSection";
 import { NarrativeBackdrop } from "../../components/NarrativeBackdrop";
 
 const academyStats = [
@@ -68,7 +69,7 @@ export default function AcademyPage() {
           <Link href="/">Home</Link>
           <a href="#featured">Featured lessons</a>
           <a href="#tracks">Tracks</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact-form">Contact</a>
         </nav>
 
         <Link href="/" className="button button--compact">
@@ -206,24 +207,13 @@ export default function AcademyPage() {
         </div>
       </section>
 
-      <section id="contact" className="section shell section--last">
-        <div className="final-cta">
-          <p className="eyebrow">Next step</p>
-          <h2>Use the academy as the educational layer behind the main consulting site.</h2>
-          <p>
-            It now renders correctly, uses stronger typography, and includes enough visual material to feel like part
-            of the same product family.
-          </p>
-          <div className="hero-actions">
-            <a href="mailto:info@itchamps.com" className="button button--primary">
-              Request academy content
-            </a>
-            <Link href="/" className="button button--ghost">
-              Return home
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ContactSection
+        eyebrow="Next step"
+        title="Plan academy access, cohorts, or a separate academy rollout."
+        description="The academy now reads like its own product surface, which keeps the main consulting site focused while giving the future subdomain a dedicated destination and enquiry flow."
+        source="academy"
+        accent="academy"
+      />
     </main>
   );
 }
