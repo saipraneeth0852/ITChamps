@@ -964,61 +964,114 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      <motion.section id="readiness-checklist" className="section shell">
-        <div className="lead-magnet holo-panel">
-          <motion.div className="lead-magnet__copy" variants={textGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}>
-            <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
-              Executive resource
-            </motion.p>
-            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Is Your Enterprise Ready for S/4HANA?</motion.h2>
-            <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-              Assess your current system, identify gaps, and prepare for migration across infrastructure, data quality, organizational readiness, timeline, and cost planning. Used by 500+ enterprises.
-            </motion.p>
-          </motion.div>
+      {/* ── Executive Resource ──────────────────────────── */}
+      <section id="readiness-checklist" className="exec-resource">
+        <div className="exec-resource__inner shell">
 
+          {/* LEFT: copy + preview card */}
           <motion.div
-            className="lead-magnet__visual"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
-            transition={{ duration: 0.7 }}
+            className="exec-resource__left"
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55 }}
           >
-            <motion.div
-              className="floating-image floating-image--sheet"
-              animate={allowComplexMotion ? { y: [0, -6, 0] } : undefined}
-              transition={allowComplexMotion ? { duration: 12, repeat: Infinity, ease: "easeInOut" } : undefined}
-            >
-              <Image src="/insight-sheet.svg" alt="Readiness checklist preview" width={240} height={290} />
-            </motion.div>
+            <span className="exec-resource__badge">Executive Resource</span>
+            <h2 className="exec-resource__title">Is Your Enterprise<br/>Ready for S/4HANA?</h2>
+            <p className="exec-resource__sub">
+              A structured assessment guide used by 500+ enterprises. Identify gaps
+              across infrastructure, data quality, change management, and timeline
+              before you commit to migration.
+            </p>
+
+            <ul className="exec-resource__features">
+              {[
+                "Infrastructure & system readiness assessment",
+                "Data quality & master data evaluation",
+                "Organisational change management checklist",
+                "Timeline & resource planning guide",
+                "Cost-benefit analysis template",
+                "Custom S/4HANA solutions roadmap",
+              ].map((item) => (
+                <li key={item}>
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="rgba(0,143,211,0.18)"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#008FD3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            {/* Mini checklist preview card */}
+            <div className="exec-resource__preview">
+              <div className="exec-resource__preview-header">
+                <span className="exec-resource__preview-label">S/4HANA Readiness Score</span>
+                <span className="exec-resource__preview-score">72 / 100</span>
+              </div>
+              {[
+                { label: "Infrastructure",        pct: 80, color: "#22c55e" },
+                { label: "Data Readiness",        pct: 60, color: "#f59e0b" },
+                { label: "Change Management",     pct: 72, color: "#008FD3" },
+                { label: "Timeline & Resources",  pct: 55, color: "#f59e0b" },
+              ].map((bar) => (
+                <div key={bar.label} className="exec-resource__bar-row">
+                  <span>{bar.label}</span>
+                  <div className="exec-resource__bar-track">
+                    <div className="exec-resource__bar-fill" style={{ width: `${bar.pct}%`, background: bar.color }} />
+                  </div>
+                  <span className="exec-resource__bar-pct">{bar.pct}%</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          <form className="lead-form">
-            <label className="sr-only" htmlFor="work-email">
-              Work email
-            </label>
-            <input id="work-email" name="work-email" type="email" placeholder="Work email" suppressHydrationWarning />
-            <label className="sr-only" htmlFor="company-name">
-              Company name
-            </label>
-            <input id="company-name" name="company-name" type="text" placeholder="Company name" suppressHydrationWarning />
-            <label className="lead-form__checkbox-label">
-              <input type="checkbox" name="updates" className="lead-form__checkbox" suppressHydrationWarning />
-              <span>Send me updates on S/4HANA best practices</span>
-            </label>
-            <button type="submit" className="button button--primary" suppressHydrationWarning>
-              Download Checklist (Free PDF)
-            </button>
-          </form>
-          <ul className="checklist-includes">
-            <li>Infrastructure &amp; system readiness assessment</li>
-            <li>Data quality &amp; master data evaluation</li>
-            <li>Organisational change management checklist</li>
-            <li>Timeline &amp; resource planning guide</li>
-            <li>Cost-benefit analysis template</li>
-            <li>Custom solutions roadmap</li>
-          </ul>
+          {/* RIGHT: form card */}
+          <motion.div
+            className="exec-resource__right"
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            <div className="exec-resource__card">
+              <p className="exec-resource__card-eyebrow">Free download</p>
+              <h3 className="exec-resource__card-title">Get the Complete Checklist</h3>
+              <p className="exec-resource__card-sub">PDF + interactive scorecard. No spam, unsubscribe any time.</p>
+
+              <form className="exec-resource__form">
+                <div className="exec-resource__form-row">
+                  <input type="text" placeholder="Full name" aria-label="Full name" suppressHydrationWarning />
+                  <input type="email" placeholder="Work email" aria-label="Work email" suppressHydrationWarning />
+                </div>
+                <input type="text" placeholder="Company name" aria-label="Company name" suppressHydrationWarning />
+                <select aria-label="Company size" suppressHydrationWarning defaultValue="">
+                  <option value="" disabled>Company size</option>
+                  <option>Under 200 employees</option>
+                  <option>200–1,000 employees</option>
+                  <option>1,000–5,000 employees</option>
+                  <option>5,000+ employees</option>
+                </select>
+                <label className="exec-resource__checkbox-row">
+                  <input type="checkbox" suppressHydrationWarning />
+                  <span>Send me monthly SAP migration insights</span>
+                </label>
+                <button type="submit" className="button button--primary exec-resource__submit" suppressHydrationWarning>
+                  Download Free Checklist
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" width="18" height="18"><path d="M10 3v10m0 0l-3.5-3.5M10 13l3.5-3.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M4 16h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                </button>
+              </form>
+
+              <div className="exec-resource__social-proof">
+                <div className="exec-resource__avatars">
+                  {["#008FD3","#0055a4","#22c55e","#f59e0b"].map((c, i) => (
+                    <span key={i} className="exec-resource__avatar" style={{ background: c, zIndex: 4 - i }} />
+                  ))}
+                </div>
+                <p>Joined by <strong>500+ enterprise teams</strong> this year</p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
-      </motion.section>
+      </section>
 
       <motion.section
         className="section shell media-lab"
