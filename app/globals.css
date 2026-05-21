@@ -3648,7 +3648,7 @@ h3 {
 
 .lead-form select,
 .lead-form textarea,
-.contact-form-card input,
+.contact-form-card input:not([type="checkbox"]),
 .contact-form-card select,
 .contact-form-card textarea {
   width: 100%;
@@ -3660,6 +3660,23 @@ h3 {
   color: var(--text);
   outline: none;
   font: inherit;
+}
+.contact-form-card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-height: unset;
+  flex-shrink: 0;
+  accent-color: var(--accent, #008FD3);
+  cursor: pointer;
+}
+.contact-subscribe-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  cursor: pointer;
 }
 
 .lead-form textarea,
@@ -3755,7 +3772,7 @@ h3 {
   grid-column: 1 / -1;
 }
 
-.contact-form-card input:focus,
+.contact-form-card input:not([type="checkbox"]):focus,
 .contact-form-card select:focus,
 .contact-form-card textarea:focus {
   border-color: rgba(25, 90, 214, 0.28);
@@ -5198,7 +5215,7 @@ h3 {
     border-radius: 14px;
   }
 
-  .contact-form-card input,
+  .contact-form-card input:not([type="checkbox"]),
   .contact-form-card select,
   .contact-form-card textarea {
     min-height: 52px;

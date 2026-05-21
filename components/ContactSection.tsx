@@ -12,12 +12,18 @@ type ContactSectionProps = {
 };
 
 const serviceOptions = [
-  "S/4HANA Migration",
-  "SAP AMS Support",
-  "SuccessFactors",
-  "Global Payroll",
-  "ITChamps Academy",
-  "Other",
+  "ECC",
+  "S/4HANA On-Premise",
+  "S/4HANA Cloud",
+  "Multiple",
+  "None",
+];
+
+const companySizeOptions = [
+  "<500",
+  "500-5K",
+  "5K-10K",
+  "10K+",
 ];
 
 const initialForm = {
@@ -26,7 +32,9 @@ const initialForm = {
   company: "",
   phone: "",
   serviceInterest: serviceOptions[0],
+  companySize: companySizeOptions[0],
   message: "",
+  subscribe: false,
 };
 
 export function ContactSection({
@@ -39,6 +47,7 @@ export function ContactSection({
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -59,6 +68,7 @@ export function ContactSection({
       }
 
       setStatus("success");
+      setSubmittedEmail(form.workEmail);
       setForm(initialForm);
     } catch (error) {
       setStatus("error");
@@ -136,7 +146,7 @@ export function ContactSection({
             </label>
 
             <label className="contact-form-grid__full">
-              <span>Service interest</span>
+              <span>Current SAP system</span>
               <select
                 name="serviceInterest"
                 value={form.serviceInterest}
@@ -150,8 +160,23 @@ export function ContactSection({
               </select>
             </label>
 
+            <label>
+              <span>Company size</span>
+              <select
+                name="companySize"
+                value={form.companySize}
+                onChange={(event) => setForm((current) => ({ ...current, companySize: event.target.value }))}
+              >
+                {companySizeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </label>
+
             <label className="contact-form-grid__full">
-              <span>How can we help?</span>
+              <span>Primary challenge</span>
               <textarea
                 name="message"
                 rows={5}
@@ -160,17 +185,28 @@ export function ContactSection({
                 required
               />
             </label>
+
+            <label className="contact-form-grid__full contact-subscribe-row">
+              <input
+                type="checkbox"
+                name="subscribe"
+                checked={form.subscribe}
+                onChange={(event) => setForm((current) => ({ ...current, subscribe: event.target.checked }))}
+              />
+              <span>I&apos;d like to receive updates on S/4HANA migrations, AMS optimization, and payroll innovations.</span>
+            </label>
           </div>
 
           <div className="contact-form-footer">
             <button type="submit" className="button button--primary" disabled={status === "submitting"}>
-              {status === "submitting" ? "Submitting..." : "Submit Message"}
+              {status === "submitting" ? "Submitting..." : "Get Your Consultation"}
             </button>
             <p className={`contact-form-status contact-form-status--${status}`}>
-              {status === "success" && "Thanks. Your enquiry has been received and routed to the team."}
+              {status === "success" &&
+                `Thank you! We've received your request. An SAP expert will contact you within 24 business hours at ${submittedEmail || "the email you provided"}. In the meantime, explore our case studies and blog for relevant insights.`}
               {status === "error" && errorMessage}
               {(status === "idle" || status === "submitting") &&
-                "Use the same direct inquiry flow as the current site, but with structured fields and cleaner routing."}
+                "Describe your current SAP landscape and transformation goals. An SAP expert will contact you within 24 business hours to discuss a tailored roadmap."}
             </p>
           </div>
         </form>
