@@ -14,9 +14,9 @@ const stagger = { visible: { transition: { staggerChildren: 0.08 } } };
 // ─── Data ────────────────────────────────────────────────────────────────────
 const heroStats = [
   { value: "20+", label: "Years SAP expertise" },
-  { value: "100%", label: "Go-live success rate" },
-  { value: "30+", label: "Countries served" },
-  { value: "15+", label: "Enterprise solutions" },
+  { value: "120+", label: "Certified consultants" },
+  { value: "45+", label: "Countries supported" },
+  { value: "15", label: "Specialized services" },
 ];
 
 const migrationSteps = [
@@ -34,63 +34,63 @@ const sapServices = [
   {
     id: "s4hana-migration",
     title: "S/4HANA Migration",
-    subtitle: "Brownfield · Greenfield · Selective",
+    subtitle: "Greenfield · Brownfield · Hybrid",
     description:
-      "Rigorous governance and precision architecture for complex enterprise footprints — eliminating execution risk at every phase of your ECC to S/4HANA transformation.",
+      "ECC end-of-support is December 2027. ITChamps leads structured S/4HANA migration programs that accelerate timelines, minimize disruption, and modernize enterprise operations.",
     bullets: [
-      "ECC to S/4HANA brownfield conversion",
-      "Greenfield new system implementation",
-      "Selective data migration paths",
-      "Custom code remediation & adaptation",
-      "Cutover execution & go-live support",
+      "Tailored greenfield, brownfield, or hybrid strategy",
+      "Data migration and master data management",
+      "Change management and user enablement",
+      "Accelerated 6-12 month delivery playbooks",
+      "SLA-backed go-live and optimization support",
     ],
     color: "blue",
     tag: "Transformation",
   },
   {
-    id: "sap-ams",
-    title: "SAP Application Maintenance",
-    subtitle: "100% SLA adherence · Zero disruption",
-    description:
-      "SLA-driven Application Management Services covering incident handling, release governance, and continuous SAP landscape optimization for uninterrupted operations.",
-    bullets: [
-      "L1/L2/L3 functional & technical support",
-      "Incident, problem & change management",
-      "Enhancement request handling",
-      "Release & transport management",
-      "Monthly SLA reporting & reviews",
-    ],
-    color: "gold",
-    tag: "Support",
-  },
-  {
     id: "s4-implementation",
     title: "S/4HANA Implementation",
-    subtitle: "SAP Activate · Best practices · Fast deploy",
+    subtitle: "Greenfield deployment · Best-practice launch",
     description:
-      "Fresh S/4HANA system implementation using SAP Activate methodology — accelerated delivery with pre-configured industry best practices for rapid time-to-value.",
+      "Greenfield S/4HANA deployments for new business units, acquisitions, and clean-slate modernization with rapid deployment methods and global best practices.",
     bullets: [
-      "SAP Activate methodology delivery",
-      "Pre-built industry scenario configuration",
-      "Core module setup & data migration",
-      "User training & change management",
-      "Hypercare go-live support",
+      "Industry-specific templates for manufacturing, aerospace, and services",
+      "Modular deployment by function or geography",
+      "Multi-company, multi-country, multi-currency setup",
+      "Integrated finance, supply chain, HR, and payroll processes",
+      "24/7 war room and extended hypercare",
+    ],
+    color: "gold",
+    tag: "Implementation",
+  },
+  {
+    id: "sap-ams",
+    title: "SAP Application Maintenance",
+    subtitle: "24/7 support · Transparent SLAs",
+    description:
+      "Mission-critical SAP landscapes need proactive support. We provide 24/7 AMS with monitoring, root-cause resolution, structured change control, and predictable service levels.",
+    bullets: [
+      "Severity-based response and resolution governance",
+      "Proactive monitoring, tuning, and preventive maintenance",
+      "Incident, problem, and change management",
+      "Dedicated SPOC and structured release governance",
+      "Fixed-cost models with transparent reporting",
     ],
     color: "blue",
-    tag: "Implementation",
+    tag: "Support",
   },
   {
     id: "sap-btp",
     title: "SAP BTP Implementation",
     subtitle: "Integration · Extension · Analytics",
     description:
-      "SAP Business Technology Platform deployment for cloud integration, application extension, and advanced analytics — unlocking intelligent enterprise capabilities.",
+      "Design and deploy cloud-native SAP BTP solutions for integration, workflow, custom extensions, analytics, and modern API-led architecture without bloating the core.",
     bullets: [
-      "BTP Integration Suite deployment",
-      "Cloud application extension build",
-      "SAP Analytics Cloud configuration",
-      "API management & governance",
-      "Low-code/no-code development",
+      "API-first integration between SAP and third-party systems",
+      "Workflow orchestration and automation design",
+      "Low-code apps and side-by-side extensions",
+      "Real-time dashboards and analytics enablement",
+      "Governance, access control, and compliance guardrails",
     ],
     color: "gold",
     tag: "Cloud",
@@ -100,13 +100,13 @@ const sapServices = [
     title: "SAP Audit & Value Discovery",
     subtitle: "Health check · License review · ROI unlock",
     description:
-      "Comprehensive SAP landscape assessment identifying optimization opportunities, reducing TCO, ensuring compliance, and unlocking untapped value from your existing investment.",
+      "Most enterprises leave SAP value untapped. Our assessment identifies underused capabilities, adoption gaps, redundant processes, and a prioritized roadmap for measurable ROI.",
     bullets: [
-      "SAP landscape health assessment",
-      "License & user access audit",
-      "Security vulnerability scanning",
-      "Performance bottleneck identification",
-      "Value roadmap & quick-win delivery",
+      "System, process, and user-behavior assessment",
+      "Opportunity sizing and ROI analysis",
+      "Performance, security, and adoption review",
+      "12-month roadmap with prioritized quick wins",
+      "Optional free assessment to validate opportunity",
     ],
     color: "blue",
     tag: "Advisory",
@@ -117,30 +117,30 @@ const hrServices = [
   {
     id: "successfactors",
     title: "SAP SuccessFactors",
-    subtitle: "Core HR · Talent · Employee Lifecycle",
+    subtitle: "Employee Central · Talent · HXM",
     description:
-      "End-to-end SuccessFactors implementation for HR transformation — including hybrid SAP HCM integration, global rollout planning, and change management.",
+      "SuccessFactors transformation only works when it integrates with payroll, ERP, and local HR realities. We deliver phased HXM rollouts with strong adoption and measurable outcomes.",
     bullets: [
-      "Employee Central implementation",
-      "Talent: Recruiting, Performance, Learning",
-      "Hybrid SAP HCM/SF integration",
-      "Payroll integration design",
-      "Global rollout & adoption support",
+      "Tailored, phased implementation using proven templates",
+      "Employee Central, talent, learning, and performance",
+      "API-led integration with ECC, S/4HANA, and third-party systems",
+      "Global compliance and local policy support",
+      "Change management, training, and optimization",
     ],
     tag: "People Systems",
   },
   {
     id: "global-payroll",
     title: "Global Payroll Operations",
-    subtitle: "30+ countries · Compliance by design",
+    subtitle: "45+ countries · Compliance by design",
     description:
-      "SAP-based global payroll architecture with cross-border compliance controls, finance integration, and payroll readiness audits across 30+ countries.",
+      "Managing payroll across multiple jurisdictions means managing risk, regulation, and operating complexity. ITChamps delivers compliant, on-time payroll programs across 45+ countries.",
     bullets: [
-      "SAP HCM & SuccessFactors payroll",
-      "Multi-country payroll consolidation",
-      "Statutory compliance & reporting",
-      "Payroll process standardization",
-      "Payroll readiness audits",
+      "Multi-country payroll across monthly, bi-weekly, and custom cycles",
+      "Real-time statutory and tax compliance handling",
+      "Localized language, currency, and reporting support",
+      "Integration with SuccessFactors, time, benefits, and finance",
+      "Audit-ready controls and regulatory reporting",
     ],
     tag: "Payroll",
   },
@@ -149,7 +149,7 @@ const hrServices = [
     title: "ESS & MSS Portals",
     subtitle: "Employee · Manager self-service",
     description:
-      "Intuitive self-service portals that reduce HR workload, improve data accuracy, and empower your workforce with real-time access to their information.",
+      "Reduce HR's operational burden with mobile-ready self-service portals for employees and managers, tightly integrated with payroll, HR, and approval workflows.",
     bullets: [
       "Leave & attendance self-service",
       "Pay slip & tax document portal",
@@ -164,7 +164,7 @@ const hrServices = [
     title: "Payroll Outsourcing",
     subtitle: "Managed service · End-to-end delivery",
     description:
-      "Complete payroll managed service — from payroll processing and compliance through year-end activities and statutory filings — so you focus on core business.",
+      "End-to-end payroll ownership covering processing, compliance, reporting, audit support, and query handling so internal HR teams can focus on higher-value work.",
     bullets: [
       "End-to-end payroll processing",
       "Statutory compliance & filings",
@@ -182,7 +182,7 @@ const automationServices = [
     title: "PEGA Automation",
     subtitle: "BPM · Case management · AI decisioning",
     description:
-      "PEGA-powered business process automation for intelligent case management, customer service transformation, and AI-driven decision making at enterprise scale.",
+      "Automate high-volume, rule-based enterprise workflows with PEGA and SAP integration to reduce manual effort, improve cycle times, and increase visibility.",
     bullets: ["PEGA platform implementation", "BPM & case management design", "Customer journey automation", "AI-powered decisioning rules", "Legacy system integration"],
   },
   {
@@ -190,23 +190,23 @@ const automationServices = [
     title: "Camunda Workflow",
     subtitle: "BPMN · Process orchestration",
     description:
-      "Camunda-based workflow and process automation for open-standard BPMN orchestration with full visibility, execution monitoring, and process intelligence.",
+      "Camunda-based orchestration for complex, cross-system workflows spanning SAP, APIs, bots, and manual tasks with real-time execution visibility.",
     bullets: ["Camunda Platform deployment", "BPMN 2.0 process modeling", "Microservices orchestration", "REST API integration design", "Process monitoring dashboards"],
   },
   {
     id: "dcs",
-    title: "DCS Integration",
-    subtitle: "Data connectivity · System integration",
+    title: "Document Content Services Integration",
+    subtitle: "Document management · Compliance · Workflow",
     description:
-      "Data and system connectivity services enabling seamless integration across distributed control systems, enterprise applications, and cloud platforms.",
-    bullets: ["Real-time data integration", "SAP-to-DCS connectivity", "OPC-UA & MQTT protocols", "Edge computing setup", "Operational dashboards"],
+      "Centralise enterprise documents — purchase orders, invoices, contracts, compliance records — with SAP Document Content Services, automated workflows, and e-signature capabilities.",
+    bullets: ["Centralised document repository with version control", "Automated document workflows triggered from SAP transactions", "E-signature integration (DocuSign, Adobe Sign)", "OCR & AI invoice capture with 3-way match", "Compliance retention policies and audit trails"],
   },
   {
     id: "iot",
-    title: "IOT Integration",
+    title: "IoT Integration",
     subtitle: "Connected assets · Real-time intelligence",
     description:
-      "Internet of Things platform integration connecting your physical assets to enterprise systems for real-time operational intelligence and predictive capabilities.",
+      "Connect sensors, SCADA, and smart devices to SAP for real-time visibility, predictive maintenance, process optimization, and advanced analytics.",
     bullets: ["IoT platform architecture", "SAP IoT integration layer", "Device management & connectivity", "Predictive maintenance setup", "Real-time analytics pipelines"],
   },
 ];
@@ -217,7 +217,7 @@ const securityServices = [
     title: "Cyber Security",
     subtitle: "SAP Security · GRC · VAPT",
     description:
-      "Comprehensive cyber security for SAP environments — from vulnerability assessment and penetration testing to GRC implementation and ongoing security operations.",
+      "Protect sensitive SAP environments with vulnerability assessment, penetration testing, role and authorization reviews, GRC, and ongoing security governance.",
     bullets: ["SAP security landscape assessment", "Vulnerability & penetration testing", "GRC & SoD configuration", "User access management", "Security monitoring & alerting"],
   },
   {
@@ -225,7 +225,7 @@ const securityServices = [
     title: "EHS Compliance",
     subtitle: "Environment · Health · Safety",
     description:
-      "SAP EHS implementation for regulatory compliance, incident management, and workplace safety across manufacturing, energy, and industrial operations.",
+      "Implement and operate SAP EHS capabilities for incident management, environmental reporting, audit readiness, and multi-region compliance support.",
     bullets: ["SAP EHS module implementation", "Incident & near-miss management", "Regulatory compliance tracking", "Waste & emissions management", "Safety training records"],
   },
 ];
@@ -343,16 +343,15 @@ export default function ServicesPage() {
             animate="visible"
           >
             <motion.p className="svc-eyebrow" variants={prefersReduced ? fadeIn : fadeUp}>
-              Enterprise Solutions
+              Enterprise SAP Solutions
             </motion.p>
             <motion.h1 className="svc-hero__title" variants={prefersReduced ? fadeIn : fadeUp}>
-              SAP & Enterprise
+              Enterprise SAP
               <span className="svc-hero__gradient"> Solutions</span>
               <br />Built for Scale.
             </motion.h1>
             <motion.p className="svc-hero__lede" variants={prefersReduced ? fadeIn : fadeUp}>
-              From S/4HANA migration and global payroll to enterprise automation and
-              cyber security — 15+ specialised services delivered by one accountable team.
+              From implementation to ongoing optimization, ITChamps delivers across the full SAP lifecycle. Fifteen specialized services designed for manufacturing, aerospace, professional services, and global HR operations.
             </motion.p>
             <motion.div className="svc-hero__actions" variants={prefersReduced ? fadeIn : fadeUp}>
               <a href="#sap-solutions" className="button button--primary">Explore Services</a>
@@ -420,15 +419,15 @@ export default function ServicesPage() {
           >
             <div className="svc-hero__badge-stat">
               <strong>100%</strong>
-              <span>Go-live success</span>
+              <span>Project success rate</span>
             </div>
             <div className="svc-hero__badge-stat">
               <strong>20+</strong>
               <span>Years SAP expertise</span>
             </div>
             <div className="svc-hero__badge-stat">
-              <strong>30+</strong>
-              <span>Countries served</span>
+              <strong>45+</strong>
+              <span>Countries supported</span>
             </div>
           </motion.div>
         </motion.div>
@@ -444,10 +443,10 @@ export default function ServicesPage() {
           viewport={{ once: true, amount: 0.1 }}
         >
           {[
-            { label: "SAP Solutions", count: "5 services", desc: "Migration, implementation, maintenance, BTP & audit", href: "#sap-solutions", color: "blue" },
-            { label: "HR & Payroll", count: "4 services", desc: "SuccessFactors, global payroll, ESS/MSS & outsourcing", href: "#hr-payroll", color: "gold" },
-            { label: "Enterprise Automation", count: "4 services", desc: "PEGA, Camunda, DCS integration & IoT connectivity", href: "#automation", color: "blue" },
-            { label: "Security & Compliance", count: "2 services", desc: "Cyber security, GRC, EHS & SAP landscape protection", href: "#security", color: "gold" },
+            { label: "SAP Solutions", count: "5 services", desc: "Migration, implementation, maintenance, BTP, and value discovery", href: "#sap-solutions", color: "blue" },
+            { label: "HR & Payroll", count: "4 services", desc: "SuccessFactors, global payroll, self-service, and outsourcing", href: "#hr-payroll", color: "gold" },
+            { label: "Enterprise Automation", count: "4 services", desc: "PEGA, Camunda, document services, and IoT integration", href: "#automation", color: "blue" },
+            { label: "Security & Compliance", count: "2 services", desc: "Cyber security, GRC, EHS, and landscape protection", href: "#security", color: "gold" },
           ].map((cat, i) => (
             <motion.a
               key={cat.label}
@@ -481,7 +480,7 @@ export default function ServicesPage() {
         >
           <SectionLabel>SAP Solutions</SectionLabel>
           <h2>Core SAP services for enterprise transformation.</h2>
-          <p>From initial migration strategy through long-term application maintenance — end-to-end SAP delivery ownership with zero handoff gaps.</p>
+          <p>From modernization strategy through long-term optimization, ITChamps delivers end-to-end SAP ownership with structured governance and measurable outcomes.</p>
         </motion.div>
 
         {/* Migration Approach Comparison */}
@@ -592,7 +591,7 @@ export default function ServicesPage() {
             {[
               { icon: "✓", label: "Zero rollback guarantee", sub: "Every phase validated before progression" },
               { icon: "⟳", label: "Fixed-scope ownership", sub: "One team across ERP, HR, payroll & AMS" },
-              { icon: "⊕", label: "30+ country compliance", sub: "Payroll & HR built for multi-jurisdiction ops" },
+              { icon: "⊕", label: "45+ country compliance", sub: "Payroll & HR built for multi-jurisdiction operations" },
             ].map((g) => (
               <div className="svc-guarantee" key={g.label}>
                 <span className="svc-guarantee__icon">{g.icon}</span>
@@ -768,7 +767,7 @@ export default function ServicesPage() {
               {[
                 { val: "20+", label: "Years of enterprise SAP delivery" },
                 { val: "0", label: "Failed go-lives in our history" },
-                { val: "30+", label: "Countries in global payroll programs" },
+                { val: "45+", label: "Countries in global payroll programs" },
                 { val: "∞", label: "Post-go-live accountability commitment" },
               ].map((c, i) => (
                 <motion.div
@@ -832,7 +831,7 @@ export default function ServicesPage() {
             </svg>
           </div>
           <div className="svc-payroll-banner__copy">
-            <strong>30+ Countries</strong>
+            <strong>45+ Countries</strong>
             <p>Multi-country payroll designed for compliance precision — statutory filings, cross-border reporting, and payroll governance from a single delivery team.</p>
             <div className="svc-payroll-banner__chips">
               {["India","UK","Germany","USA","UAE","Singapore","Australia","Canada"].map(c => (
@@ -1083,7 +1082,7 @@ export default function ServicesPage() {
         <div className="svc-why__grid">
           {[
             { icon: "🏆", metric: "20+", title: "Years SAP expertise", desc: "Two decades of enterprise SAP delivery across global and regional programs — with deep module expertise on every engagement." },
-            { icon: "🌍", metric: "30+", title: "Countries unified", desc: "Global payroll, HR transformation, and compliance delivery across 30+ countries in a single integrated operating model." },
+            { icon: "🌍", metric: "45+", title: "Countries unified", desc: "Global payroll, HR transformation, and compliance delivery across 45+ countries in a single integrated operating model." },
             { icon: "✅", metric: "100%", title: "Go-live success rate", desc: "Every engagement has delivered a successful go-live. Zero failed implementations — a record we protect on every project." },
             { icon: "🔒", metric: "Zero", title: "Scope surprises", desc: "Fixed-scope delivery accountability. No hidden change requests, no budget creep, and no finger-pointing between workstreams." },
             { icon: "🤝", metric: "1 Team", title: "End-to-end ownership", desc: "ERP, HR, payroll, AMS, and automation under one roof — one accountable team, no handoffs, no coverage gaps." },

@@ -114,26 +114,30 @@ function AnimatedStat({
 }
 
 const trustBadges = [
-  "SAP Extended Business Member + VAR",
-  "20+ Years of SAP Consulting",
-  "30+ Countries in Payroll Delivery",
-  "D-U-N-S Registered Organization"
+  "SAP Gold Partner",
+  "SAP Education Partner",
+  "AWS Partner",
+  "PEGA & Camunda Partnership"
 ];
 
 const clientLogos = [
-  { name: "ABB",          abbr: "ABB",   accent: "#FF0000", textColor: "#fff", sector: "Industrial Automation" },
-  { name: "ONGC Videsh",  abbr: "OVL",   accent: "#1B6B3A", textColor: "#fff", sector: "Energy & Resources"    },
-  { name: "Manipal Global", abbr: "MG",  accent: "#003DA5", textColor: "#fff", sector: "Education & HR"        },
-  { name: "AT&S",         abbr: "AT&S",  accent: "#1A2B6B", textColor: "#fff", sector: "Technology"            },
+  { name: "ABB",          abbr: "ABB",   accent: "#FF0000", textColor: "#fff", sector: "Industrial Automation"   },
+  { name: "Dynamatic",    abbr: "DYN",   accent: "#1A3A6B", textColor: "#fff", sector: "Aerospace & Engineering" },
+  { name: "Cycle Pure",   abbr: "CP",    accent: "#1B6B3A", textColor: "#fff", sector: "Consumer Goods"          },
+  { name: "Subex",        abbr: "SUB",   accent: "#005B8E", textColor: "#fff", sector: "Telecom Analytics"       },
+  { name: "AT&S",         abbr: "AT&S",  accent: "#1A2B6B", textColor: "#fff", sector: "Technology"              },
+  { name: "ThoughtFocus", abbr: "TF",    accent: "#E07820", textColor: "#fff", sector: "Professional Services"   },
 ];
 
 const logoStripItems = [
   { name: "ABB",          src: "/client-logos/abb.svg",          w: 96,  h: 40 },
-  { name: "ONGC Videsh",  src: "/client-logos/ongc-videsh.svg",  w: 148, h: 40 },
-  { name: "Manipal Global", src: "/client-logos/manipal.svg",    w: 160, h: 40 },
+  { name: "Dynamatic",    src: "/client-logos/dynamatic.svg",    w: 140, h: 40 },
+  { name: "Cycle Pure",   src: "/client-logos/cycle-pure.svg",   w: 130, h: 40 },
+  { name: "Subex",        src: "/client-logos/subex.svg",        w: 110, h: 40 },
   { name: "AT&S",         src: "/client-logos/at-s.svg",         w: 96,  h: 40 },
+  { name: "ThoughtFocus", src: "/client-logos/thoughtfocus.svg", w: 160, h: 40 },
 ];
-const heroTitle = ["Mastering Complexity.", "Driving Agility.", "Beyond ECC."];
+const heroTitle = ["Transform Enterprise Operations.", "Achieve Digital Excellence."];
 
 const servicesNavItems = [
   {
@@ -182,95 +186,95 @@ const services = [
     tag: "Transformation",
     title: "S/4HANA Migration",
     description:
-      "Rigorous governance and precision architecture for complex enterprise footprints — eliminating execution risk at every phase.",
+      "ECC end-of-support is approaching. We lead structured S/4HANA migration programs that reduce disruption, accelerate timelines, and set up modern operations.",
     image: "/system-orbit.svg",
     photo: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "S/4HANA migration architecture",
     bullets: [
-      "Discovery, fit-gap analysis, and migration roadmapping",
-      "Brownfield, greenfield, and selective data transitions",
-      "Cutover execution and post-go-live stabilization"
+      "Greenfield, brownfield, and hybrid migration approaches",
+      "Data migration, master data management, and fit-gap analysis",
+      "Change management, cutover, and post-go-live optimization"
     ],
-    highlight: "Controlled data transition and cutover"
+    highlight: "6-12 month delivery playbooks with SLA-backed execution"
   },
   {
     tag: "Support",
     title: "SLA-Driven AMS Support",
     description:
-      "Stable operations, transparent SLAs, and continuous optimization — designed for enterprises that cannot afford disruption.",
+      "24/7 SAP application maintenance with proactive monitoring, root-cause resolution, and transparent service levels for mission-critical landscapes.",
     image: "/process-grid.svg",
     photo: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SAP AMS service framework",
     bullets: [
-      "Functional and technical SAP landscape support",
-      "Incident, release, and enhancement governance",
-      "AMS transition and continuous system optimization"
+      "Severity-based response and resolution governance",
+      "Incident, change, and enhancement management",
+      "Dedicated SPOC and continuous system optimization"
     ],
-    highlight: "Transparent SLAs and release governance"
+    highlight: "Predictable support models with measurable uptime commitments"
   },
   {
     tag: "People Systems",
     title: "SuccessFactors Integration",
     description:
-      "SAP SuccessFactors aligned to your HR transformation strategy — with structured integration and long-term operating model clarity.",
+      "Cloud HXM transformation with SuccessFactors, integrated with payroll and ERP, designed for adoption, compliance, and measurable talent outcomes.",
     image: "/insight-sheet.svg",
     photo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "SuccessFactors HR ecosystem",
     bullets: [
-      "Core HR, talent acquisition, and employee lifecycle design",
-      "Hybrid SAP HCM and SuccessFactors integrations",
-      "Rollout planning and enterprise change management"
+      "Employee Central, talent, learning, and performance modules",
+      "Hybrid ECC/S/4HANA and SuccessFactors integrations",
+      "Rollout planning, training, and change enablement"
     ],
-    highlight: "Unified HR architecture without integration drift"
+    highlight: "HR transformation built for multi-country operating models"
   },
   {
     tag: "Payroll",
     title: "Global Payroll Operations",
     description:
-      "Global payroll architecture for multi-country enterprises demanding compliance precision and operational reliability.",
+      "Multi-country payroll execution and compliance management for enterprises operating across complex statutory environments.",
     image: "/system-orbit.svg",
     photo: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=240&fit=crop&q=80&auto=format",
     alt: "Global payroll compliance model",
     bullets: [
-      "Payroll design and execution across 30+ countries",
-      "Integration with finance, reporting, and HR workflows",
-      "Compliance controls and payroll readiness audits"
+      "Payroll delivery across 45+ countries and regional hubs",
+      "Integration with SuccessFactors, HR, finance, and reporting",
+      "Audit-ready compliance controls and payroll readiness reviews"
     ],
-    highlight: "Cross-border compliance and execution"
+    highlight: "High-accuracy payroll operations with zero compliance gaps"
   }
 ];
 
 const caseStudies = [
   {
-    client: "ABB",
-    title: "Standardizing Global Operations for ABB",
-    result: "40% increase in operational efficiency",
+    client: "Process Manufacturing",
+    title: "$15M Revenue Gain in Petrochemical Production",
+    result: "$15M annual revenue recovery",
     description:
-      "Deployed standardized process flows and rigorous deployment governance across distributed teams, dramatically improving rollout predictability.",
-    image: "/case_abb.png"
+      "Deployed AI-driven yield optimization across 50+ production units, capturing waste recovery and process efficiency gains.",
+    image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=640&h=400&fit=crop&q=80&auto=format"
   },
   {
-    client: "ONGC Videsh",
-    title: "Modernizing a Complex Energy Enterprise",
-    result: "Unified reporting across global business units",
+    client: "Aerospace",
+    title: "Aerospace Supplier Achieves Boeing Tier-1 Status",
+    result: "40% faster order cycle",
     description:
-      "Engineered a structured enterprise model that eliminated workflow fragmentation across finance, operations, and support networks.",
-    image: "/case_ongc.png"
+      "Implemented S/4HANA public cloud with complete barcode traceability and resource matching, helping the client earn certification as Boeing's preferred supplier.",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=640&h=400&fit=crop&q=80&auto=format"
   },
   {
-    client: "Manipal Global",
-    title: "Scaling HR & Payroll Transformation",
-    result: "Flawless cross-system data coordination",
+    client: "Global HR Operations",
+    title: "Global Payroll for 45+ Countries, Zero Compliance Gaps",
+    result: "98% on-time payroll delivery",
     description:
-      "Architected a unified HR structure and robust payroll integration for a multi-entity organization managing highly sensitive employee operations.",
-    image: "/case_manipal.png"
+      "Consolidated multi-country payroll operations for a Fortune 500 company, achieving full statutory compliance at enterprise scale.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640&h=400&fit=crop&q=80&auto=format"
   }
 ];
 
 const urgencyMetrics = [
   { value: "2027", label: "ECC mainstream support deadline" },
-  { value: "67%", label: "of enterprises lag in migration readiness" },
-  { value: "30+", label: "countries unified in our payroll programs" }
+  { value: "120+", label: "certified consultants" },
+  { value: "45+", label: "countries with active client operations" }
 ];
 
 const mediaPanels = [
@@ -299,33 +303,33 @@ const mediaPanels = [
 
 const heroNarrative = [
   {
-    label: "Migration governance",
-    text: "Program design, architecture sequencing, and cutover control for enterprise SAP landscapes."
+    label: "Transformation programs",
+    text: "S/4HANA migration, implementation, and modernization with measurable business outcomes."
   },
   {
     label: "Operational continuity",
-    text: "AMS, payroll, and HR transformation support shaped for systems that cannot afford disruption."
+    text: "AMS, payroll, and SuccessFactors delivery for enterprises that cannot afford disruption."
   }
 ];
 
 const capabilityNotes = [
   {
     num: "01",
-    title: "Architecture first",
-    metric: "Zero rework risk",
-    text: "Dependency mapping, risk controls, and rollout sequencing — before execution pressure drives decisions."
+    title: "Outcome-first planning",
+    metric: "Business-case clarity",
+    text: "Every engagement starts with measurable outcomes, decision frameworks, and delivery scope aligned to enterprise priorities."
   },
   {
     num: "02",
     title: "Cross-functional delivery",
-    metric: "Single operating model",
-    text: "ERP, HR, payroll, and support in one operating model — no fragmented workstreams."
+    metric: "Single accountable team",
+    text: "ERP, HR, payroll, automation, and support delivered through one coordinated operating model."
   },
   {
     num: "03",
     title: "Executive visibility",
-    metric: "Sponsor-ready dashboards",
-    text: "Readiness, constraints, and stabilization priorities — visible to program sponsors at every stage."
+    metric: "Governance by design",
+    text: "Readiness, risk, compliance, and stabilization priorities remain visible to sponsors throughout the program."
   }
 ];
 
@@ -487,7 +491,7 @@ export default function HomePage() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
-            Certified SAP Enterprise Partner
+            Trusted by Global Enterprises
           </motion.p>
           <motion.h1 className="hero-title" variants={allowComplexMotion ? textItem : textItemSimple}>
             {heroTitle.map((line, index) => (
@@ -503,11 +507,10 @@ export default function HomePage() {
             ))}
           </motion.h1>
           <motion.p className="hero__subtext" variants={allowComplexMotion ? textItem : textItemSimple}>
-            S/4HANA Migration • AMS Support • SuccessFactors • Global Payroll
+            Two decades of proven SAP expertise. 120+ certified consultants. 45+ countries. 100% project success rate.
           </motion.p>
           <motion.p className="lede" variants={allowComplexMotion ? textItem : textItemSimple}>
-            We guide global enterprises through critical S/4HANA migrations, standardize complex payroll architectures,
-            and deliver uncompromising SLA-driven support. Precision SAP engineering, designed for scale.
+            At ITChamps, we partner with manufacturing, aerospace, professional services, and global enterprises to unlock the full potential of their SAP and enterprise technology investments. From S/4HANA migration to advanced payroll operations, we deliver measurable business outcomes: faster timelines, lower costs, and sustainable growth.
           </motion.p>
 
           <motion.div className="hero-narrative" variants={allowComplexMotion ? textItem : textItemSimple}>
@@ -523,8 +526,8 @@ export default function HomePage() {
             <a href="#contact-form" className="button button--primary">
               Talk to an SAP Expert
             </a>
-            <a href="#case-studies" className="button button--ghost">
-              Review enterprise proof
+            <a href="#readiness-checklist" className="button button--ghost">
+              Download S/4HANA Readiness Checklist
             </a>
           </motion.div>
 
@@ -587,7 +590,7 @@ export default function HomePage() {
               animate={allowComplexMotion ? { y: [0, -5, 0] } : undefined}
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
             >
-              <strong>30+</strong>
+              <strong>45+</strong>
               <span>Countries delivered</span>
             </motion.div>
 
@@ -612,11 +615,10 @@ export default function HomePage() {
           viewport={{ once: true, amount: isMobile ? 0.1 : 0.4 }}
         >
           <motion.p className="eyebrow" id="trusted-by-title" variants={allowComplexMotion ? textItem : textItemSimple}>
-            Trusted by enterprise teams across industries
+            Trusted by Global Enterprises
           </motion.p>
           <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Fortune 500 references, repeat consulting engagements, certified SAP partnership status, and a strong
-            delivery track record across manufacturing, energy, professional services, and global HR operations.
+            SAP partnership depth, global payroll operating experience, and a strong track record across manufacturing, aerospace, professional services, and global HR operations.
           </motion.p>
         </motion.div>
         <div className="logo-strip">
@@ -628,6 +630,19 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        <motion.blockquote
+          className="trust-testimonial"
+          variants={allowComplexMotion ? textItem : textItemSimple}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <p>&ldquo;We have been in business with ITChamps and one thing I can say for sure is they genuinely care about our success. They have been amazing to work with every step of the way.&rdquo;</p>
+          <footer>
+            <strong>Anthony Balraj</strong>
+            <span>Head of IT Operations, AT&S</span>
+          </footer>
+        </motion.blockquote>
       </motion.section>
 
       <motion.section
@@ -644,10 +659,9 @@ export default function HomePage() {
             <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
               Core Capabilities
             </motion.p>
-            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>SAP engineering built for enterprise scale.</motion.h2>
+            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Enterprise SAP solutions built for scale.</motion.h2>
             <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-              From navigating legacy brownfield migrations to standardizing HR systems across 30+ borders,
-              we deliver technical precision that mitigates risk.
+              From implementation to ongoing optimization, ITChamps delivers across the full SAP lifecycle for manufacturing, aerospace, professional services, and global HR operations.
             </motion.p>
             <motion.p className="capability-intro" variants={allowComplexMotion ? textItem : textItemSimple}>
               Three principles that govern every SAP program we deliver — from initial discovery to post-go-live stabilization:
@@ -698,13 +712,13 @@ export default function HomePage() {
                 </div>
                 <div>
                   <strong>Global compliance by design</strong>
-                  <span>Payroll and HR operations built for multi-jurisdiction compliance across 30+ countries from day one.</span>
+                  <span>Payroll and HR operations built for multi-jurisdiction compliance across 45+ countries from day one.</span>
                 </div>
               </div>
             </motion.div>
 
             <motion.p className="capability-proof" variants={allowComplexMotion ? textItem : textItemSimple}>
-              Adopted by Fortune 500 manufacturers, global energy enterprises, and multi-country HR organizations demanding zero-disruption SAP delivery across 30+ countries.
+              Adopted by global enterprises seeking measurable outcomes, stronger governance, and delivery partners who can execute across business-critical SAP workstreams.
             </motion.p>
           </div>
 
@@ -729,7 +743,7 @@ export default function HomePage() {
             <div className="cap-hub__header">
               <p className="cap-hub__eyebrow">SAP Enterprise Capability Model</p>
               <p className="cap-hub__title">4 towers. One delivery team.</p>
-              <p className="cap-hub__sub">Migration, support, HR, and payroll — end-to-end, with no handoff gaps.</p>
+              <p className="cap-hub__sub">Migration, support, HXM, and payroll delivered end-to-end without handoff gaps.</p>
             </div>
 
             <div className="cap-hub__tiles">
@@ -772,8 +786,8 @@ export default function HomePage() {
                 },
                 {
                   name: "Global Payroll Solutions",
-                  metric: "30+ countries · Multi-jurisdiction compliance",
-                  desc: "SAP-based global payroll architecture with cross-border compliance controls, finance integration, and payroll readiness audits across 30+ countries.",
+                  metric: "45+ countries · Multi-jurisdiction compliance",
+                  desc: "SAP-based global payroll architecture with cross-border compliance controls, finance integration, and payroll readiness audits across 45+ countries.",
                   accent: "gold",
                   icon: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -797,7 +811,7 @@ export default function HomePage() {
               <div className="cap-hub__stat-divider" />
               <div className="cap-hub__stat"><strong>100%</strong><span>Go-live success</span></div>
               <div className="cap-hub__stat-divider" />
-              <div className="cap-hub__stat"><strong>Zero</strong><span>Rollbacks</span></div>
+              <div className="cap-hub__stat"><strong>45+</strong><span>Countries served</span></div>
             </div>
           </motion.div>
         </motion.div>
@@ -867,10 +881,9 @@ export default function HomePage() {
           <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
             Proven Outcomes
           </motion.p>
-          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Delivering operational resilience for industry leaders.</motion.h2>
+          <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Real Results Across Industries</motion.h2>
           <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Enterprise buyers demand visible proof. Explore how we've engineered solutions for
-            manufacturing, energy, and global education leaders.
+            See how we've helped enterprises achieve measurable outcomes, from $15M revenue gains to 30%+ operational efficiency improvements.
           </motion.p>
         </motion.div>
 
@@ -902,6 +915,20 @@ export default function HomePage() {
             </motion.article>
           ))}
         </div>
+        <motion.div
+          className="section-bottom-cta"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <Link href="/case-studies" className="button button--ghost">
+            Explore 7 Case Studies
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
+        </motion.div>
       </motion.section>
 
       <motion.section
@@ -916,11 +943,10 @@ export default function HomePage() {
             The 2027 Horizon
           </motion.p>
           <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>
-            The ECC deadline is closing in. Delay amplifies costs and operational risk.
+            The ECC deadline is closing in. Delay amplifies cost, complexity, and operational risk.
           </motion.h2>
           <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            Enterprises that postpone their S/4HANA transition are forced to compress critical architecture
-            and cutover planning into shrinking windows. Execute with structured governance and zero disruption.
+            Enterprises that postpone S/4HANA transition planning compress critical architecture, data, and cutover work into shrinking windows. Structured governance is no longer optional.
           </motion.p>
         </motion.div>
 
@@ -937,16 +963,15 @@ export default function HomePage() {
         </motion.div>
       </motion.section>
 
-      <motion.section id="insights" className="section shell">
+      <motion.section id="readiness-checklist" className="section shell">
         <div className="lead-magnet holo-panel">
           <motion.div className="lead-magnet__copy" variants={textGroup} initial="hidden" whileInView="visible" viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}>
             <motion.p className="eyebrow" variants={allowComplexMotion ? textItem : textItemSimple}>
               Executive resource
             </motion.p>
-            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>SAP S/4HANA Migration Readiness Framework</motion.h2>
+            <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Is Your Enterprise Ready for S/4HANA?</motion.h2>
             <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-              A planning resource for IT leaders evaluating scope, governance, data dependencies,
-              and risk mitigation in S/4HANA migration programs.
+              Assess your current system, identify gaps, and prepare for migration across infrastructure, data quality, organizational readiness, timeline, and cost planning. Used by 500+ enterprises.
             </motion.p>
           </motion.div>
 
@@ -971,10 +996,26 @@ export default function HomePage() {
               Work email
             </label>
             <input id="work-email" name="work-email" type="email" placeholder="Work email" suppressHydrationWarning />
+            <label className="sr-only" htmlFor="company-name">
+              Company name
+            </label>
+            <input id="company-name" name="company-name" type="text" placeholder="Company name" suppressHydrationWarning />
+            <label className="lead-form__checkbox-label">
+              <input type="checkbox" name="updates" className="lead-form__checkbox" suppressHydrationWarning />
+              <span>Send me updates on S/4HANA best practices</span>
+            </label>
             <button type="submit" className="button button--primary" suppressHydrationWarning>
-              Get the Checklist
+              Download Checklist (Free PDF)
             </button>
           </form>
+          <ul className="checklist-includes">
+            <li>Infrastructure &amp; system readiness assessment</li>
+            <li>Data quality &amp; master data evaluation</li>
+            <li>Organisational change management checklist</li>
+            <li>Timeline &amp; resource planning guide</li>
+            <li>Cost-benefit analysis template</li>
+            <li>Custom solutions roadmap</li>
+          </ul>
         </div>
       </motion.section>
 
@@ -1031,9 +1072,9 @@ export default function HomePage() {
       </motion.section>
 
       <ContactSection
-        eyebrow="Speak with delivery leadership"
-        title="Ready to engineer your transformation?"
-        description="Whether you are evaluating a greenfield S/4HANA rollout or seeking reliable global payroll governance, our delivery leadership is ready to align with your enterprise objectives."
+        eyebrow="Schedule Your Free SAP Consultation"
+        title="Tell us about your SAP landscape."
+        description="Our experts will assess your situation and recommend the right approach. No obligations, just honest expertise."
         source="homepage"
       />
 
@@ -1043,31 +1084,31 @@ export default function HomePage() {
             <div className="footer-section__brand">
               <Image src="/itchamps-logo.png" alt="ITChamps Software logo" width={168} height={54} className="footer-logo" />
               <p>
-                SAP consulting services, implementation, support, SuccessFactors consulting, and global payroll solutions
-                for enterprise organizations.
+                SAP consulting, S/4HANA migration, AMS, SuccessFactors, payroll, automation, and enterprise transformation for global organizations.
               </p>
             </div>
             <div className="footer-section__links">
               <div>
-                <h3>Consulting</h3>
-                <a href="#services">S/4HANA Migration Services</a>
-                <a href="#services">SAP AMS Services India</a>
-                <a href="#services">SAP SuccessFactors Consulting</a>
-                <a href="#services">SAP Global Payroll Solutions</a>
+                <h3>Quick Links</h3>
+                <Link href="/">Home</Link>
+                <Link href="/services">Services</Link>
+                <Link href="/case-studies">Case Studies</Link>
+                <Link href="/blogs">Blog</Link>
+                <Link href={academyHref}>Academy</Link>
               </div>
               <div>
-                <h3>Company</h3>
-                <a href="#case-studies">Case Studies</a>
+                <h3>Resources</h3>
                 <Link href={academyHref}>ITChamps Academy</Link>
                 <a href="https://itchamps.com/company/" target="_blank" rel="noreferrer">
-                  Company Details
+                  Company Profile
                 </a>
+                <a href="#readiness-checklist">S/4HANA Checklist</a>
               </div>
               <div>
                 <h3>Connect</h3>
                 <a href="mailto:info@itchamps.com">info@itchamps.com</a>
                 <a href="tel:+919342122665">+91 93421 22665</a>
-                <span>Mysuru • Bengaluru • London</span>
+                <span>Mysuru • Bengaluru • Mumbai • London</span>
               </div>
             </div>
           </div>

@@ -1,13 +1,31 @@
 import { NextResponse } from "next/server";
 import { getFirebaseDb, isFirebaseConfigured } from "../../../lib/firebase-admin";
 
+// In-memory rate limiter: 5 requests per IP per 60 seconds
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 5;
+const WINDOW_MS = 60_000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT;
+}
+
 type ContactPayload = {
   fullName?: string;
   workEmail?: string;
   company?: string;
   phone?: string;
   serviceInterest?: string;
+  companySize?: string;
   message?: string;
+  subscribe?: boolean;
   source?: string;
 };
 
@@ -21,6 +39,18 @@ function isEmail(value: string) {
 
 export async function POST(request: Request) {
   try {
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+      request.headers.get("x-real-ip") ??
+      "unknown";
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please wait a minute before trying again." },
+        { status: 429 }
+      );
+    }
+
     const body = (await request.json()) as ContactPayload;
     const payload = {
       fullName: clean(body.fullName),
@@ -28,7 +58,9 @@ export async function POST(request: Request) {
       company: clean(body.company),
       phone: clean(body.phone),
       serviceInterest: clean(body.serviceInterest),
+      companySize: clean(body.companySize),
       message: clean(body.message),
+      subscribe: Boolean(body.subscribe),
       source: clean(body.source) || "website",
     };
 

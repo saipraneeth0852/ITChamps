@@ -3,165 +3,511 @@
     {
       "id": "case-yield-optimizer-petrochemical",
       "slug": "yield-optimizer-petrochemical",
-      "client": "Leading Petrochemical Company",
-      "abbr": "LPC",
+      "client": "Petrochemical Manufacturing Enterprise",
+      "abbr": "PME",
       "featured": true,
-      "sector": "Petrochemical / Refining",
+      "sector": "Process Manufacturing",
       "accentHex": "#B45309",
-      "title": "How AI-Driven Yield Optimization Unlocked $15 Million in Annual Revenue",
-      "subtitle": "A yield optimizer for a 2.2 MMTPA PFCC unit improved efficiency by 0.3% without any new CAPEX.",
+      "title": "$15M Revenue Gain Through Yield Optimization",
+      "subtitle": "IoT integration, SAP S/4HANA, and advanced analytics transformed 50+ production units into a predictive operating model.",
       "heroImage": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=80",
       "listImage": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=80",
-      "result": "$15M+ estimated annual revenue gain with 0.3% PFCC efficiency uplift",
-      "resultMetric": "$15M+",
-      "summary": "A South Asian petrochemical leader used ITChamps' Yield Optimizer to continuously tune PFCC operating conditions in real time, turning marginal yield improvement into material annual revenue gain without modifying plant infrastructure.",
+      "result": "$15M annual revenue increase",
+      "resultMetric": "$15M",
+      "summary": "A global petrochemical manufacturer used ITChamps to connect plant data to SAP S/4HANA, deploy predictive maintenance models, and optimize yield in real time across 50+ production units.",
       "challenge": {
-        "heading": "Operational variability was hiding a multi-million-dollar efficiency gap",
-        "context": "Feedstock quality, complex parameter interactions, and operator cognitive overload meant the unit was consistently running below its theoretical performance ceiling.",
+        "heading": "Yield loss and reactive maintenance were eroding margin",
+        "context": "The client operated 50+ production units across 12 facilities, but process data was incomplete, maintenance was reactive, and real-time visibility into yield drivers did not exist.",
         "points": [
-          "Feedstock quality varied unpredictably and disrupted stable unit economics.",
-          "Operators had to manage hundreds of interdependent control parameters at once.",
-          "Legacy rule-based and manual tuning approaches could not adapt in real time.",
-          "Small losses in yield translated into large annual revenue leakage.",
-          "Process knowledge was siloed in a small number of experienced engineers."
+          "Manual process data capture hid micro-inefficiencies and delayed response.",
+          "Equipment failures were discovered during operation rather than predicted.",
+          "Yield variability of 5-8% could not be traced to root causes.",
+          "Legacy SCADA data was disconnected from SAP and production planning.",
+          "No predictive capability existed for maintenance or feed-ratio optimization."
         ]
       },
       "solution": {
-        "heading": "A real-time recommendation engine for PFCC optimization",
-        "description": "ITChamps collected and cleaned plant data, trained ML models on hidden parameter relationships, validated them offline, and then deployed a live recommendation engine that continuously refined optimal temperature, pressure, flow, and catalyst settings.",
+        "heading": "Three-layer architecture across IoT, SAP integration, and analytics",
+        "description": "ITChamps installed sensors on critical measurement points, streamed data into SAP via BTP, and built ML models for predictive maintenance, anomaly detection, and real-time yield optimization.",
         "steps": [
           {
             "num": "01",
-            "title": "Data Collection",
-            "desc": "Gathered historical temperature, pressure, feedstock quality, and yield records as a clean training foundation."
+            "title": "Foundation",
+            "desc": "Deployed IoT sensors across pilot units and built the initial SAP integration layer."
           },
           {
             "num": "02",
-            "title": "Model Development",
-            "desc": "Applied machine learning to uncover non-linear relationships across hundreds of process parameters."
+            "title": "Intelligence",
+            "desc": "Expanded data coverage, trained predictive models, and created dashboards for plant teams."
           },
           {
             "num": "03",
-            "title": "Validation",
-            "desc": "Benchmarked performance against held-out data to confirm the gains were real and generalizable."
-          },
-          {
-            "num": "04",
-            "title": "Real-Time Deployment",
-            "desc": "Delivered live operating guidance that adapted as feedstock and plant conditions changed."
-          },
-          {
-            "num": "05",
-            "title": "Continuous Refinement",
-            "desc": "Monitored performance over time and retrained models as operating patterns evolved."
+            "title": "Optimization",
+            "desc": "Moved to live optimization with operator training, alerting, and extended hypercare."
           }
         ]
       },
       "results": {
         "metrics": [
           {
-            "value": "$15M+",
-            "label": "Annual revenue gain",
-            "description": "Estimated incremental yearly value from efficiency improvement."
+            "value": "8.5%",
+            "label": "Yield improvement",
+            "description": "Cross-facility improvement after optimization was deployed in production."
           },
           {
-            "value": "0.3%",
-            "label": "PFCC efficiency uplift",
-            "description": "Incremental yield improvement translated into outsized economic impact."
+            "value": "$15M",
+            "label": "Annual revenue recovery",
+            "description": "Recovered value from higher yield and reduced process waste."
           },
           {
-            "value": "$0",
-            "label": "Additional CAPEX",
-            "description": "The optimization layer ran on the existing plant architecture."
+            "value": "83%",
+            "label": "Downtime reduction",
+            "description": "Equipment downtime fell from 12 hours to 2 hours per month."
           },
           {
-            "value": "100%",
-            "label": "Live optimization",
-            "description": "Recommendations updated continuously instead of relying on static rules."
+            "value": "30%",
+            "label": "Lower maintenance cost",
+            "description": "Predictive maintenance reduced preventive maintenance spend."
           }
         ],
         "highlights": [
-          "Improved unit economics without physical plant modifications.",
-          "Reduced operator cognitive burden through data-backed recommendations.",
-          "Revealed previously hidden process relationships in operating data.",
-          "Created a scalable base for optimization across additional units."
+          "Real-time visibility across all 50 production units.",
+          "Predictive maintenance eliminated surprise failures and emergency shutdowns.",
+          "Operators received live feed-ratio recommendations tied to yield outcomes.",
+          "The platform created a repeatable template for future plant rollouts."
         ]
       },
       "services": [
-        "AI Yield Optimization",
-        "Industrial Process Optimization",
-        "Operational Intelligence"
+        "IoT Integration",
+        "SAP BTP Implementation",
+        "Advanced Analytics"
       ],
       "technologies": [
-        "Machine Learning",
-        "Real-Time Recommendation Engine",
-        "Continuous Monitoring"
+        "SAP S/4HANA",
+        "SAP BTP Integration Suite",
+        "SAP Analytics Cloud",
+        "MQTT",
+        "Python ML Models"
       ],
-      "duration": "Production deployment phase",
-      "teamSize": "Cross-functional AI and process team",
+      "duration": "8 months",
+      "teamSize": "12 consultants",
       "countries": 1,
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    },
+    {
+      "id": "case-aerospace-traceability",
+      "slug": "aerospace-traceability",
+      "client": "Aerospace Manufacturing Supplier",
+      "abbr": "AMS",
+      "sector": "Aerospace",
+      "accentHex": "#1D4ED8",
+      "title": "Aerospace Supplier Achieves Boeing Tier-1 Status",
+      "subtitle": "S/4HANA public cloud, barcode traceability, and resource matching created an auditable aerospace operating model.",
+      "heroImage": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80",
+      "listImage": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80",
+      "result": "Boeing Tier-1 certification with 40% faster order cycles",
+      "resultMetric": "Tier-1",
+      "summary": "ITChamps helped an aerospace supplier replace fragmented production tracking with S/4HANA public cloud, end-to-end barcode traceability, and capacity-aware resource matching.",
+      "challenge": {
+        "heading": "OEM-grade traceability and delivery discipline were missing",
+        "context": "The supplier needed to prove component traceability, align production resources to demand, and meet strict aerospace quality expectations without slowing throughput.",
+        "points": [
+          "Traceability was incomplete across parts, work orders, and finished assemblies.",
+          "Resource allocation decisions were manual and slowed production planning.",
+          "Order-status visibility was weak across manufacturing and quality teams.",
+          "Certification requirements demanded a stronger audit trail."
+        ]
+      },
+      "solution": {
+        "heading": "Public-cloud S/4HANA with barcode-led manufacturing control",
+        "description": "ITChamps implemented S/4HANA public cloud, introduced barcode tracking from inbound material to dispatch, and built resource-matching workflows to align capacity with demand.",
+        "steps": [
+          {
+            "num": "01",
+            "title": "Blueprint",
+            "desc": "Mapped quality, production, and traceability requirements against aerospace standards."
+          },
+          {
+            "num": "02",
+            "title": "Build",
+            "desc": "Configured S/4HANA public cloud processes, barcode traceability, and production controls."
+          },
+          {
+            "num": "03",
+            "title": "Stabilize",
+            "desc": "Ran hypercare, operator training, and readiness reviews for certification."
+          }
+        ]
+      },
+      "results": {
+        "metrics": [
+          {
+            "value": "40%",
+            "label": "Faster order cycle",
+            "description": "Production planning and execution accelerated after workflow redesign."
+          },
+          {
+            "value": "100%",
+            "label": "Traceability coverage",
+            "description": "Every critical production step became auditable and barcode-linked."
+          },
+          {
+            "value": "Tier-1",
+            "label": "Certification outcome",
+            "description": "The supplier achieved Boeing Tier-1 status after transformation."
+          },
+          {
+            "value": "24/7",
+            "label": "Operational visibility",
+            "description": "Teams gained live access to production and quality status."
+          }
+        ],
+        "highlights": [
+          "End-to-end barcode traceability across the manufacturing flow.",
+          "Resource matching improved utilization and production predictability.",
+          "The program strengthened audit readiness and customer confidence.",
+          "The operating model became scalable for additional aerospace programs."
+        ]
+      },
+      "services": [
+        "S/4HANA Implementation",
+        "Document Content Services Integration",
+        "SAP Application Maintenance"
+      ],
+      "technologies": [
+        "SAP S/4HANA Public Cloud",
+        "Barcode Traceability",
+        "Manufacturing Execution Workflows"
+      ],
+      "duration": "10 months",
+      "teamSize": "10 consultants",
+      "countries": 1,
+      "status": "published",
+      "createdAt": "2026-04-27T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    },
+    {
+      "id": "case-global-payroll-45-countries",
+      "slug": "global-payroll-45-countries",
+      "client": "Fortune 500 Enterprise",
+      "abbr": "F500",
+      "sector": "Global HR Operations",
+      "accentHex": "#0F766E",
+      "title": "Global Payroll for 45+ Countries, Zero Compliance Gaps",
+      "subtitle": "A centralized payroll operating model delivered on-time payroll, statutory compliance, and consistent reporting at global scale.",
+      "heroImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=80",
+      "listImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=80",
+      "result": "98% on-time payroll delivery across 45+ countries",
+      "resultMetric": "45+",
+      "summary": "ITChamps consolidated payroll operations for a Fortune 500 company, giving HR and finance leaders a single compliant model across 45+ countries with localized execution controls.",
+      "challenge": {
+        "heading": "Payroll complexity multiplied across jurisdictions",
+        "context": "The client needed to unify payroll operations across dozens of countries while preserving local compliance, language, and reporting requirements.",
+        "points": [
+          "Multiple payroll teams used inconsistent calendars, controls, and reports.",
+          "Regulatory deadlines and tax logic varied sharply across countries.",
+          "Leadership lacked a single view of payroll accuracy and readiness.",
+          "Manual reconciliations slowed close and increased compliance risk."
+        ]
+      },
+      "solution": {
+        "heading": "Global payroll governance with localized compliance controls",
+        "description": "ITChamps standardized the payroll operating model, integrated HR and finance data flows, and established audit-ready statutory controls and MIS reporting.",
+        "steps": [
+          {
+            "num": "01",
+            "title": "Current State Review",
+            "desc": "Mapped countries, payroll cycles, compliance requirements, and existing team responsibilities."
+          },
+          {
+            "num": "02",
+            "title": "Model Design",
+            "desc": "Defined the target payroll governance model, integrations, and regional operating procedures."
+          },
+          {
+            "num": "03",
+            "title": "Rollout",
+            "desc": "Transitioned countries in phases with training, readiness checks, and post-go-live support."
+          }
+        ]
+      },
+      "results": {
+        "metrics": [
+          {
+            "value": "45+",
+            "label": "Countries supported",
+            "description": "One global model with localized statutory execution."
+          },
+          {
+            "value": "98%",
+            "label": "On-time payroll delivery",
+            "description": "Payroll was delivered on time across all active jurisdictions."
+          },
+          {
+            "value": "0",
+            "label": "Compliance gaps",
+            "description": "The operating model closed statutory and reporting gaps."
+          },
+          {
+            "value": "40+",
+            "label": "Country locations",
+            "description": "Supported for ABB Global payroll alone within the broader delivery network."
+          }
+        ],
+        "highlights": [
+          "Statutory reporting and payroll documentation became audit-ready.",
+          "HR, payroll, and finance teams worked from one global operating model.",
+          "Localized payslip, tax, and reporting needs were handled within the same framework.",
+          "Leadership gained a consolidated payroll health view across geographies."
+        ]
+      },
+      "services": [
+        "Global Payroll Operations",
+        "Payroll Outsourcing",
+        "SuccessFactors Integration"
+      ],
+      "technologies": [
+        "SAP HCM Payroll",
+        "SuccessFactors Payroll",
+        "PayCompute",
+        "iEmpPower"
+      ],
+      "duration": "12 months",
+      "teamSize": "16 consultants",
+      "countries": 45,
+      "status": "published",
+      "createdAt": "2026-04-27T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    },
+    {
+      "id": "case-successfactors-transformation",
+      "slug": "successfactors-transformation",
+      "client": "Multi-country Enterprise HR Team",
+      "abbr": "HXM",
+      "sector": "Professional Services",
+      "accentHex": "#7C3AED",
+      "title": "SuccessFactors Implementation and HXM Transformation",
+      "subtitle": "Employee Central, talent workflows, and payroll integration created a single HR operating model for a growing global workforce.",
+      "heroImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+      "listImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+      "result": "Unified HR data, talent processes, and payroll integration",
+      "resultMetric": "HXM",
+      "summary": "ITChamps deployed SuccessFactors as the backbone for employee data, talent workflows, and analytics while preserving integration with SAP payroll and enterprise systems.",
+      "challenge": {
+        "heading": "HR systems were fragmented across teams and regions",
+        "context": "The client wanted to move from transactional HR operations to a modern HXM model, but employee data, talent processes, and payroll workflows were split across tools.",
+        "points": [
+          "No single employee record existed across geographies and functions.",
+          "Talent, onboarding, and performance processes were inconsistent.",
+          "Payroll and HR data synchronization created rework and compliance risk.",
+          "Adoption risk was high without structured change management."
+        ]
+      },
+      "solution": {
+        "heading": "Phased HXM rollout with strong integration and adoption design",
+        "description": "ITChamps implemented Employee Central, aligned talent processes, integrated payroll and ERP touchpoints, and supported change management for HR leaders and managers.",
+        "steps": [
+          {
+            "num": "01",
+            "title": "HXM Strategy",
+            "desc": "Defined rollout scope, governance, and target operating model for HR leaders."
+          },
+          {
+            "num": "02",
+            "title": "Core Build",
+            "desc": "Configured employee master data, talent modules, and integration flows."
+          },
+          {
+            "num": "03",
+            "title": "Adoption",
+            "desc": "Executed training, communication, and hypercare for sustained use."
+          }
+        ]
+      },
+      "results": {
+        "metrics": [
+          {
+            "value": "1",
+            "label": "Employee master record",
+            "description": "A single system of record replaced fragmented HR data sources."
+          },
+          {
+            "value": "20+",
+            "label": "Enterprise deployments",
+            "description": "Reflects ITChamps' broader SuccessFactors delivery experience."
+          },
+          {
+            "value": "85%",
+            "label": "Early adoption",
+            "description": "Managers and employees adopted the new workflows quickly after launch."
+          },
+          {
+            "value": "Real-time",
+            "label": "People analytics",
+            "description": "Leadership gained live insight into workforce and talent metrics."
+          }
+        ],
+        "highlights": [
+          "Employee Central became the source of truth for HR operations.",
+          "Talent, learning, and performance workflows were standardized.",
+          "Payroll and ERP integrations reduced duplicate entry and reconciliation effort.",
+          "The rollout balanced cloud transformation with local policy realities."
+        ]
+      },
+      "services": [
+        "SuccessFactors Integration",
+        "ESS & MSS Portals",
+        "Training & Certification"
+      ],
+      "technologies": [
+        "SAP SuccessFactors",
+        "Employee Central",
+        "Talent Management",
+        "Payroll Integration"
+      ],
+      "duration": "9 months",
+      "teamSize": "9 consultants",
+      "countries": 5,
+      "status": "published",
+      "createdAt": "2026-04-27T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
+    },
+    {
+      "id": "case-pega-automation-p2p",
+      "slug": "pega-automation-p2p",
+      "client": "Enterprise Procurement Organization",
+      "abbr": "P2P",
+      "sector": "Professional Services",
+      "accentHex": "#DC2626",
+      "title": "PEGA Automation for Procure-to-Pay Workflow",
+      "subtitle": "Low-code orchestration connected SAP, approvals, and exception handling into a faster procure-to-pay model.",
+      "heroImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+      "listImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+      "result": "Faster approvals, fewer manual steps, and improved SLA visibility",
+      "resultMetric": "P2P",
+      "summary": "ITChamps used PEGA to automate procure-to-pay workflows, connect SAP transactions with approvals and exceptions, and provide live visibility into process performance.",
+      "challenge": {
+        "heading": "Manual workflows were slowing procure-to-pay execution",
+        "context": "The organization relied on email, spreadsheets, and disconnected approvals for procurement activities that should have been governed and measurable.",
+        "points": [
+          "Approvals were delayed by manual routing and inconsistent ownership.",
+          "Exception handling lacked a structured workflow and audit trail.",
+          "SAP transactions were not visible enough to business stakeholders.",
+          "Leadership had no reliable dashboard for SLA adherence."
+        ]
+      },
+      "solution": {
+        "heading": "PEGA case management integrated with SAP events and approvals",
+        "description": "ITChamps designed a PEGA workflow for procure-to-pay that automated routing, surfaced exceptions, and connected SAP transactions to a governed case-management layer.",
+        "steps": [
+          {
+            "num": "01",
+            "title": "Process Design",
+            "desc": "Mapped the existing P2P bottlenecks, approval paths, and exception scenarios."
+          },
+          {
+            "num": "02",
+            "title": "Automation Build",
+            "desc": "Implemented PEGA cases, business rules, and SAP integration touchpoints."
+          },
+          {
+            "num": "03",
+            "title": "Visibility",
+            "desc": "Added dashboards for SLA tracking, bottleneck analysis, and governance."
+          }
+        ]
+      },
+      "results": {
+        "metrics": [
+          {
+            "value": "50%",
+            "label": "Manual effort reduction",
+            "description": "Teams spent far less time coordinating approvals and rework."
+          },
+          {
+            "value": "24/7",
+            "label": "Workflow visibility",
+            "description": "Business users and managers could track case status in real time."
+          },
+          {
+            "value": "1",
+            "label": "Governed workflow layer",
+            "description": "A single process layer replaced ad hoc routing across teams."
+          },
+          {
+            "value": "Audit-ready",
+            "label": "Process traceability",
+            "description": "Approvals and exceptions became fully documented."
+          }
+        ],
+        "highlights": [
+          "Cycle times improved through rules-driven routing.",
+          "Exception cases became visible and manageable rather than buried in email.",
+          "SAP and business process governance worked as one operating model.",
+          "The PEGA framework created a template for future automation use cases."
+        ]
+      },
+      "services": [
+        "PEGA Automation",
+        "SAP BTP Implementation",
+        "SAP Audit & Value Discovery"
+      ],
+      "technologies": [
+        "PEGA BPM",
+        "SAP Integration",
+        "SLA Dashboards"
+      ],
+      "duration": "6 months",
+      "teamSize": "8 consultants",
+      "countries": 1,
+      "status": "published",
+      "createdAt": "2026-04-27T00:00:00.000Z",
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "case-predictive-maintenance-5000-machines",
       "slug": "predictive-maintenance-5000-machines",
       "client": "Large-Scale Industrial Operator",
       "abbr": "LSO",
-      "sector": "Heavy Industry / Manufacturing",
-      "accentHex": "#1D4ED8",
-      "title": "From Reactive to Predictive Across 5,000 Industrial Machines",
-      "subtitle": "A predictive maintenance platform gave maintenance teams real-time visibility across thousands of assets and multiple sites.",
+      "sector": "Manufacturing",
+      "accentHex": "#059669",
+      "title": "Predictive Maintenance for 5,000 Industrial Machines",
+      "subtitle": "A modular maintenance platform unified health monitoring, early warnings, and intervention planning across a large asset fleet.",
       "heroImage": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80",
       "listImage": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80",
-      "result": "Predictive maintenance across 5,000 machines improved reliability and reduced unplanned downtime",
+      "result": "5,000 machines monitored with always-on health visibility",
       "resultMetric": "5,000",
-      "summary": "ITChamps deployed a modular predictive maintenance optimizer that unified machine health monitoring, data reconciliation, and early-warning alerts across a large multi-site industrial fleet.",
+      "summary": "ITChamps deployed a predictive maintenance platform that unified machine health monitoring, data reconciliation, and early-warning alerts across a multi-site industrial fleet.",
       "challenge": {
-        "heading": "Reactive maintenance had hit human and operational scale limits",
-        "context": "With thousands of machines, siloed sensor streams, and inconsistent data quality, the client could no longer rely on reactive repairs, periodic schedules, or engineer intuition alone.",
+        "heading": "Reactive maintenance no longer scaled operationally",
+        "context": "Thousands of machines, fragmented sensor streams, and inconsistent data quality made periodic maintenance and human monitoring too slow and too expensive.",
         "points": [
-          "Maintenance teams stayed trapped in reactive failure response.",
-          "No human team could meaningfully monitor 5,000 machine data streams at scale.",
-          "Data was fragmented across sites, systems, and teams.",
-          "Legacy sensors and incomplete readings created blind spots.",
-          "The existing setup lacked flexibility across machine types and site profiles."
+          "Maintenance teams were stuck in reactive response cycles.",
+          "Data was fragmented across sites, tools, and teams.",
+          "Legacy sensors and incomplete data created blind spots.",
+          "The maintenance model did not scale across machine types."
         ]
       },
       "solution": {
-        "heading": "A modular predictive maintenance optimizer built for industrial reality",
-        "description": "The platform normalized noisy data, reconciled multiple sources, trained failure-prediction models, and exposed live asset-health monitoring and prioritized intervention queues to maintenance teams.",
+        "heading": "Modular predictive maintenance built for industrial diversity",
+        "description": "The platform normalized noisy data, reconciled legacy sources, trained failure-prediction models, and exposed live intervention queues to maintenance teams.",
         "steps": [
           {
             "num": "01",
-            "title": "Architecture Design",
-            "desc": "Built a modular architecture that could support diverse equipment types and site-specific operating conditions."
+            "title": "Architecture",
+            "desc": "Built a modular design for different machine types and site profiles."
           },
           {
             "num": "02",
-            "title": "Technology Stack",
-            "desc": "Selected a stack suited for high-volume industrial data with mixed real-time and batch inputs."
+            "title": "Data Pipeline",
+            "desc": "Cleansed, normalized, and reconciled sensor and maintenance records."
           },
           {
             "num": "03",
-            "title": "Data Staging",
-            "desc": "Cleansed, normalized, and validated raw sensor data before it reached the models."
-          },
-          {
-            "num": "04",
-            "title": "Data Reconciliation",
-            "desc": "Resolved discrepancies between legacy systems, IoT sensors, and maintenance logs."
-          },
-          {
-            "num": "05",
-            "title": "Predictive Modeling",
-            "desc": "Trained models on historical failure and maintenance data to identify degradation signatures."
-          },
-          {
-            "num": "06",
-            "title": "Live Alerting",
-            "desc": "Delivered real-time health scores, prioritized alerts, and recommended intervention windows."
+            "title": "Operations",
+            "desc": "Delivered real-time health scores, alerts, and prioritized intervention windows."
           }
         ]
       },
@@ -170,203 +516,90 @@
           {
             "value": "5,000",
             "label": "Machines monitored",
-            "description": "Full industrial fleet covered by the AI-driven maintenance platform."
-          },
-          {
-            "value": "3-5x",
-            "label": "Downtime cost leverage",
-            "description": "The model addressed the premium cost gap between unplanned and planned maintenance."
-          },
-          {
-            "value": "$0",
-            "label": "Additional CAPEX",
-            "description": "Deployed on existing infrastructure rather than a greenfield rebuild."
+            "description": "The full fleet was brought under one predictive maintenance layer."
           },
           {
             "value": "24/7",
             "label": "Health visibility",
-            "description": "Teams gained always-on machine health and alert visibility across sites."
-          }
-        ],
-        "highlights": [
-          "Improved equipment reliability through earlier intervention.",
-          "Reduced unplanned machine downtime across the fleet.",
-          "Shifted spend from time-based to condition-based maintenance.",
-          "Converted siloed maintenance knowledge into a scalable AI layer."
-        ]
-      },
-      "services": [
-        "Predictive Maintenance",
-        "Industrial IoT Analytics",
-        "Operational Dashboarding"
-      ],
-      "technologies": [
-        "Machine Learning",
-        "IoT Data Integration",
-        "Real-Time Health Monitoring",
-        "Data Reconciliation"
-      ],
-      "duration": "Multi-phase rollout",
-      "teamSize": "AI, data, and industrial operations team",
-      "countries": 1,
-      "status": "published",
-      "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
-    },
-    {
-      "id": "case-thermal-power-process-optimizer",
-      "slug": "thermal-power-process-optimizer",
-      "client": "Large Thermal Power Operator",
-      "abbr": "TPO",
-      "sector": "Power Generation / Thermal Energy",
-      "accentHex": "#DC2626",
-      "title": "How AI Unlocked 30%+ Efficiency Gains in a Thermal Power Plant",
-      "subtitle": "Process historian analysis and BOZ mapping surfaced an efficiency ceiling hidden across all load conditions.",
-      "heroImage": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=80",
-      "listImage": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=80",
-      "result": "30%+ efficiency improvement achieved across all load conditions",
-      "resultMetric": "30%+",
-      "summary": "A thermal power operator used ITChamps' Process Optimizer to identify the highest-leverage control variable, map the productivity zone, and sustain materially better efficiency without capital investment.",
-      "challenge": {
-        "heading": "The plant was stable, but it was not consistently efficient",
-        "context": "Boiler-turbine optimization involved multi-variable thermodynamic complexity, load variability, and a performance ceiling that could not be located with manual analysis.",
-        "points": [
-          "Operators managed many controllable variables with no systematic leverage model.",
-          "Efficiency changed materially across different load conditions.",
-          "The highest-productivity zone was hidden inside multidimensional operational data.",
-          "Conventional reviews and rules of thumb could not surface the true efficiency frontier."
-        ]
-      },
-      "solution": {
-        "heading": "Process historian analysis with multi-dimensional optimization",
-        "description": "ITChamps analyzed historical plant data, identified air heater temperature as the primary control lever, located the maximum-productivity zone, and translated the findings into practical operator guidance.",
-        "steps": [
-          {
-            "num": "01",
-            "title": "Historian Analysis",
-            "desc": "Mapped parameter and efficiency relationships across the full load range."
+            "description": "Teams gained continuous cross-site asset visibility."
           },
           {
-            "num": "02",
-            "title": "Parameter Prioritization",
-            "desc": "Identified air heater temperature as the key efficiency control variable."
-          },
-          {
-            "num": "03",
-            "title": "Productivity Mapping",
-            "desc": "Located the specific combinations under which the unit delivered peak performance."
-          },
-          {
-            "num": "04",
-            "title": "BOZ Identification",
-            "desc": "Confirmed a high Boiler Optimization Zone within normal operating ranges."
-          },
-          {
-            "num": "05",
-            "title": "Operational Integration",
-            "desc": "Translated the analysis into guidance operators could sustain across all loading conditions."
-          }
-        ]
-      },
-      "results": {
-        "metrics": [
-          {
-            "value": "30%+",
-            "label": "Efficiency gain",
-            "description": "Confirmed improvement achieved across all load conditions."
-          },
-          {
-            "value": "All",
-            "label": "Load coverage",
-            "description": "Optimization guidance applied across the unit's full operating range."
+            "value": "3-5x",
+            "label": "Downtime cost leverage",
+            "description": "The program targeted the premium gap between planned and unplanned maintenance."
           },
           {
             "value": "$0",
             "label": "Additional CAPEX",
-            "description": "The gains came from better operating intelligence, not new equipment."
-          },
-          {
-            "value": "1",
-            "label": "Primary control lever",
-            "description": "Air heater temperature emerged as the highest-value intervention point."
+            "description": "The deployment ran on existing infrastructure rather than a rebuild."
           }
         ],
         "highlights": [
-          "Reduced energy waste by sustaining operation in the productivity zone.",
-          "Created a reusable multi-dimensional productivity map for operators.",
-          "Validated that peak performance was achievable inside normal ranges.",
-          "Established a repeatable approach for additional units and sites."
+          "Maintenance teams intervened earlier and more consistently.",
+          "Unplanned downtime fell as alerts became more actionable.",
+          "Condition-based planning replaced purely time-based maintenance routines.",
+          "Siloed maintenance know-how was translated into a scalable operating layer."
         ]
       },
       "services": [
-        "Process Optimization",
-        "Thermal Plant Analytics",
-        "Operational Guidance"
+        "IoT Integration",
+        "Advanced Analytics",
+        "SAP Application Maintenance"
       ],
       "technologies": [
         "Machine Learning",
-        "Process Historian Analysis",
-        "Multi-Dimensional Optimization"
+        "IoT Data Integration",
+        "Real-Time Health Monitoring"
       ],
-      "duration": "Analytical deployment phase",
-      "teamSize": "Process engineering and AI team",
+      "duration": "Multi-phase rollout",
+      "teamSize": "11 consultants",
       "countries": 1,
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "case-smart-emission-monitor",
       "slug": "smart-emission-monitor",
-      "client": "Pioneering Thermal Power Plant",
-      "abbr": "PTP",
-      "sector": "Power Generation / Thermal Energy",
-      "accentHex": "#059669",
-      "title": "Compliance Without New Hardware: EPA-Approved AI NOx Monitoring",
-      "subtitle": "A smart emission monitor estimated NOx in real time across 25 parameters and achieved EPA-approved soft telemetry status.",
+      "client": "Thermal Power Plant",
+      "abbr": "TPP",
+      "sector": "Process Industries",
+      "accentHex": "#BE185D",
+      "title": "Smart Emissions Monitoring for a Thermal Power Plant",
+      "subtitle": "AI-powered NOx estimation delivered compliant monitoring and ESG-grade reporting without new hardware expansion.",
       "heroImage": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80",
       "listImage": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80",
-      "result": "EPA-approved NOx soft telemetry with lower total cost than hardware CEMS",
+      "result": "EPA-approved soft telemetry with lower monitoring cost",
       "resultMetric": "EPA",
-      "summary": "ITChamps replaced the default assumption that compliance monitoring requires new hardware by deploying an AI-powered soft sensor for real-time NOx estimation using existing plant instrumentation.",
+      "summary": "ITChamps deployed an AI-powered soft sensor for NOx estimation, replacing the assumption that compliant emissions monitoring requires new hardware CEMS investment.",
       "challenge": {
-        "heading": "Regulatory-grade emissions monitoring had to be accurate and affordable",
-        "context": "NOx output varied with combustion dynamics, fuel quality, and operating conditions, while traditional hardware CEMS introduced high procurement and maintenance costs.",
+        "heading": "Compliance-grade emissions monitoring had to be both accurate and economical",
+        "context": "NOx output shifted with combustion dynamics, fuel quality, and load, while traditional hardware CEMS options imposed high procurement and maintenance costs.",
         "points": [
-          "NOx levels changed continuously with combustion dynamics and load.",
+          "NOx levels changed continuously with plant operating conditions.",
           "Fuel quality variability disrupted stable emissions relationships.",
-          "Hardware CEMS met compliance needs but carried high cost and complexity.",
-          "A software approach would only work if it could stand up to regulatory scrutiny."
+          "Traditional hardware CEMS met compliance needs but at high cost.",
+          "Any software-led method needed to satisfy regulatory scrutiny."
         ]
       },
       "solution": {
-        "heading": "An EPA-approved soft telemetry architecture built on plant data",
-        "description": "The Smart Emission Monitor analyzed plant data, built a 25-parameter estimation model, deployed real-time NOx prediction, and supported ongoing compliance and ESG reporting without new hardware.",
+        "heading": "A 25-parameter soft telemetry model on top of existing plant data",
+        "description": "ITChamps mapped plant parameters, built an AI estimation model, deployed live NOx prediction, and created a continuous reporting stream for regulatory and ESG use.",
         "steps": [
           {
             "num": "01",
-            "title": "Parameter Mapping",
-            "desc": "Analyzed plant data to identify the operational variables with the strongest predictive weight for NOx output."
+            "title": "Mapping",
+            "desc": "Identified the plant variables with the strongest predictive weight for NOx output."
           },
           {
             "num": "02",
-            "title": "Model Design",
-            "desc": "Built a 25-parameter architecture to reflect real combustion variability."
+            "title": "Modeling",
+            "desc": "Built a 25-parameter estimation model to reflect true combustion variability."
           },
           {
             "num": "03",
-            "title": "Estimation Engine",
-            "desc": "Deployed live NOx estimation directly from existing operational signals."
-          },
-          {
-            "num": "04",
-            "title": "Regulatory Validation",
-            "desc": "Secured EPA approval for the soft telemetry approach as a compliant monitoring methodology."
-          },
-          {
-            "num": "05",
-            "title": "Ongoing Reporting",
-            "desc": "Supported auditable regulatory and ESG reporting with a continuous emissions data stream."
+            "title": "Validation",
+            "desc": "Validated the approach for compliant monitoring and ongoing reporting."
           }
         ]
       },
@@ -375,348 +608,47 @@
           {
             "value": "25",
             "label": "Operational parameters",
-            "description": "Real-time estimation depth used for NOx modeling."
+            "description": "The soft telemetry engine used 25 real-time operating inputs."
           },
           {
             "value": "EPA",
             "label": "Regulatory approval",
-            "description": "Soft telemetry approach met compliance-grade monitoring standards."
+            "description": "The monitoring method achieved regulatory-grade acceptance."
           },
           {
             "value": "$0",
             "label": "New hardware CAPEX",
-            "description": "No new CEMS hardware procurement or installation was required."
+            "description": "No new CEMS expansion was required for rollout."
           },
           {
             "value": "Lower",
             "label": "Monitoring cost",
-            "description": "Total monitoring cost came in below hardware CEMS alternatives."
+            "description": "Total operating cost was lower than the hardware-led alternative."
           }
         ],
         "highlights": [
-          "Created compliant monitoring without hardware CEMS expansion.",
-          "Enabled real-time operator insight for active NOx management.",
-          "Supported both regulatory and ESG reporting from one platform.",
-          "Established a scalable software framework for additional units."
+          "The client gained real-time operator insight into emissions behavior.",
+          "Compliance and ESG reporting were supported from the same platform.",
+          "The approach reduced the need for hardware-heavy monitoring expansion.",
+          "The framework can be replicated across additional units."
         ]
       },
       "services": [
-        "Emissions Monitoring",
-        "AI Soft Sensors",
-        "Compliance Analytics"
+        "EHS Compliance",
+        "IoT Integration",
+        "Advanced Analytics"
       ],
       "technologies": [
         "Machine Learning",
         "Soft Telemetry",
         "Real-Time NOx Estimation"
       ],
-      "duration": "Compliance deployment phase",
-      "teamSize": "Environmental analytics and AI team",
+      "duration": "7 months",
+      "teamSize": "7 consultants",
       "countries": 1,
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
-    },
-    {
-      "id": "case-cement-grinding-optimizer",
-      "slug": "cement-grinding-optimizer",
-      "client": "Large Cement Manufacturer",
-      "abbr": "LCM",
-      "sector": "Cement Manufacturing",
-      "accentHex": "#7C3AED",
-      "title": "Grinding Optimization Where 40% of Operating Cost Is Electricity",
-      "subtitle": "A non-disruptive process optimizer improved grinding productivity and availability without touching the live system until validation was complete.",
-      "heroImage": "https://images.unsplash.com/photo-1599707254554-027aeb4deacd?auto=format&fit=crop&w=1600&q=80",
-      "listImage": "https://images.unsplash.com/photo-1599707254554-027aeb4deacd?auto=format&fit=crop&w=1600&q=80",
-      "result": "Higher grinding productivity and availability with zero new capital investment",
-      "resultMetric": "40%",
-      "summary": "ITChamps used historical plant data to identify and validate optimal grinding parameters offline, then converted those findings into an operational knowledge base for sustained use in production.",
-      "challenge": {
-        "heading": "Grinding efficiency had major cost impact but no systematic control model",
-        "context": "Grinding was the highest-leverage electricity cost center, but shifting feed conditions, non-linear variable interactions, and live-system risk made manual optimization unreliable.",
-        "points": [
-          "Grinding accounted for roughly 40% of total plant electricity consumption.",
-          "Operators had to balance feed rate, mill load, separator speed, and fineness together.",
-          "Optimal operating points shifted with material properties and ambient conditions.",
-          "The client would not accept experimentation on the live production system."
-        ]
-      },
-      "solution": {
-        "heading": "Offline-validated optimization built on historical operational data",
-        "description": "The Process Optimizer mapped energy drivers, prepared historian data, identified optimal parameter combinations, validated them offline, and packaged the results as an operational knowledge base.",
-        "steps": [
-          {
-            "num": "01",
-            "title": "Energy Factor Mapping",
-            "desc": "Separated the variables driving grinding energy consumption from output quality and load metrics."
-          },
-          {
-            "num": "02",
-            "title": "Historical Data Preparation",
-            "desc": "Collected and validated historian data, including handling gaps, outliers, and sensor inconsistencies."
-          },
-          {
-            "num": "03",
-            "title": "Optimal Parameter Discovery",
-            "desc": "Used machine learning to identify the combinations behind the best historical outcomes."
-          },
-          {
-            "num": "04",
-            "title": "Offline Validation",
-            "desc": "Confirmed the model on unseen historical data without touching the live system."
-          },
-          {
-            "num": "05",
-            "title": "Knowledge Base Creation",
-            "desc": "Codified optimal settings across feed and specification conditions for repeatable operational use."
-          }
-        ]
-      },
-      "results": {
-        "metrics": [
-          {
-            "value": "40%",
-            "label": "Electricity cost exposure",
-            "description": "Grinding represented the highest-leverage power cost center in the plant."
-          },
-          {
-            "value": "↑",
-            "label": "Productivity",
-            "description": "The optimized range improved throughput from the same energy input."
-          },
-          {
-            "value": "↑",
-            "label": "Machine availability",
-            "description": "Validated parameter ranges reduced stress and unplanned stoppages."
-          },
-          {
-            "value": "$0",
-            "label": "Additional CAPEX",
-            "description": "All gains were achieved on existing infrastructure."
-          }
-        ],
-        "highlights": [
-          "Improved throughput through consistent operation in the optimal range.",
-          "Reduced mechanical stress on grinding equipment.",
-          "Created a lasting operational knowledge base for the plant.",
-          "Provided a non-disruptive template for future AI optimization in other areas."
-        ]
-      },
-      "services": [
-        "Cement Process Optimization",
-        "Energy Efficiency Analytics",
-        "Operational Knowledge Systems"
-      ],
-      "technologies": [
-        "Machine Learning",
-        "Historical Data Modeling",
-        "Parameter Optimization"
-      ],
-      "duration": "Offline modeling and rollout phase",
-      "teamSize": "Process and data science team",
-      "countries": 1,
-      "status": "published",
-      "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
-    },
-    {
-      "id": "case-inventory-optimizer-server-enclosures",
-      "slug": "inventory-optimizer-server-enclosures",
-      "client": "Leading Server Enclosure Manufacturer",
-      "abbr": "SEM",
-      "sector": "Industrial Manufacturing / Technology Hardware",
-      "accentHex": "#0F766E",
-      "title": "How AI-Powered Inventory Optimization Exposed the 800 SKUs Driving 70% of Cost",
-      "subtitle": "An inventory optimizer gave procurement teams the visibility to prioritize high-impact SKUs and shift from reactive replenishment to evidence-based planning.",
-      "heroImage": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
-      "listImage": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
-      "result": "800 high-impact SKUs identified as the source of 70% of inventory cost exposure",
-      "resultMetric": "800",
-      "summary": "For a global server enclosure manufacturer, ITChamps deployed an AI-powered inventory optimizer that exposed SKU concentration risk, improved forecasting, and strengthened service levels without capital investment.",
-      "challenge": {
-        "heading": "A growing SKU estate was quietly degrading capital efficiency and service levels",
-        "context": "Demand volatility, poor forecasting granularity, and limited inventory intelligence left procurement teams stuck between overstocking slow movers and stocking out critical items.",
-        "points": [
-          "Large SKU complexity generated inventory exposure that was hard to quantify.",
-          "Volatile demand patterns made resource allocation a constant gamble.",
-          "Forecasting was absent or too coarse to support confident replenishment.",
-          "Excess stock tied up working capital while stockouts damaged customer commitments."
-        ]
-      },
-      "solution": {
-        "heading": "An AI inventory optimizer focused on risk concentration and demand signal clarity",
-        "description": "The platform prioritized costly SKUs, ran multivariate demand analysis, surfaced decisions in an executive-ready dashboard, and embedded predictive forecasting into replenishment workflows.",
-        "steps": [
-          {
-            "num": "01",
-            "title": "SKU Prioritization",
-            "desc": "Identified the 800 SKUs responsible for 70% of total inventory cost exposure."
-          },
-          {
-            "num": "02",
-            "title": "Demand Analysis",
-            "desc": "Processed order frequency, seasonality, variability, account profile, and fulfillment history together."
-          },
-          {
-            "num": "03",
-            "title": "Decision Dashboard",
-            "desc": "Translated the analysis into clear procurement and stocking guidance for managers."
-          },
-          {
-            "num": "04",
-            "title": "Forecast Integration",
-            "desc": "Moved replenishment from reactive purchasing to forward-looking inventory positioning."
-          }
-        ]
-      },
-      "results": {
-        "metrics": [
-          {
-            "value": "800",
-            "label": "High-impact SKUs",
-            "description": "The optimizer isolated the core inventory cost concentration."
-          },
-          {
-            "value": "70%",
-            "label": "Cost concentration",
-            "description": "Those SKUs accounted for the majority of total inventory cost exposure."
-          },
-          {
-            "value": "$0",
-            "label": "Additional CAPEX",
-            "description": "The intelligence layer ran on existing data infrastructure."
-          },
-          {
-            "value": "↑",
-            "label": "Forecast confidence",
-            "description": "Procurement teams could plan and negotiate from evidence instead of estimation."
-          }
-        ],
-        "highlights": [
-          "Improved service levels by reducing stockouts and overstock events.",
-          "Strengthened procurement confidence through real-time forecasting signals.",
-          "Exposed risk concentration that had been invisible in legacy reporting.",
-          "Created a continuously improving intelligence foundation for supply chain decisions."
-        ]
-      },
-      "services": [
-        "Inventory Optimization",
-        "Demand Forecasting",
-        "Procurement Intelligence"
-      ],
-      "technologies": [
-        "Optimization Algorithms",
-        "Multivariate Analysis",
-        "Real-Time Data Integration",
-        "Predictive Forecasting"
-      ],
-      "duration": "Operational analytics rollout",
-      "teamSize": "Supply chain and AI delivery team",
-      "countries": 1,
-      "status": "published",
-      "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
-    },
-    {
-      "id": "case-vinyas-void-detection",
-      "slug": "vinyas-void-detection",
-      "client": "Vinyas Innovative Technologies Pvt. Ltd.",
-      "abbr": "VIT",
-      "sector": "Electronics Manufacturing / PCB Assembly",
-      "accentHex": "#BE185D",
-      "title": "From Hours to Minutes: AI-Powered PCB X-Ray Inspection for Vinyas",
-      "subtitle": "An AI inspection pipeline is replacing manual BGA void detection with target full-board inspection in under 10 minutes.",
-      "heroImage": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1600&q=80",
-      "listImage": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1600&q=80",
-      "result": "Implementation in progress targeting <10 minute inspection time, >97% ball detection, and <2% void measurement error",
-      "resultMetric": "<10 min",
-      "summary": "For Vinyas Innovative Technologies, ITChamps is building an AI pipeline on top of Nordson Quada 3 infrastructure to automate BGA localization, solder-ball detection, void measurement, and traceable report generation.",
-      "challenge": {
-        "heading": "Manual BGA X-ray inspection was too slow and structurally incomplete",
-        "context": "The existing workflow depended on operators to navigate BGAs, mark shadow-zone balls, estimate voids, and manually log outcomes, creating throughput, consistency, and traceability problems.",
-        "points": [
-          "A single PCB inspection consumed hours of skilled operator time.",
-          "The Quada 3 semi-auto workflow missed shadow-zone solder balls entirely.",
-          "Void estimation was subjective and varied between operators.",
-          "Inspection data lacked automated traceability and searchable reporting.",
-          "Throughput scaled with headcount rather than capability."
-        ]
-      },
-      "solution": {
-        "heading": "An AI pipeline layered onto existing Nordson Quada 3 hardware",
-        "description": "The system detects BGA locations, identifies all solder balls including occluded ones, segments voids, classifies pass/fail against IPC-7095D thresholds, and automatically generates traceable reports.",
-        "steps": [
-          {
-            "num": "01",
-            "title": "BGA Localisation",
-            "desc": "YOLOv8 and Grounding DINO detect and map all BGA locations from X-ray images."
-          },
-          {
-            "num": "02",
-            "title": "Full Ball Detection",
-            "desc": "SAM 2 and a Vision Transformer identify all balls, including shadow-zone cases the native system misses."
-          },
-          {
-            "num": "03",
-            "title": "Void Classification",
-            "desc": "U-Net and PatchCore segment void regions and calculate precise void percentages against IPC-7095D thresholds."
-          },
-          {
-            "num": "04",
-            "title": "Automated Reporting",
-            "desc": "The pipeline generates PDF and Excel reports linked to serial numbers, dates, and operators in a searchable quality database."
-          }
-        ]
-      },
-      "results": {
-        "metrics": [
-          {
-            "value": "<10 min",
-            "label": "Target inspection cycle",
-            "description": "Full PCB inspection target from a current baseline of several hours."
-          },
-          {
-            "value": ">97%",
-            "label": "Target ball detection",
-            "description": "Coverage target includes shadow-zone balls missed by the current workflow."
-          },
-          {
-            "value": "<2%",
-            "label": "Target void measurement error",
-            "description": "Planned accuracy target comparable to dedicated AXI systems."
-          },
-          {
-            "value": "Zero",
-            "label": "Target manual involvement",
-            "description": "The design aims to eliminate manual marking, detection, and report generation."
-          }
-        ],
-        "highlights": [
-          "Implementation is currently in progress for April to September 2026.",
-          "No new X-ray hardware replacement is required.",
-          "The design supports IPC-7095D-compliant traceable reporting.",
-          "The system is intended to create a searchable quality intelligence database."
-        ]
-      },
-      "services": [
-        "Computer Vision Automation",
-        "Quality Inspection AI",
-        "Manufacturing Analytics"
-      ],
-      "technologies": [
-        "YOLOv8",
-        "Grounding DINO",
-        "SAM 2",
-        "Vision Transformer",
-        "U-Net",
-        "PatchCore"
-      ],
-      "duration": "April to September 2026",
-      "teamSize": "Computer vision and manufacturing quality team",
-      "countries": 1,
-      "status": "published",
-      "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     }
   ],
   "blogs": [
@@ -725,21 +657,21 @@
       "slug": "s4hana-governance-playbook",
       "featured": true,
       "title": "S/4HANA Governance Playbook for Complex Rollouts",
-      "excerpt": "A practical operating model for sequencing SAP transformation programs without losing executive visibility or cutover control.",
+      "excerpt": "A practical operating model for sequencing SAP transformation programs across countries, teams, and milestones without losing control.",
       "category": "SAP Strategy",
-      "author": "ITChamps Editorial",
+      "author": "Rajesh Kutnikar",
       "coverImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-      "readTime": "6 min read",
-      "publishedAt": "2026-04-27",
+      "readTime": "12 min read",
+      "publishedAt": "2026-05-01",
       "tags": [
         "SAP",
         "S/4HANA",
         "Governance"
       ],
-      "content": "# Why governance fails\n\nLarge SAP programs rarely fail because the architecture is impossible. They fail because ownership, sequencing, and escalation paths are vague.\n\n# What strong programs do differently\n\n- Define one operating model across business, delivery, and support.\n- Lock milestone gates before build work accelerates.\n- Tie reporting to business risk, not just technical progress.\n\n# What to do next\n\nUse this dashboard to publish your own insights, migration notes, and industry briefs as your editorial pipeline grows.",
+      "content": "# Introduction\n\nImplementing S/4HANA across 10+ countries is not just a technology project — it's an orchestration of business units, technical teams, regulatory requirements, and cultural differences. Without strong governance, projects spiral: scope creeps, timelines slip, and cost overruns accumulate. This playbook shares the governance framework ITChamps has perfected across 30+ global S/4HANA deployments.\n\n# The Three-Layer Governance Model\n\nEvery successful multi-country rollout runs on three layers:\n\n**Executive Steering Committee** — Monthly oversight of strategy, budget, and escalations. Composed of CEO, CFO, COO, CTO, and heads of affected business units. This layer makes go/no-go decisions and resolves priority conflicts.\n\n**Programme Management Office (PMO)** — Weekly tactical management. Tracks progress vs. plan, owns the risk register, and escalates to the Steering Committee only when necessary.\n\n**Workstream Teams** — Daily execution by country or function. Finance lead, supply chain lead, HR lead, IT lead, and change lead working through daily standups and weekly deep-dives.\n\n# Decision Rights Framework\n\nThe biggest source of delay in global rollouts is unclear decision ownership. Publish a decision rights matrix at kickoff and test it on the first five real decisions.\n\n- **Strategic choices** (greenfield vs. brownfield, cloud vs. on-premise): Steering Committee, Week 1.\n- **Process design decisions**: Workstream leads, day-by-day — escalate only if the decision affects more than two regions.\n- **Configuration approvals**: Technical lead per sprint.\n- **Change requests to scope or budget**: PMO at weekly CAB meeting — escalate if impact exceeds 10% of cost or four weeks of timeline.\n\nPublish a decision log weekly. Undocumented decisions are the root cause of most programme disputes.\n\n# Managing Scope Creep\n\nScope creep is worse in global rollouts because each country or business unit treats their requirements as essential. Three governance gates control it:\n\n**Gate 1 — Requirement Intake (Months 1–2):** All requirements submitted upfront. None accepted after Gate 1 closes. Categorise as Phase 1 (in scope), Phase 2 (post-go-live), or Phase 3 (optional future).\n\n**Gate 2 — Configuration Freeze (Month 4–6):** Configuration locked four weeks before UAT. New requests wait for Phase 2.\n\n**Gate 3 — Testing Freeze (Two weeks before go-live):** UAT complete. No new test scenarios. Focus shifts entirely to readiness verification.\n\nFor every new request, quantify the impact: \"This adds two weeks and costs $200K. Is it worth delaying the regional go-live?\" The answer is almost always no.\n\n# Hub-and-Spoke Coordination for Multi-Country Rollouts\n\nThe hub defines global configuration standards and builds the core S/4HANA template. Spokes adapt the template to local regulatory and process requirements, then report status and flag deviations back to the hub.\n\nCritical coordination mechanisms: weekly hub-spoke sync (one hour), bi-weekly learning sync where regional leads share solutions across geographies, and monthly executive review.\n\n# Post-Go-Live Governance\n\nThe most common mistake: disbanding the PMO after go-live. The first 90 days post-go-live are when the investment is most at risk.\n\n- **Weeks 1–4 (Hypercare):** 24/7 war room, daily steering committee calls, readiness to fall back if critical issues emerge.\n- **Weeks 5–12 (Stabilisation):** PMO shifts to optimisation, weekly steering committee, knowledge transfer to the permanent AMS team.\n- **Month 4+ (BAU):** PMO dissolves, governance transitions to the AMS organisation, continuous improvement backlog feeds Phase 2.\n\n# Key Takeaways\n\n1. Governance enables speed — clear decision rights prevent bottlenecks.\n2. The three-layer model scales from two-country to twenty-country programmes; adjust frequency, not structure.\n3. Hub-and-spoke ensures global consistency without suppressing local execution.\n4. Scope is the biggest variable — tight change control in Phases 1 and 2 prevents chaos in Phase 3.\n5. Communication cascades down; accountability flows up.",
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "blog-btp-integration-quick-wins",
@@ -748,40 +680,40 @@
       "title": "BTP Integration Quick Wins for SAP Landscapes Under Pressure",
       "excerpt": "A practical view of where SAP BTP creates immediate leverage in integration-heavy environments without forcing a full platform redesign.",
       "category": "SAP BTP",
-      "author": "ITChamps Editorial",
+      "author": "Ganesh Ganiga",
       "coverImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
-      "readTime": "5 min read",
-      "publishedAt": "2026-04-24",
+      "readTime": "10 min read",
+      "publishedAt": "2026-05-03",
       "tags": [
         "SAP BTP",
         "Integration",
         "Architecture"
       ],
-      "content": "# Where BTP helps fastest\n\nMany SAP estates do not need a full rebuild. They need a cleaner integration layer, faster workflow extensions, and less custom point-to-point maintenance.\n\n# Strong first use cases\n\n- API-led integration for fragmented line-of-business systems\n- Workflow automation that removes approval delays\n- Side-by-side extensions that protect core stability\n\n# What to avoid\n\nDo not start with platform ambition. Start with one integration bottleneck, one measurable business delay, and one stable delivery team.",
+      "content": "# Introduction\n\nSAP BTP can feel intimidating — another platform to learn, more complexity to manage. But the beauty of BTP is that you don't need a 12-month transformation. Small, focused integration projects can deliver quick wins: reduced manual work, faster processes, lower costs. Here are five projects we've deployed in dozens of enterprises, each delivering ROI within 90 days.\n\n# Quick Win 1: Automated Invoice-to-PO Matching\n\nYour team receives thousands of invoices per month. Each one needs to be matched to a PO, receipt, and GL code before payment. This manual 3-way match consumes significant FTE time.\n\n**BTP Solution:** Configure invoice capture API, build an integration flow to extract invoice data, automatically match against SAP POs and receipts, auto-post matched invoices, and flag exceptions for manual review.\n\n**Timeline:** 6 weeks. **ROI:** 1 FTE freed up plus 10-day cycle time reduction — typically $90K Year 1 benefit.\n\n# Quick Win 2: Real-Time Supplier Performance Dashboard\n\nProcurement needs visibility into supplier performance: on-time delivery, quality, pricing. Today this requires manual consolidation. Reports are two weeks stale.\n\n**BTP Solution:** Build an integration pulling PO, receipt, and quality data from SAP in real time. Combine with external supplier data in SAP Analytics Cloud. Automated alerts when supplier KPIs breach thresholds.\n\n**Timeline:** 8 weeks. **ROI:** $40K+ annual savings from FTE reallocation, plus better supplier negotiations.\n\n# Quick Win 3: Automated Shift Handover Documentation\n\nManufacturing plants produce large volumes of shift reports — printed, filed, and rarely reviewed. Shift leads spend an hour per day on documentation instead of managing production.\n\n**BTP Solution:** Deploy IoT sensors capturing production counts and equipment status at shift end. Auto-generate shift reports, route for digital approval, archive to DMS, and escalate deviations to plant management automatically.\n\n**Timeline:** 6 weeks. **ROI:** 1 FTE freed from documentation plus 2% production improvement — typically $120K Year 1 benefit.\n\n# Quick Win 4: Candidate Portal and Automated Background Checks\n\nHR processes hundreds of applications per year. Background check coordination happens via email and takes two to three weeks.\n\n**BTP Solution:** Build a BTP-based candidate portal, integrate with screening tools, automate background check triggers, and create offer letters in Workday automatically on completion.\n\n**Timeline:** 8 weeks. **ROI:** $85K+ Year 1 benefit from faster hiring and coordinator time saved.\n\n# Quick Win 5: Real-Time Warehouse Inventory Visibility\n\nLegacy WMS inventory doesn't match SAP. Reconciliation meetings happen weekly and take hours. Stock-outs occur due to latent data.\n\n**BTP Solution:** Deploy barcode scanners at receiving, put-away, and picking. Real-time sync between WMS and SAP via BTP — SAP inventory updated within 15 minutes of physical action.\n\n**Timeline:** 10 weeks. **ROI:** $136K+ Year 1 benefit from eliminated reconciliation, fewer stock-outs, and improved carrying cost accuracy.\n\n# How to Prioritise: The Quick Win Selection Framework\n\nScore each opportunity on: Business Impact (0–10), Implementation Complexity (0–5, inverted), Technology Readiness (0–5), and Sponsorship (0–5). Pick the top two or three that don't compete for the same resources.\n\n# Success Factors\n\n1. **Keep it simple** — narrow scope delivers faster and builds momentum.\n2. **Use pre-built connectors** — BTP has 500+ connectors; avoid custom code unless necessary.\n3. **Establish clear ownership** — one business owner drives requirements, testing, and adoption.\n4. **Measure the promised ROI** — validate 30 days post-launch; use data to justify the next project.",
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "blog-global-payroll-readiness",
       "slug": "global-payroll-readiness",
       "featured": false,
       "title": "Global Payroll Readiness Checklist Before Multi-Country Expansion",
-      "excerpt": "The operational checks leadership teams should finish before payroll complexity starts slowing down geographic growth.",
+      "excerpt": "The operational checks leadership teams should complete before payroll complexity slows down geographic growth.",
       "category": "Payroll Operations",
-      "author": "ITChamps Editorial",
+      "author": "Priya Sharma",
       "coverImage": "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1600&q=80",
-      "readTime": "7 min read",
-      "publishedAt": "2026-04-21",
+      "readTime": "8 min read",
+      "publishedAt": "2026-05-06",
       "tags": [
         "Payroll",
         "Compliance",
         "Global Operations"
       ],
-      "content": "# Expansion creates payroll risk fast\n\nPayroll breaks when legal entities, vendors, calendars, tax rules, and approval ownership scale faster than the operating model.\n\n# Before the next country launch\n\n- Confirm country-specific compliance ownership\n- Standardize the approval and exception path\n- Validate HR, finance, and payroll data handoffs\n- Decide which controls stay global and which stay local\n\n# The goal\n\nThe target is not just paying employees on time. It is building a payroll model that stays reliable as country count increases.",
+      "content": "# Introduction\n\nCentralising payroll across 15+ countries is complex, but many enterprises delay due to fear of unknowns. This checklist distils what ITChamps has learned from 50+ global payroll transformations. Use it to assess your readiness, identify gaps, and plan confidently.\n\n# Section 1: Governance & Sponsorship (4 Items)\n\n- CFO is actively sponsoring the initiative — not delegated to Finance Ops.\n- Regional finance leaders have signed off on the approach.\n- HR and Payroll leadership are aligned with no turf conflicts over ownership.\n- Project governance is defined — PMO exists, decision rights are clear, steering committee is chartered.\n\n# Section 2: Current State Assessment (4 Items)\n\n- Payroll system inventory documented: how many systems, which versions, what customisations.\n- Headcount by country documented: permanent vs. contract, full-time vs. part-time.\n- Regulatory requirements mapped: each country's statutory deductions, filing deadlines, language requirements.\n- Data quality audit completed: sample 100 employee records per country for completeness and accuracy.\n\n# Section 3: Technology & Integration (5 Items)\n\n- Target payroll system selected and approved by steering committee.\n- Integration points mapped: payroll to HR master data, time/attendance, benefits, GL posting.\n- Testing infrastructure available: UAT environment ready four weeks before go-live.\n- Reporting requirements defined: MIS reports, compliance filings, tax documents per country.\n- Security and compliance assessed: data encryption, access controls, audit trail requirements per jurisdiction.\n\n# Section 4: Organisation & Resources (4 Items)\n\n- Payroll operations team in place with backup resources identified.\n- Training plan drafted using a train-the-trainer model.\n- Change management plan exists with communication schedule and go-live support desk.\n- Vendor and partner engagement confirmed: tax compliance experts, payroll processing partners on standby.\n\n# Section 5: Process Standardisation (4 Items)\n\n- Payroll policy harmonised: what is consistent globally, what is country-specific.\n- Payroll calendar defined by country.\n- Exception handling workflow designed: late data, bonus adjustments, one-time payments.\n- Month-end close process redesigned to reflect centralised payroll timing.\n\n# Section 6: Compliance & Audit (3 Items)\n\n- Tax and statutory deductions validated per country with sample calculations.\n- Audit requirements reviewed: what each country's tax authority requires and how.\n- Compliance testing plan created for UAT phase.\n\n# Section 7: Rollout Approach (1 Item)\n\n- Phasing strategy decided: big bang vs. phased by region vs. phased by payroll cycle.\n\n# Scoring\n\n- **20–25 checked:** Ready to proceed. Timeline: 4–6 months to go-live.\n- **15–19 checked:** On track. Close the gaps first. Timeline: 6–8 months.\n- **10–14 checked:** Material work remains. Timeline: 8–12 months. Don't rush.\n- **Below 10:** Not ready. Delay six months and stabilise current state first.\n\n# Common Red Flags\n\n- Finance leader is sceptical — you lack executive sponsorship. Escalate to the CFO with an ROI case before proceeding.\n- Payroll data is messy — allocate four weeks to data cleansing before UAT. Don't skip this.\n- No clear target system — pick one and commit. Endless evaluation delays everything.\n- No backup resources — cross-train two people on every role and budget for external support.",
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "blog-ai-maintenance-programs",
@@ -793,16 +725,16 @@
       "author": "ITChamps Editorial",
       "coverImage": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1600&q=80",
       "readTime": "6 min read",
-      "publishedAt": "2026-04-18",
+      "publishedAt": "2026-05-08",
       "tags": [
         "Predictive Maintenance",
         "Industrial AI",
         "Operations"
       ],
-      "content": "# Pilots are usually not the hard part\n\nMost predictive maintenance pilots fail later, when model outputs need to fit maintenance routines, work orders, spare parts constraints, and plant trust.\n\n# Common failure patterns\n\n- Sensor data remains noisy or incomplete\n- Alerts are not tied to an action path\n- Operations teams do not trust model recommendations\n- Success metrics focus on dashboards instead of downtime reduction\n\n# Better approach\n\nBuild around intervention workflow, not just model accuracy. If no team can act on the prediction, the pilot is not operationally real.",
+      "content": "# Introduction\n\nMost enterprises see 30%+ cost savings promised in AI predictive maintenance pilots. Many of those pilots succeed. Then production rollout fails — or delivers a fraction of the promised ROI. Here is why, and what to do instead.\n\n# Root Cause 1: Model Decay\n\nPredictive maintenance models are trained on historical data. After go-live, sensor readings drift, equipment gets replaced, operating conditions change. The model's accuracy degrades silently. Nobody notices until a \"predicted\" failure doesn't happen — or an unpredicted one does.\n\n**Fix:** Allocate a budget for monthly data science reviews. Retrain models quarterly at minimum. Track model performance KPIs (precision, recall, false positive rate) as operational metrics, not IT metrics.\n\n# Root Cause 2: Organisational Resistance\n\nMaintenance teams have seen many silver-bullet technologies come and go. When a model says \"machine 47 will fail in 7 days\" and the experienced technician knows that machine has been running fine for 15 years, they override the alert. Repeatedly. The model stops being used.\n\n**Fix:** Involve operations teams in model design from week one. Make the model explain its reasoning — which sensors, what thresholds. Celebrate correct predictions publicly. Treat wrong predictions as learning data, not failures.\n\n# Root Cause 3: The Pilot Is Not Operationally Real\n\nPilots often run alongside existing maintenance processes rather than replacing them. The pilot team is enthusiastic; the rest of the plant does not change behaviour. When the pilot team leaves, nothing sustains.\n\n**Fix:** Design the pilot to replace a real workflow, not augment it. If the prediction does not trigger a work order in your CMMS and that work order does not get executed, the pilot has not proved operational value.\n\n# Root Cause 4: Integration Complexity\n\nPilots often use a data lake, Jupyter notebooks, and a custom dashboard. Production requires integration with SAP PM, the CMMS, the spare parts system, and the shift scheduling tool. That integration takes 3–6 months and was not budgeted.\n\n**Fix:** Design the integration architecture during the pilot, not after it. If you cannot connect the prediction to a work order in your production systems, you do not have a production solution.\n\n# Root Cause 5: Success Metrics Focused on Dashboards, Not Downtime\n\nPilot success is measured by dashboard usage and model accuracy. Production success must be measured by mean time between failures, unplanned downtime, and maintenance cost per asset — before and after.\n\n**Fix:** Define production success metrics before the pilot starts. Set a 12-month measurement horizon. Be honest about what improved and what did not.\n\n# What Successful Programmes Do Differently\n\n1. They treat AI as a continuous capability, not a one-time project.\n2. They build intervention workflows before they build models.\n3. They put a named engineer in charge of model performance permanently.\n4. They start with two or three machine types, not the entire fleet.\n5. They celebrate operational outcomes, not technical achievements.",
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     },
     {
       "id": "blog-sap-ams-executive-metrics",
@@ -814,16 +746,16 @@
       "author": "ITChamps Editorial",
       "coverImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80",
       "readTime": "4 min read",
-      "publishedAt": "2026-04-15",
+      "publishedAt": "2026-05-09",
       "tags": [
         "SAP AMS",
         "Governance",
         "KPIs"
       ],
-      "content": "# Reporting gets noisy quickly\n\nAMS teams often report large ticket counts and SLA percentages, but that rarely tells leadership where the service model is under real stress.\n\n# Better executive metrics\n\n- Business-critical incident trend\n- Aging backlog in high-impact queues\n- Change failure rate\n- Time to stabilize after release\n- Demand split across incidents, enhancements, and prevention work\n\n# The point\n\nExecutives need signal, not volume. A smaller scorecard usually produces better decisions.",
+      "content": "# Introduction\n\nMost SAP AMS reports land on executive desks with hundreds of rows of ticket data, average resolution times, and SLA compliance percentages. These metrics answer the question \"did we close tickets?\" but not the question executives actually need answered: \"Is our SAP system healthy, and is our support model working?\"\n\n# The Wrong Metrics (And Why They're Everywhere)\n\n**Total tickets closed** — Volume tells you nothing about severity or business impact. A month with 200 closed tickets may be worse than a month with 50 if the 200 include payroll failures.\n\n**Average resolution time** — Averages hide outliers. One Severity 1 payroll outage lasting 8 hours can sit quietly inside an \"average\" of 2.3 hours.\n\n**SLA compliance percentage** — 97% SLA compliance sounds good until you learn the 3% missed was a bank transfer failure on month-end close.\n\n# The Right Metrics for Executive Review\n\n**1. Business-critical incident trend** — How many Severity 1 and Severity 2 incidents occurred this month vs. the previous three months? Is the number trending up or down? If it is trending up, something structural has changed.\n\n**2. Payroll on-time delivery rate** — For organisations with SAP payroll, this is binary: payroll ran on time and correctly, or it did not. Report it separately from general SLA statistics.\n\n**3. Change failure rate** — What percentage of changes deployed in the last 30 days required rollback or emergency fix? Above 5% is a quality problem, not a volume problem.\n\n**4. Time to stabilise after a release** — How long did the system run at elevated incident volume after each release? This measures the quality of testing and change management, not just deployment speed.\n\n**5. Demand split** — What percentage of AMS effort went to reactive incidents vs. proactive enhancements vs. prevention work? A healthy AMS organisation shifts effort toward prevention over time. If reactive work stays above 70%, the service model is not maturing.\n\n**6. Cost per user per month** — Total AMS cost divided by active SAP users. Benchmark against your contract and track year-over-year. This is the efficiency metric that finance leaders understand immediately.\n\n# Recommended Executive Dashboard Format\n\nOne page. Six metrics. Each with: current month value, three-month trend arrow (up/down/stable), and a RAG (Red/Amber/Green) status. Nothing else.\n\nIf an executive needs to read more than one page to understand whether their SAP landscape is healthy, the report has failed its purpose.\n\n# Year-Over-Year Trend Is More Important Than Any Single Month\n\nThe most valuable thing an AMS governance report can show is direction. Are business-critical incidents declining as the system matures? Is prevention work growing as a share of total effort? Is the cost per user decreasing as automation and knowledge management improve?\n\nA single month is a data point. A year is a story. Executives need the story.",
       "status": "published",
       "createdAt": "2026-04-27T00:00:00.000Z",
-      "updatedAt": "2026-04-27T00:00:00.000Z"
+      "updatedAt": "2026-05-21T00:00:00.000Z"
     }
   ]
 }

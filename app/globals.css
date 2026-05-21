@@ -8262,3 +8262,152 @@ h3 {
   .study-related__grid { grid-template-columns: 1fr; }
   .study-summary__inner { padding: 24px 22px; }
 }
+
+/* ── Testimonial block (trust-strip) ───────────────────── */
+.trust-testimonial {
+  margin: 40px auto 0;
+  max-width: 720px;
+  padding: 28px 36px;
+  border-left: 3px solid var(--accent, #008FD3);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  border-radius: 0 18px 18px 0;
+  text-align: left;
+}
+.trust-testimonial p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-style: italic;
+  margin: 0 0 16px;
+}
+.trust-testimonial footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.trust-testimonial footer strong {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.trust-testimonial footer span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ── Section bottom CTA (case studies) ─────────────────── */
+.section-bottom-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* ── Checklist includes (readiness section) ─────────────── */
+.checklist-includes {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+.checklist-includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.checklist-includes li::before {
+  content: "✓";
+  flex-shrink: 0;
+  color: var(--accent, #008FD3);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 1px;
+}
+
+/* ── Lead form checkbox ─────────────────────────────────── */
+.lead-form__checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.lead-form__checkbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--accent, #008FD3);
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .trust-testimonial {
+    padding: 20px 20px;
+    margin-top: 28px;
+  }
+  .checklist-includes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Legal pages (Privacy / Terms) ───────────────────── */
+.legal-page {
+  padding: 80px 0 120px;
+  background: var(--surface-0, #fff);
+  min-height: 100vh;
+}
+.legal-page__container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  color: var(--text-body, #374151);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.legal-page__container h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-heading, #111827);
+  margin-bottom: 8px;
+}
+.legal-page__updated {
+  font-size: 0.875rem;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 48px;
+}
+.legal-page__container section {
+  margin-bottom: 40px;
+}
+.legal-page__container h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-heading, #111827);
+  margin-bottom: 12px;
+}
+.legal-page__container p,
+.legal-page__container ul {
+  margin-bottom: 12px;
+}
+.legal-page__container ul {
+  padding-left: 24px;
+}
+.legal-page__container li {
+  margin-bottom: 6px;
+}
+.legal-page__container a {
+  color: var(--accent, #008FD3);
+  text-decoration: underline;
+}
+.legal-page__back {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border, #e5e7eb);
+  font-size: 0.9rem;
+}
