@@ -3613,6 +3613,7 @@ h3 {
 .lead-form {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .lead-form input {
@@ -8310,6 +8311,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px 24px;
+  grid-column: 1 / -1;
 }
 .checklist-includes li {
   display: flex;
@@ -8337,6 +8339,12 @@ h3 {
   color: var(--muted);
   line-height: 1.5;
   cursor: pointer;
+  min-width: 0;
+}
+.lead-form__checkbox-label span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 .lead-form__checkbox {
   flex-shrink: 0;
