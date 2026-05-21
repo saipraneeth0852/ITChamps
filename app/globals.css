@@ -9644,12 +9644,6 @@ h3 {
   color: #94a3b8;
 }
 .sap-calc__btn { width: 100%; justify-content: center; margin-top: 8px; }
-.sap-calc__results {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-content: start;
-}
 .sap-calc__result-card {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -9697,6 +9691,102 @@ h3 {
   margin: 0;
 }
 .sap-calc__disclaimer a { color: #008FD3; text-decoration: underline; }
+
+/* ── Calculator right column: image → results ───────── */
+.sap-calc__right-col {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+.sap-calc__visual-panel {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0f172a;
+}
+.sap-calc__visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.1) 100%);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+  border-radius: 16px;
+}
+.sap-calc__visual-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+.sap-calc__visual-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.sap-calc__visual-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 12px 10px;
+  backdrop-filter: blur(6px);
+}
+.sap-calc__visual-stat strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+.sap-calc__visual-stat span {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.3;
+}
+.sap-calc__visual-cta {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+}
+.sap-calc__results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-content: start;
+  flex: 1;
+}
+.sap-calc__reset {
+  grid-column: 1 / -1;
+  background: none;
+  border: none;
+  color: #008FD3;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  margin-top: 4px;
+  transition: opacity 0.2s;
+}
+.sap-calc__reset:hover { opacity: 0.7; }
+
+/* ── Section with home page background ──────────────── */
+.sap-section--home-bg {
+  background-color: #FFFAF0;
+  background-image:
+    linear-gradient(rgba(0,120,220,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,120,220,.04) 1px, transparent 1px),
+    radial-gradient(ellipse 70% 60% at 50% -10%, rgba(0,120,255,.07), transparent);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
 
 /* ── Nav active state ───────────────────────────────── */
 .topnav__active {

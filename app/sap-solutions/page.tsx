@@ -271,7 +271,7 @@ export default function SapSolutionsPage() {
       </section>
 
       {/* ── Savings Calculator ────────────────────────────── */}
-      <section className="sap-section sap-section--tinted" id="sap-calculator">
+      <section className="sap-section sap-section--home-bg" id="sap-calculator">
         <div className="shell">
           <motion.div className="sap-section-header" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <p className="sap-eyebrow">Calculate your potential savings</p>
@@ -702,15 +702,16 @@ function SavingsCalculator() {
   const [users, setUsers]     = useState("100-500");
   const [calculated, setCalc] = useState(false);
 
-  const savingsRate = model === "sap-standard" ? 0.40 : model === "sap-enterprise" ? 0.47 : 0.28;
+  const savingsRate     = model === "sap-standard" ? 0.40 : model === "sap-enterprise" ? 0.47 : 0.28;
   const annualSavings   = Math.round(spend * savingsRate);
   const threeYearSaving = annualSavings * 3;
   const migrationFund   = Math.round(threeYearSaving * 0.6);
-
   const tier = users === "<100" ? "AMS Essentials" : users === "100-500" ? "AMS Advanced" : "AMS Enterprise";
+  const modelLabel = model === "sap-standard" ? "SAP Standard" : model === "sap-enterprise" ? "SAP Enterprise" : "in-house";
 
   return (
     <div className="sap-calc">
+      {/* ── Left: inputs ── */}
       <div className="sap-calc__inputs">
         <div className="sap-calc__field">
           <label htmlFor="calc-spend">Current annual SAP support spend</label>
@@ -724,7 +725,6 @@ function SavingsCalculator() {
             className="sap-calc__slider" />
           <div className="sap-calc__range-labels"><span>$50K</span><span>$5M</span></div>
         </div>
-
         <div className="sap-calc__field">
           <label htmlFor="calc-model">Current support model</label>
           <select id="calc-model" value={model} onChange={(e) => { setModel(e.target.value); setCalc(false); }}>
@@ -733,7 +733,6 @@ function SavingsCalculator() {
             <option value="inhouse">In-house / self-managed team</option>
           </select>
         </div>
-
         <div className="sap-calc__field">
           <label htmlFor="calc-users">Number of SAP users</label>
           <select id="calc-users" value={users} onChange={(e) => { setUsers(e.target.value); setCalc(false); }}>
@@ -743,39 +742,77 @@ function SavingsCalculator() {
             <option value="1000+">1,000+ users</option>
           </select>
         </div>
-
         <button className="button button--primary sap-calc__btn" onClick={() => setCalc(true)}>
           Calculate my savings
         </button>
       </div>
 
-      <AnimatePresence>
-        {calculated && (
-          <motion.div className="sap-calc__results" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-            <div className="sap-calc__result-card sap-calc__result-card--primary">
-              <span className="sap-calc__result-label">Estimated annual savings</span>
-              <span className="sap-calc__result-value">${annualSavings.toLocaleString()}</span>
-              <span className="sap-calc__result-sub">vs. {model === "sap-standard" ? "SAP Standard" : model === "sap-enterprise" ? "SAP Enterprise" : "in-house"} support</span>
-            </div>
-            <div className="sap-calc__result-card">
-              <span className="sap-calc__result-label">3-year total savings</span>
-              <span className="sap-calc__result-value">${threeYearSaving.toLocaleString()}</span>
-            </div>
-            <div className="sap-calc__result-card">
-              <span className="sap-calc__result-label">Available for S/4HANA migration</span>
-              <span className="sap-calc__result-value">${migrationFund.toLocaleString()}</span>
-            </div>
-            <div className="sap-calc__result-card">
-              <span className="sap-calc__result-label">Recommended service tier</span>
-              <span className="sap-calc__result-value sap-calc__result-value--tier">{tier}</span>
-            </div>
-            <p className="sap-calc__disclaimer">
-              * Estimates based on typical ITChamps client outcomes. Actual savings vary by contract scope and landscape complexity.
-              <Link href="#contact-sap"> Speak to a consultant for a precise analysis.</Link>
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ── Right: image → results ── */}
+      <div className="sap-calc__right-col">
+        <AnimatePresence mode="wait">
+          {!calculated ? (
+            <motion.div key="visual" className="sap-calc__visual-panel"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.35 }}>
+              <Image
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80&auto=format"
+                alt="SAP analytics dashboard"
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+              <div className="sap-calc__visual-overlay">
+                <p className="sap-calc__visual-eyebrow">Typical ITChamps client outcomes</p>
+                <div className="sap-calc__visual-stats">
+                  <div className="sap-calc__visual-stat">
+                    <strong>Up to 50%</strong>
+                    <span>savings on annual SAP support fees</span>
+                  </div>
+                  <div className="sap-calc__visual-stat">
+                    <strong>3× ROI</strong>
+                    <span>on AMS investment within 24 months</span>
+                  </div>
+                  <div className="sap-calc__visual-stat">
+                    <strong>45+ countries</strong>
+                    <span>with active SAP support operations</span>
+                  </div>
+                </div>
+                <p className="sap-calc__visual-cta">← Enter your spend to see your numbers</p>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div key="results" className="sap-calc__results"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}>
+              <div className="sap-calc__result-card sap-calc__result-card--primary">
+                <span className="sap-calc__result-label">Estimated annual savings</span>
+                <span className="sap-calc__result-value">${annualSavings.toLocaleString()}</span>
+                <span className="sap-calc__result-sub">vs. {modelLabel} support</span>
+              </div>
+              <div className="sap-calc__result-card">
+                <span className="sap-calc__result-label">3-year total savings</span>
+                <span className="sap-calc__result-value">${threeYearSaving.toLocaleString()}</span>
+              </div>
+              <div className="sap-calc__result-card">
+                <span className="sap-calc__result-label">Available for S/4HANA migration</span>
+                <span className="sap-calc__result-value">${migrationFund.toLocaleString()}</span>
+              </div>
+              <div className="sap-calc__result-card">
+                <span className="sap-calc__result-label">Recommended service tier</span>
+                <span className="sap-calc__result-value sap-calc__result-value--tier">{tier}</span>
+              </div>
+              <p className="sap-calc__disclaimer">
+                * Based on typical ITChamps client outcomes. Actual savings vary.{" "}
+                <Link href="#contact-sap">Speak to a consultant for a precise analysis.</Link>
+              </p>
+              <button className="sap-calc__reset" onClick={() => setCalc(false)}>
+                ← Recalculate
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
