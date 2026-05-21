@@ -325,6 +325,7 @@ export default function ServicesPage() {
           <a href="#hr-payroll">HR &amp; Payroll</a>
           <a href="#automation">Automation</a>
           <a href="#security">Security</a>
+          <Link href="/sap-solutions" className="topnav__sap-link">SAP Solutions Page</Link>
           <a href="#contact-svc">Get in Touch</a>
         </nav>
         <Link href="/#contact" className="button button--primary button--compact topbar-cta">

@@ -462,6 +462,7 @@ export default function HomePage() {
           <Link href="/case-studies" onClick={closeNav}>Case Studies</Link>
           <Link href="/blogs" onClick={closeNav}>Blogs</Link>
           <Link href={academyHref} onClick={closeNav} className="topnav__academy">Academy</Link>
+          <Link href="/sap-solutions" onClick={closeNav} className="topnav__sap-link">SAP Solutions</Link>
           <a href="#contact-form" onClick={closeNav}>Schedule a Consultation</a>
           <a href="#contact-form" className="button button--primary mobile-nav-cta" onClick={closeNav}>
             Talk to an SAP Expert
