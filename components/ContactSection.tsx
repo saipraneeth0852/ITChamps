@@ -100,7 +100,7 @@ export function ContactSection({
           </div>
         </div>
 
-        <form className="contact-form-card" onSubmit={handleSubmit}>
+        <form className="contact-form-card" onSubmit={handleSubmit} noValidate>
           <div className="contact-form-grid">
             <label>
               <span>Full name</span>
@@ -108,6 +108,8 @@ export function ContactSection({
                 type="text"
                 name="fullName"
                 value={form.fullName}
+                placeholder="e.g. Sarah Mitchell"
+                autoComplete="name"
                 onChange={(event) => setForm((current) => ({ ...current, fullName: event.target.value }))}
                 required
               />
@@ -119,6 +121,8 @@ export function ContactSection({
                 type="email"
                 name="workEmail"
                 value={form.workEmail}
+                placeholder="you@company.com"
+                autoComplete="email"
                 onChange={(event) => setForm((current) => ({ ...current, workEmail: event.target.value }))}
                 required
               />
@@ -130,17 +134,22 @@ export function ContactSection({
                 type="text"
                 name="company"
                 value={form.company}
+                placeholder="Your organisation name"
+                autoComplete="organization"
                 onChange={(event) => setForm((current) => ({ ...current, company: event.target.value }))}
                 required
               />
             </label>
 
             <label>
-              <span>Phone</span>
+              <span>Phone <em style={{ fontStyle: "normal", opacity: 0.55 }}>(optional)</em></span>
               <input
                 type="tel"
                 name="phone"
                 value={form.phone}
+                placeholder="+1 555 000 0000"
+                autoComplete="tel"
+                inputMode="tel"
                 onChange={(event) => setForm((current) => ({ ...current, phone: event.target.value }))}
               />
             </label>
@@ -176,13 +185,13 @@ export function ContactSection({
             </label>
 
             <label className="contact-form-grid__full">
-              <span>Primary challenge</span>
+              <span>Primary challenge <em style={{ fontStyle: "normal", opacity: 0.55 }}>(optional)</em></span>
               <textarea
                 name="message"
-                rows={5}
+                rows={4}
                 value={form.message}
+                placeholder="Briefly describe your SAP landscape and what you're trying to achieve..."
                 onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-                required
               />
             </label>
 
@@ -198,16 +207,25 @@ export function ContactSection({
           </div>
 
           <div className="contact-form-footer">
-            <button type="submit" className="button button--primary" disabled={status === "submitting"}>
-              {status === "submitting" ? "Submitting..." : "Get Your Consultation"}
-            </button>
-            <p className={`contact-form-status contact-form-status--${status}`}>
-              {status === "success" &&
-                `Thank you! We've received your request. An SAP expert will contact you within 24 business hours at ${submittedEmail || "the email you provided"}. In the meantime, explore our case studies and blog for relevant insights.`}
-              {status === "error" && errorMessage}
-              {(status === "idle" || status === "submitting") &&
-                "Describe your current SAP landscape and transformation goals. An SAP expert will contact you within 24 business hours to discuss a tailored roadmap."}
-            </p>
+            {status !== "success" && (
+              <p className="contact-form-trust">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                An SAP expert replies within 24 business hours
+              </p>
+            )}
+            <div className="contact-form-footer__row">
+              <button type="submit" className="button button--primary" disabled={status === "submitting"}>
+                {status === "submitting" ? "Submitting…" : "Get Your Consultation"}
+              </button>
+              <p className={`contact-form-status contact-form-status--${status}`}>
+                {status === "success" &&
+                  `Thank you! We've received your request and will contact you within 24 business hours at ${submittedEmail || "the email you provided"}.`}
+                {status === "error" && errorMessage}
+                {(status === "idle" || status === "submitting") && ""}
+              </p>
+            </div>
           </div>
         </form>
       </div>

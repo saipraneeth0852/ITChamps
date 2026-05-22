@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ContactSection } from "../components/ContactSection";
@@ -301,17 +302,6 @@ const mediaPanels = [
   }
 ];
 
-const heroNarrative = [
-  {
-    label: "Transformation programs",
-    text: "S/4HANA migration, implementation, and modernization with measurable business outcomes."
-  },
-  {
-    label: "Operational continuity",
-    text: "AMS, payroll, and SuccessFactors delivery for enterprises that cannot afford disruption."
-  }
-];
-
 const capabilityNotes = [
   {
     num: "01",
@@ -411,6 +401,7 @@ export default function HomePage() {
 
   const allowComplexMotion = !prefersReducedMotion && !isMobile;
   const { scrollYProgress } = useScroll();
+  const pathname = usePathname();
 
 
 
@@ -459,10 +450,10 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <Link href="/case-studies" onClick={closeNav}>Case Studies</Link>
-          <Link href="/blogs" onClick={closeNav}>Blogs</Link>
+          <Link href="/case-studies" onClick={closeNav} aria-current={pathname === "/case-studies" ? "page" : undefined}>Case Studies</Link>
+          <Link href="/blogs" onClick={closeNav} aria-current={pathname === "/blogs" ? "page" : undefined}>Blogs</Link>
           <Link href={academyHref} onClick={closeNav} className="topnav__academy">Academy</Link>
-          <Link href="/sap-solutions" onClick={closeNav} className="topnav__sap-link">SAP Solutions</Link>
+          <Link href="/sap-solutions" onClick={closeNav} className="topnav__sap-link" aria-current={pathname === "/sap-solutions" ? "page" : undefined}>SAP Solutions</Link>
           <a href="#contact-form" onClick={closeNav}>Schedule a Consultation</a>
           <a href="#contact-form" className="button button--primary mobile-nav-cta" onClick={closeNav}>
             Talk to an SAP Expert
@@ -510,25 +501,13 @@ export default function HomePage() {
           <motion.p className="hero__subtext" variants={allowComplexMotion ? textItem : textItemSimple}>
             Two decades of proven SAP expertise. 120+ certified consultants. 45+ countries. 100% project success rate.
           </motion.p>
-          <motion.p className="lede" variants={allowComplexMotion ? textItem : textItemSimple}>
-            At ITChamps, we partner with manufacturing, aerospace, professional services, and global enterprises to unlock the full potential of their SAP and enterprise technology investments. From S/4HANA migration to advanced payroll operations, we deliver measurable business outcomes: faster timelines, lower costs, and sustainable growth.
-          </motion.p>
-
-          <motion.div className="hero-narrative" variants={allowComplexMotion ? textItem : textItemSimple}>
-            {heroNarrative.map((item) => (
-              <div key={item.label} className="hero-narrative__item">
-                <span>{item.label}</span>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </motion.div>
 
           <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
             <a href="#contact-form" className="button button--primary">
               Talk to an SAP Expert
             </a>
             <a href="#readiness-checklist" className="button button--ghost">
-              Download S/4HANA Readiness Checklist
+              S/4HANA Readiness Checklist
             </a>
           </motion.div>
 
@@ -546,6 +525,10 @@ export default function HomePage() {
               </motion.span>
             ))}
           </motion.div>
+
+          <motion.p className="lede" variants={allowComplexMotion ? textItem : textItemSimple}>
+            ITChamps delivers S/4HANA migration, AMS, global payroll, and SuccessFactors for enterprises that need proven execution — not promises.
+          </motion.p>
         </motion.div>
 
         <div className="hero__visual">
@@ -1175,6 +1158,23 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {isMobile && (
+        <div className="mobile-sticky-cta" aria-label="Quick contact">
+          <a href="#contact-form" className="button button--primary mobile-sticky-cta__btn">
+            Talk to an SAP Expert
+          </a>
+          <a
+            href="tel:+919342122665"
+            className="mobile-sticky-cta__secondary"
+            aria-label="Call ITChamps"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.13 6.13l.92-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+        </div>
+      )}
     </main>
   );
 }

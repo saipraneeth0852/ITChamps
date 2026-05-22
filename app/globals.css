@@ -1339,8 +1339,11 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .case-studies-hero-compact {
+  .case-studies-hero-compact,
+  .blogs-hero-compact {
     grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 40px;
   }
 
   .case-studies-page .content-hero h1,
@@ -1575,6 +1578,15 @@ input {
   width: 100%;
 }
 
+.topnav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.topnav a[aria-current="page"]::after {
+  width: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+
 /* ── Services nav dropdown ───────────────────────────── */
 .nav-dropdown-wrap {
   position: relative;
@@ -1797,6 +1809,16 @@ input:focus-visible {
   box-shadow: 0 0 15px var(--blue-soft);
 }
 
+.button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: none;
+  transition-duration: 60ms;
+}
+
+.button--primary:active {
+  box-shadow: 0 0 8px var(--gold-soft);
+}
+
 .button--primary {
   position: relative;
   overflow: hidden;
@@ -1957,7 +1979,7 @@ h3 {
 .cta-card p,
 .final-cta p {
   font-size: 1.06rem;
-  line-height: 1.95;
+  line-height: 1.75;
 }
 
 .lede {
@@ -2142,15 +2164,15 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 42px;
+  margin-top: 28px;
 }
 
 .trust-badges {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: auto;
-  padding-top: 52px;
+  margin-top: 24px;
+  padding-top: 0;
 }
 
 .trust-badge,
@@ -2551,11 +2573,11 @@ h3 {
 .section,
 .trust-strip,
 .footer {
-  padding-bottom: 104px;
+  padding-bottom: 84px;
 }
 
 .trust-strip {
-  padding-bottom: 148px;
+  padding-bottom: 112px;
 }
 
 .section-heading {
@@ -3538,8 +3560,10 @@ h3 {
 }
 
 .card-link:hover {
-  opacity: 0.8;
-  transform: translateX(4px);
+  opacity: 1;
+  color: var(--blue);
+  transform: translateX(5px);
+  gap: 14px;
 }
 
 .case-card__meta {
@@ -3737,11 +3761,11 @@ h3 {
 .contact-meta__item span,
 .contact-form-card label span {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: rgba(33, 61, 89, 0.72);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .contact-meta__item a,
@@ -3775,21 +3799,44 @@ h3 {
 .contact-form-card input:not([type="checkbox"]):focus,
 .contact-form-card select:focus,
 .contact-form-card textarea:focus {
-  border-color: rgba(25, 90, 214, 0.28);
+  border-color: rgba(0, 143, 211, 0.6);
+  box-shadow: 0 0 0 3px rgba(0, 143, 211, 0.1);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .contact-form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.contact-form-footer__row {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 18px;
   align-items: center;
-  margin-top: 22px;
+}
+
+.contact-form-trust {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(33, 61, 89, 0.58);
+}
+
+.contact-form-trust svg {
+  flex-shrink: 0;
+  color: #1f6b43;
 }
 
 .contact-form-status {
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
+  font-size: 0.88rem;
 }
 
 .contact-form-status--success {
@@ -4083,12 +4130,12 @@ h3 {
 /* Section separators */
 .section + .section,
 .trust-strip + .section {
-  border-top: 1px solid rgba(0, 143, 211, 0.08);
+  border-top: 1px solid rgba(0, 143, 211, 0.15);
   padding-top: 56px;
 }
 
 .section--last {
-  border-top: 1px solid rgba(0, 143, 211, 0.08);
+  border-top: 1px solid rgba(0, 143, 211, 0.15);
   padding-top: 56px;
 }
 
@@ -4642,9 +4689,9 @@ h3 {
   /* ─ Layout ─ */
   .hero {
     min-height: auto;
-    gap: 40px;
-    padding-top: 40px;
-    padding-bottom: 72px;
+    gap: 0;
+    padding-top: 32px;
+    padding-bottom: 64px;
   }
 
   .home-page,
@@ -4679,8 +4726,8 @@ h3 {
   }
 
   .trust-badges {
-    grid-template-columns: 1fr;
-    margin-top: 40px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 16px;
     padding-top: 0;
   }
 
@@ -4758,7 +4805,7 @@ h3 {
   }
 
   .hero__visual {
-    min-height: auto;
+    display: none;
   }
 
   .hero-visual-collage {
@@ -5000,7 +5047,14 @@ h3 {
 
   /* ─ Hero actions stacking ─ */
   .hero-actions {
-    margin-top: 28px;
+    margin-top: 20px;
+  }
+
+  .hero-actions .button {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
   }
 
   /* ─ Capability proof text ─ */
@@ -5141,6 +5195,15 @@ h3 {
   .system-grid {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .cap-hub__tiles {
+    grid-template-columns: 1fr;
+  }
+
+  .case-studies-grid,
+  .blogs-grid {
+    grid-template-columns: 1fr;
   }
 
   .system-grid__module {
@@ -8607,7 +8670,12 @@ h3 {
 }
 .exec-resource__form input::placeholder { color: #94a3b8; }
 .exec-resource__form input:focus,
-.exec-resource__form select:focus { border-color: #008FD3; background: #fff; }
+.exec-resource__form select:focus {
+  border-color: #008FD3;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 143, 211, 0.12);
+  outline: none;
+}
 .exec-resource__form select { appearance: none; cursor: pointer; color: #374151; }
 .exec-resource__checkbox-row {
   display: flex;
@@ -10105,4 +10173,72 @@ h3 {
   .sap-calc { padding: 28px 20px; }
   .sap-calc__results { grid-template-columns: 1fr; }
   .sap-calc__result-card--primary { grid-column: 1; }
+}
+
+/* ── Global input/textarea placeholder ──────────────────── */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: rgba(55, 65, 81, 0.38);
+  font-style: normal;
+}
+
+/* ── contact-form-footer mobile override ─────────────────── */
+@media (max-width: 767px) {
+  .contact-form-footer__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile sticky CTA ───────────────────────────────────── */
+.mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-sticky-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 190;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 250, 240, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0, 143, 211, 0.14);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+  }
+
+  .mobile-sticky-cta__btn {
+    flex: 1;
+    justify-content: center;
+    min-height: 48px;
+    font-size: 0.82rem;
+  }
+
+  .mobile-sticky-cta__secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    min-width: 48px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 143, 211, 0.2);
+    background: rgba(0, 143, 211, 0.06);
+    color: var(--blue);
+    flex-shrink: 0;
+    transition: background 180ms ease;
+  }
+
+  .mobile-sticky-cta__secondary:hover {
+    background: rgba(0, 143, 211, 0.12);
+  }
+
+  /* Add bottom clearance so footer content isn't hidden behind sticky bar */
+  .footer-section {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
+  }
 }
