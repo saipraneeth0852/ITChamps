@@ -7,30 +7,30 @@ import { ContactSection } from "../../components/ContactSection";
 import { NarrativeBackdrop } from "../../components/NarrativeBackdrop";
 
 const academyStats = [
-  { value: "12", label: "playbooks for SAP teams" },
+  { value: "4", label: "self-paced leadership tracks" },
   { value: "4", label: "learning tracks" },
-  { value: "30+", label: "country payroll context" }
+  { value: "45+", label: "country operations context" }
 ];
 
 const featuredLessons = [
   {
-    title: "S/4HANA readiness sprints",
+    title: "S/4HANA migration leadership",
     description:
-      "A practical structure for discovery, fit-gap review, sequencing, and stakeholder alignment before migration execution starts.",
+      "Strategy-level guidance on migration approach, phasing, governance, and organizational change for CIOs and transformation leads.",
     image: "/insight-sheet.svg",
     alt: "Readiness checklist illustration"
   },
   {
-    title: "Process orchestration workshops",
+    title: "AMS operating model design",
     description:
-      "Visual frameworks for mapping ERP, HR, finance, and payroll dependencies so transformation teams can reduce handoff risk.",
+      "A practical operating model for SLA design, incident management, staffing, and continuous improvement in SAP support organizations.",
     image: "/process-grid.svg",
     alt: "Process grid illustration"
   },
   {
-    title: "Enterprise architecture briefings",
+    title: "Global payroll governance",
     description:
-      "System-level views that help program sponsors explain operating model changes, integration boundaries, and rollout priorities.",
+      "Execution-focused guidance for payroll leaders managing compliance, phasing, data quality, and multi-country operations.",
     image: "/system-orbit.svg",
     alt: "Enterprise systems orbit illustration"
   }
@@ -39,19 +39,19 @@ const featuredLessons = [
 const learningTracks = [
   {
     title: "Migration Leadership",
-    text: "Decision support for CIOs, transformation leads, and PMOs planning ECC to S/4HANA programs."
+    text: "Guidance for CIOs, CFOs, and PMOs planning ECC-to-S/4HANA migration strategy, governance, phasing, and business case decisions."
   },
   {
     title: "AMS and Governance",
-    text: "Operating model guidance for support teams responsible for release discipline, incident response, and continuous improvement."
+    text: "Operating model guidance for support leaders building mature, SLA-driven SAP AMS organizations."
   },
   {
     title: "SuccessFactors Transformation",
-    text: "Reference material for HR leaders balancing employee experience goals with integration complexity and compliance requirements."
+    text: "Reference material for HR leaders designing HXM transformation, employee data governance, and adoption programs."
   },
   {
     title: "Global Payroll Delivery",
-    text: "Cross-country payroll execution notes focused on governance, control design, and implementation readiness."
+    text: "Practical learning for payroll leaders managing compliance, process design, system selection, and execution across jurisdictions."
   }
 ];
 
@@ -85,10 +85,9 @@ export default function AcademyPage() {
           transition={{ duration: 0.6 }}
         >
           <p className="eyebrow">ITChamps Academy</p>
-          <h1>Enterprise SAP learning, shaped like real delivery work.</h1>
+          <h1>SAP Leadership Academy</h1>
           <p className="lede">
-            The academy page now acts as a visual knowledge hub for migration planning, support governance,
-            SuccessFactors transformation, and global payroll programs.
+            Strategic learning tracks for enterprise leaders managing SAP transformations. Self-paced, curated content for CIOs, CFOs, PMOs, and HR leaders.
           </p>
 
           <div className="hero-actions">
@@ -143,9 +142,9 @@ export default function AcademyPage() {
       <section id="featured" className="section shell">
         <div className="section-heading">
           <p className="eyebrow">Featured lessons</p>
-          <h2>More images, stronger framing, and content blocks that read like a real academy.</h2>
+          <h2>Leadership tracks built around real SAP transformation decisions.</h2>
           <p>
-            Each card uses a dedicated visual anchor so the route feels designed, not like a plain text holding page.
+            Each featured lesson reflects the same delivery streams represented across the website: migration, support governance, HR transformation, and global payroll execution.
           </p>
         </div>
 
@@ -168,10 +167,9 @@ export default function AcademyPage() {
       <section id="tracks" className="section shell section--split academy-split">
         <div className="section-heading">
           <p className="eyebrow">Learning tracks</p>
-          <h2>Structured for the people who actually run SAP programs.</h2>
+          <h2>Structured for the people who sponsor and run SAP programs.</h2>
           <p>
-            The academy is organized around the same delivery streams that appear on the rest of the site, so the page
-            stays consistent with the product story.
+            The academy is organized around the same strategic workstreams as the consulting business, so leaders can move from insight to execution planning without context switching.
           </p>
         </div>
 
@@ -195,10 +193,9 @@ export default function AcademyPage() {
           </div>
           <div className="academy-gallery__panel academy-gallery__panel--text">
             <p className="eyebrow">Visual library</p>
-            <h2>Illustrated assets now carry the page instead of leaving large empty sections.</h2>
+            <h2>Curated content designed for enterprise transformation leadership.</h2>
             <p>
-              The updated layout uses the existing brand illustrations repeatedly and intentionally, which improves
-              depth without needing external image dependencies.
+              Use the academy as a self-paced learning layer for migration leadership, AMS design, SuccessFactors transformation, and global payroll governance.
             </p>
           </div>
           <div className="academy-gallery__panel">
@@ -209,8 +206,8 @@ export default function AcademyPage() {
 
       <ContactSection
         eyebrow="Next step"
-        title="Plan academy access, cohorts, or a separate academy rollout."
-        description="The academy now reads like its own product surface, which keeps the main consulting site focused while giving the future subdomain a dedicated destination and enquiry flow."
+        title="Plan academy access, cohorts, or a leadership enablement program."
+        description="Tell us which learning tracks matter most to your organization. We can align the academy to migration, support governance, HXM transformation, or global payroll capability building."
         source="academy"
         accent="academy"
       />

@@ -9,9 +9,7 @@ export default async function CaseStudiesPage() {
   const caseStudies = await getCaseStudies("public");
   const featured = caseStudies.find((study) => study.featured) ?? caseStudies[0];
   const sectors = new Set(caseStudies.map((study) => study.sector)).size;
-  const zeroCapexStories = caseStudies.filter((study) =>
-    study.results.metrics.some((metric) => metric.value.toLowerCase().includes("$0") || metric.description.toLowerCase().includes("existing"))
-  ).length;
+  const globalPrograms = caseStudies.filter((study) => (study.countries ?? 0) > 1).length;
 
   return (
     <main className="content-page case-studies-page">
@@ -34,8 +32,8 @@ export default async function CaseStudiesPage() {
       <section className="shell content-hero case-studies-hero-compact">
         <div className="content-hero__copy">
           <p className="cs-eyebrow">Case Studies</p>
-          <h1>Structured transformation stories, not just project summaries.</h1>
-          <p>Explore how ITChamps approaches industrial optimization, compliance, maintenance, and manufacturing intelligence through outcome-led case studies.</p>
+          <h1>Real Results. Real Impact.</h1>
+          <p>See how ITChamps has delivered measurable outcomes for manufacturing, aerospace, professional services, and global enterprises. Each case study demonstrates our approach, expertise, and commitment to sustainable business impact.</p>
           <div className="case-studies-hero-support">
             <div className="case-studies-intro__stats">
               <div>
@@ -47,17 +45,17 @@ export default async function CaseStudiesPage() {
                 <span>Industry tracks</span>
               </div>
               <div>
-                <strong>{zeroCapexStories}</strong>
-                <span>Zero-CAPEX transformations</span>
+                <strong>{globalPrograms}</strong>
+                <span>Global delivery programs</span>
               </div>
             </div>
             <div className="case-studies-hero-notes">
               <div>
                 <strong>What you will find</strong>
                 <ul>
-                  <li>Challenge and baseline context</li>
-                  <li>Solution blueprint and delivery path</li>
-                  <li>Measured outcomes with reusable lessons</li>
+                  <li>S/4HANA migration and implementation stories</li>
+                  <li>Payroll, HCM, automation, and IoT outcomes</li>
+                  <li>Measured business impact across industries</li>
                 </ul>
               </div>
               <Link href="#all-case-studies" className="button button--ghost">Browse all case studies</Link>
@@ -91,9 +89,9 @@ export default async function CaseStudiesPage() {
         <div className="section-line section-line--catalog">
           <div className="case-studies-catalog__heading">
             <p className="cs-eyebrow">All Case Studies</p>
-            <h2>Browse by outcome, sector, and engagement type.</h2>
+            <h2>Browse by industry, solution, and measurable outcome.</h2>
           </div>
-          <p className="case-studies-catalog__note">Every card leads to a dedicated case-study page with challenge, solution, and measurable business impact.</p>
+          <p className="case-studies-catalog__note">Every card leads to a dedicated case-study page with challenge, solution, implementation path, and measurable business impact.</p>
         </div>
 
         <div className="content-grid case-studies-grid">

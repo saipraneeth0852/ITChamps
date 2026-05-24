@@ -4,21 +4,29 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "ITChamps Software | SAP Consulting Services and S/4HANA Migration",
+    default: "SAP Consulting & S/4HANA Migration | ITChamps (Two Decades, 100% Success)",
     template: "%s | ITChamps Software"
   },
   description:
-    "ITChamps Software is a certified SAP partner offering S/4HANA migration services, SAP consulting services, SAP AMS services India, SAP SuccessFactors consulting, and SAP global payroll solutions.",
+    "Global SAP consulting partner for S/4HANA migration, AMS, payroll, and SuccessFactors. Two decades of expertise, 120+ certified consultants, and delivery across 45+ countries.",
   keywords: [
-    "S/4HANA migration services",
-    "SAP implementation partner India",
-    "SAP consulting services",
-    "SAP AMS services India",
-    "SAP SuccessFactors consulting",
-    "SAP global payroll solutions",
-    "SAP ECC to S/4HANA migration",
-    "SAP support services"
-  ]
+    "SAP consulting",
+    "S/4HANA migration",
+    "AMS support",
+    "global payroll",
+    "SuccessFactors",
+    "enterprise transformation"
+  ],
+  openGraph: {
+    title: "Transform Your SAP Landscape With ITChamps",
+    description: "Two decades of proven expertise. 100% project success rate. Let's build your digital future.",
+    url: "https://it-champs.vercel.app/",
+    siteName: "ITChamps Software",
+    type: "website"
+  },
+  alternates: {
+    canonical: "https://it-champs.vercel.app/"
+  }
 };
 
 export default function RootLayout({

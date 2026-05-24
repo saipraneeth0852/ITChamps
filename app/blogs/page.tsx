@@ -32,8 +32,8 @@ export default async function BlogsPage() {
       <section className="shell content-hero blogs-hero-compact">
         <div className="content-hero__copy">
           <p className="cs-eyebrow">Blogs</p>
-          <h1>Clear editorial pages for SAP, AI, and transformation ideas.</h1>
-          <p>Every blog opens into its own destination page with a dedicated hero, strong cover image, and clean reading layout built for publishing regularly.</p>
+          <h1>SAP & Enterprise Technology Insights</h1>
+          <p>Strategic guidance, implementation playbooks, and operational best practices. Read our latest articles on S/4HANA, payroll, automation, and digital transformation.</p>
           <div className="case-studies-hero-support">
             <div className="case-studies-intro__stats blogs-intro__stats">
               <div>
@@ -53,9 +53,9 @@ export default async function BlogsPage() {
               <div>
                 <strong>What you will find</strong>
                 <ul>
-                  <li>Strategy notes and rollout guidance</li>
-                  <li>SAP, payroll, and AI operating insights</li>
-                  <li>Editorial content linked to execution lessons</li>
+                  <li>S/4HANA implementation and governance guidance</li>
+                  <li>Payroll, AMS, automation, and BTP playbooks</li>
+                  <li>Practical lessons tied to execution outcomes</li>
                 </ul>
               </div>
               <Link href="#all-blogs" className="button button--ghost">Browse all blogs</Link>
@@ -88,7 +88,7 @@ export default async function BlogsPage() {
         <div className="section-line section-line--catalog">
           <div className="case-studies-catalog__heading">
             <p className="cs-eyebrow">All Blogs</p>
-            <h2>Browse by topic, category, and reading intent.</h2>
+            <h2>Browse by strategy, implementation, and operating model topic.</h2>
           </div>
           <p className="case-studies-catalog__note">Each card opens into a dedicated article page with structured copy, cover media, and related reading.</p>
         </div>
