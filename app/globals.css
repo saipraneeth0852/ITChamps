@@ -1489,7 +1489,7 @@ input {
   backdrop-filter: blur(24px) saturate(1.5);
   -webkit-backdrop-filter: blur(24px) saturate(1.5);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 143, 211, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     inset 0 -1px 0 rgba(255, 255, 255, 0.2);
@@ -1497,6 +1497,17 @@ input {
   max-width: 1520px;
   border-radius: 999px;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.topbar--scrolled {
+  top: 8px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 143, 211, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 143, 211, 0.1);
 }
 
 .brand {
@@ -1969,6 +1980,50 @@ h3 {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(33, 61, 89, 0.82);
+}
+
+.hero__stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.hero__stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 143, 211, 0.18);
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.hero__stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 143, 211, 0.1);
+}
+
+.hero__stat-pill strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--blue), #0099d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.hero__stat-pill span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(33, 61, 89, 0.6);
 }
 
 .lede,
@@ -3550,20 +3605,20 @@ h3 {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-weight: 600;
-  color: rgba(25, 90, 214, 0.9);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.88rem;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  color: var(--blue);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  padding: 9px 16px 9px 0;
+  border-bottom: 1px solid rgba(0, 143, 211, 0.25);
+  transition: gap 0.22s ease, border-color 0.22s ease, color 0.22s ease;
 }
 
 .card-link:hover {
-  opacity: 1;
-  color: var(--blue);
-  transform: translateX(5px);
   gap: 14px;
+  color: #005A87;
+  border-color: rgba(0, 143, 211, 0.6);
 }
 
 .case-card__meta {
@@ -8377,29 +8432,46 @@ h3 {
 
 /* ── Testimonial block (trust-strip) ───────────────────── */
 .trust-testimonial {
-  margin: 40px auto 0;
-  max-width: 720px;
-  padding: 28px 36px;
-  border-left: 3px solid var(--accent, #008FD3);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px);
-  border-radius: 0 18px 18px 0;
-  text-align: left;
+  margin: 48px auto 0;
+  max-width: 760px;
+  padding: 40px 48px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(0, 143, 211, 0.12);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-align: center;
+  position: relative;
 }
+
+.trust-testimonial__stars {
+  font-size: 1.1rem;
+  color: #d99a00;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  display: block;
+}
+
 .trust-testimonial p {
   font-size: 1.08rem;
-  line-height: 1.7;
+  line-height: 1.72;
   color: var(--text);
   font-style: italic;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
+  max-width: 58ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .trust-testimonial footer {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
 }
 .trust-testimonial footer strong {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text);
 }
 .trust-testimonial footer span {
@@ -8468,8 +8540,8 @@ h3 {
 
 @media (max-width: 767px) {
   .trust-testimonial {
-    padding: 20px 20px;
-    margin-top: 28px;
+    padding: 28px 24px;
+    margin-top: 32px;
   }
   .checklist-includes {
     grid-template-columns: 1fr;
@@ -10241,4 +10313,123 @@ select::placeholder {
   .footer-section {
     padding-bottom: calc(56px + env(safe-area-inset-bottom)) !important;
   }
+}
+
+/* ── Scroll to top button ────────────────────────────────── */
+.scroll-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 180;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 143, 211, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 143, 211, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 143, 211, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 767px) {
+  .scroll-to-top {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ── Footer social links ─────────────────────────────────── */
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-social__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease !important;
+}
+
+.footer-social__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ── Hero stat pills — mobile ────────────────────────────── */
+@media (max-width: 767px) {
+  .hero__stats-row {
+    gap: 6px;
+  }
+  .hero__stat-pill {
+    padding: 7px 12px 7px 10px;
+  }
+  .hero__stat-pill strong {
+    font-size: 0.95rem;
+  }
+  .hero__stat-pill span {
+    font-size: 0.64rem;
+  }
+}
+
+/* ── Topbar — mobile scrolled state ─────────────────────── */
+@media (max-width: 767px) {
+  .topbar--scrolled {
+    top: 6px;
+    padding: 10px 16px;
+  }
+}
+
+/* ── Section headings — stronger eyebrow ────────────────── */
+.section-heading .eyebrow,
+.trust-strip .eyebrow {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(0, 143, 211, 0.08);
+  border: 1px solid rgba(0, 143, 211, 0.18);
+  border-radius: 999px;
+  color: var(--blue);
+  margin-bottom: 16px;
+  font-size: 0.7rem;
+}
+
+/* ── Urgency stats — gradient numbers ───────────────────── */
+.urgency-stat strong {
+  background: linear-gradient(135deg, var(--blue) 0%, #0099d4 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Case card result — badge treatment ─────────────────── */
+.case-card__result {
+  font-weight: 700;
+  color: rgba(163, 107, 20, 0.95);
+  background: rgba(240, 171, 0, 0.1);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(217, 154, 0, 0.22);
 }

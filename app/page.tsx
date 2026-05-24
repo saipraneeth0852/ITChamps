@@ -20,6 +20,21 @@ function ScrollProgressBar({ scrollYProgress }: { scrollYProgress: any }) {
   );
 }
 
+function ScrollToTopButton({ visible }: { visible: boolean }) {
+  if (!visible) return null;
+  return (
+    <button
+      className="scroll-to-top"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
+  );
+}
+
 function FloatingParticles() {
   const particles = [
     { x: 8,  y: 15, size: 3, delay: 0,   dur: 9,  gold: false },
@@ -383,6 +398,7 @@ export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
@@ -397,6 +413,12 @@ export default function HomePage() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileNavOpen]);
 
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
   const closeNav = () => { setMobileNavOpen(false); setMobileServicesOpen(false); };
 
   const allowComplexMotion = !prefersReducedMotion && !isMobile;
@@ -410,7 +432,7 @@ export default function HomePage() {
       <ScrollProgressBar scrollYProgress={scrollYProgress} />
       <NarrativeBackdrop variant="home" />
 
-      <header className={`topbar shell${mobileNavOpen ? " topbar--nav-open" : ""}`}>
+      <header className={`topbar shell${mobileNavOpen ? " topbar--nav-open" : ""}${scrolled ? " topbar--scrolled" : ""}`}>
         <Link href="/" className="brand brand--logo" aria-label="ITChamps Software homepage">
           <Image src="/itchamps-logo.png" alt="ITChamps Software logo" width={176} height={56} priority />
         </Link>
@@ -454,7 +476,6 @@ export default function HomePage() {
           <Link href="/blogs" onClick={closeNav} aria-current={pathname === "/blogs" ? "page" : undefined}>Blogs</Link>
           <Link href={academyHref} onClick={closeNav} className="topnav__academy">Academy</Link>
           <Link href="/sap-solutions" onClick={closeNav} className="topnav__sap-link" aria-current={pathname === "/sap-solutions" ? "page" : undefined}>SAP Solutions</Link>
-          <a href="#contact-form" onClick={closeNav}>Schedule a Consultation</a>
           <a href="#contact-form" className="button button--primary mobile-nav-cta" onClick={closeNav}>
             Talk to an SAP Expert
           </a>
@@ -498,9 +519,12 @@ export default function HomePage() {
               </motion.span>
             ))}
           </motion.h1>
-          <motion.p className="hero__subtext" variants={allowComplexMotion ? textItem : textItemSimple}>
-            Two decades of proven SAP expertise. 120+ certified consultants. 45+ countries. 100% project success rate.
-          </motion.p>
+          <motion.div className="hero__stats-row" variants={allowComplexMotion ? textItem : textItemSimple}>
+            <div className="hero__stat-pill"><strong>20+</strong><span>Years</span></div>
+            <div className="hero__stat-pill"><strong>120+</strong><span>Consultants</span></div>
+            <div className="hero__stat-pill"><strong>45+</strong><span>Countries</span></div>
+            <div className="hero__stat-pill"><strong>100%</strong><span>Success Rate</span></div>
+          </motion.div>
 
           <motion.div className="hero-actions" variants={allowComplexMotion ? textItem : textItemSimple}>
             <a href="#contact-form" className="button button--primary">
@@ -621,6 +645,7 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
+          <div className="trust-testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&ldquo;We have been in business with ITChamps and one thing I can say for sure is they genuinely care about our success. They have been amazing to work with every step of the way.&rdquo;</p>
           <footer>
             <strong>Anthony Balraj</strong>
@@ -1146,6 +1171,20 @@ export default function HomePage() {
                 <a href="mailto:info@itchamps.com">info@itchamps.com</a>
                 <a href="tel:+919342122665">+91 93421 22665</a>
                 <span>Mysuru • Bengaluru • Mumbai • London</span>
+                <div className="footer-social">
+                  <a href="https://linkedin.com/company/itchamps" target="_blank" rel="noreferrer" aria-label="ITChamps on LinkedIn" className="footer-social__link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    LinkedIn
+                  </a>
+                  <a href="https://youtube.com/@itchamps" target="_blank" rel="noreferrer" aria-label="ITChamps on YouTube" className="footer-social__link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+                    </svg>
+                    YouTube
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1158,6 +1197,8 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      <ScrollToTopButton visible={scrolled && !mobileNavOpen} />
 
       {isMobile && (
         <div className="mobile-sticky-cta" aria-label="Quick contact">
