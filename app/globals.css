@@ -8598,11 +8598,21 @@ h3 {
 }
 .exec-resource__inner {
   display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 64px;
-  align-items: start;
+  grid-template-columns: 1fr 460px;
+  gap: 56px;
+  align-items: stretch;
   position: relative;
   z-index: 1;
+}
+
+.exec-resource__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.exec-resource__right {
+  display: flex;
+  flex-direction: column;
 }
 /* ── Left column ── */
 .exec-resource__badge {
@@ -8638,10 +8648,10 @@ h3 {
 .exec-resource__features {
   list-style: none;
   padding: 0;
-  margin: 0 0 36px;
+  margin: 0 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .exec-resource__features li {
   display: flex;
@@ -8659,41 +8669,42 @@ h3 {
 .exec-resource__preview {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 18px;
-  padding: 22px 24px;
+  border-radius: 14px;
+  padding: 16px 18px;
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
+  margin-top: auto;
 }
 .exec-resource__preview-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .exec-resource__preview-label {
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.45);
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
 .exec-resource__preview-score {
-  font-size: 1.1rem;
+  font-size: 0.92rem;
   font-weight: 800;
   color: #fff;
 }
 .exec-resource__bar-row {
   display: grid;
-  grid-template-columns: 140px 1fr 36px;
+  grid-template-columns: 130px 1fr 30px;
   align-items: center;
-  gap: 10px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.55);
+  gap: 8px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
 }
 .exec-resource__bar-track {
-  height: 6px;
+  height: 5px;
   background: rgba(255,255,255,0.1);
   border-radius: 100px;
   overflow: hidden;
@@ -8704,9 +8715,9 @@ h3 {
   transition: width 0.6s ease;
 }
 .exec-resource__bar-pct {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
   text-align: right;
 }
 /* ── Right column: form card ── */
@@ -8715,6 +8726,9 @@ h3 {
   border-radius: 24px;
   padding: 40px 36px;
   box-shadow: 0 24px 64px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,143,211,0.08);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .exec-resource__card-eyebrow {
   font-size: 0.72rem;
@@ -8795,11 +8809,15 @@ h3 {
   height: 52px;
   font-size: 0.97rem;
 }
+.exec-resource__form {
+  flex: 1;
+}
+
 .exec-resource__social-proof {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid #f1f5f9;
 }
