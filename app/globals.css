@@ -2849,24 +2849,27 @@ h3 {
 .cap-hub__stats {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: center;
-  justify-content: space-around;
-  margin-top: 16px;
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  justify-items: center;
+  margin-top: 20px;
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0;
 }
 
 .cap-hub__stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
+  padding: 4px 16px;
 }
 
 .cap-hub__stat strong {
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.04em;
@@ -2874,16 +2877,18 @@ h3 {
 }
 
 .cap-hub__stat span {
-  font-size: 0.62rem;
-  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 
 .cap-hub__stat-divider {
   width: 1px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.12);
+  height: 36px;
+  background: rgba(255, 255, 255, 0.14);
+  flex-shrink: 0;
 }
 
 .services-stat-panel {
@@ -4951,11 +4956,20 @@ h3 {
   }
 
   .cap-hub__stats {
-    padding: 16px 18px;
+    padding: 18px 20px;
+    gap: 0;
+  }
+
+  .cap-hub__stat {
+    padding: 4px 10px;
   }
 
   .cap-hub__stat strong {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+  }
+
+  .cap-hub__stat span {
+    font-size: 0.62rem;
   }
 
   .services-stat-panel {
