@@ -1050,13 +1050,23 @@ export default function HomePage() {
                   <input type="email" placeholder="Work email" aria-label="Work email" suppressHydrationWarning />
                 </div>
                 <input type="text" placeholder="Company name" aria-label="Company name" suppressHydrationWarning />
-                <select aria-label="Company size" suppressHydrationWarning defaultValue="">
-                  <option value="" disabled>Company size</option>
-                  <option>Under 200 employees</option>
-                  <option>200–1,000 employees</option>
-                  <option>1,000–5,000 employees</option>
-                  <option>5,000+ employees</option>
-                </select>
+                <div className="exec-resource__form-row">
+                  <select aria-label="Company size" suppressHydrationWarning defaultValue="">
+                    <option value="" disabled>Company size</option>
+                    <option>Under 200 employees</option>
+                    <option>200–1,000 employees</option>
+                    <option>1,000–5,000 employees</option>
+                    <option>5,000+ employees</option>
+                  </select>
+                  <select aria-label="Migration timeline" suppressHydrationWarning defaultValue="">
+                    <option value="" disabled>Migration timeline</option>
+                    <option>Within 6 months</option>
+                    <option>6–12 months</option>
+                    <option>1–2 years</option>
+                    <option>2+ years</option>
+                    <option>Exploring options</option>
+                  </select>
+                </div>
                 <label className="exec-resource__checkbox-row">
                   <input type="checkbox" suppressHydrationWarning />
                   <span>Send me monthly SAP migration insights</span>
