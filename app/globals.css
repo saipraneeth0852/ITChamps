@@ -1862,8 +1862,16 @@ input:focus-visible {
 }
 
 .button--ghost {
-  background: transparent;
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(33, 61, 89, 0.25);
+  color: var(--text);
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(0, 143, 211, 0.45);
+  color: var(--blue);
 }
 
 .button--compact {
