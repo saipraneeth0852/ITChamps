@@ -98,6 +98,33 @@ export function ContactSection({
               <p>{officeLocations.join(" • ")}</p>
             </div>
           </div>
+
+          <div className="contact-next-steps">
+            <p className="contact-next-steps__label">What happens next</p>
+            <ol className="contact-next-steps__list">
+              <li>
+                <span className="contact-next-steps__num">01</span>
+                <div>
+                  <strong>We review your submission</strong>
+                  <span>An SAP expert reads your brief within 24 business hours</span>
+                </div>
+              </li>
+              <li>
+                <span className="contact-next-steps__num">02</span>
+                <div>
+                  <strong>Expert consultation call</strong>
+                  <span>We ask the right questions to understand your landscape and goals</span>
+                </div>
+              </li>
+              <li>
+                <span className="contact-next-steps__num">03</span>
+                <div>
+                  <strong>Tailored recommendation</strong>
+                  <span>You receive a clear action plan — no obligation, no generic pitches</span>
+                </div>
+              </li>
+            </ol>
+          </div>
         </div>
 
         <form className="contact-form-card" onSubmit={handleSubmit} noValidate>
