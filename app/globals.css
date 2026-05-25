@@ -8979,7 +8979,13 @@ h3 {
   --sap-green: #16A34A;
   --sap-yellow: #CA8A04;
   --sap-border: rgba(0, 143, 211, 0.12);
-  background: #f8fafc;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(0, 143, 211, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 143, 211, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(0, 143, 211, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(240, 171, 0, 0.1), transparent 30%);
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
   min-height: 100vh;
 }
 
