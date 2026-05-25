@@ -162,6 +162,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background-color: var(--bg);
   background-image: 
     linear-gradient(rgba(0, 143, 211, 0.05) 1px, transparent 1px),
@@ -173,6 +174,14 @@ body {
   font-family: var(--font-sans), "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+img,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 .admin-auth-page,
@@ -4139,8 +4148,8 @@ h3 {
   color: #FFFFFF;
   padding: 80px 0 32px 0;
   margin-top: 80px;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  margin-left: 0;
 }
 
 .footer-section__top {
@@ -5015,20 +5024,29 @@ h3 {
   }
 
   .cap-hub__stats {
-    padding: 18px 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 16px 10px;
     gap: 0;
   }
 
   .cap-hub__stat {
-    padding: 4px 10px;
+    padding: 4px 6px;
   }
 
   .cap-hub__stat strong {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .cap-hub__stat span {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+  }
+
+  .cap-hub__stat-divider {
+    display: none;
   }
 
   .services-stat-panel {
@@ -5300,6 +5318,19 @@ h3 {
   .service-card {
     padding: 18px;
     border-radius: 22px;
+  }
+
+  .cap-hub__stats {
+    padding: 14px 8px;
+  }
+
+  .cap-hub__stat strong {
+    font-size: 1.08rem;
+  }
+
+  .cap-hub__stat span {
+    font-size: 0.54rem;
+    letter-spacing: 0.06em;
   }
 
   .service-card__photo {
