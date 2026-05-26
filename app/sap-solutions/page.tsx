@@ -29,17 +29,17 @@ const valueProps = [
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
-    title: "Maximise your SAP investment",
-    body: "Extend your current SAP landscape with proactive AMS, security monitoring, and advisory — while planning your transition to S/4HANA on a timeline that works for your business.",
-    link: "#sap-calculator",
-    cta: "Calculate savings",
+    title: "Protect business continuity",
+    body: "Stabilize current operations with proactive AMS, security controls, and release governance while your leadership team defines the right S/4HANA path.",
+    link: "#sap-readiness",
+    cta: "View readiness model",
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
-    title: "Self-fund innovation",
-    body: "Redirect savings from consolidated support and optimized licensing toward AI, analytics, and digital capability build-out — without waiting for your next budget cycle.",
-    link: "#sap-calculator",
-    cta: "Find out how",
+    title: "Build an executive roadmap",
+    body: "Turn fragmented SAP priorities into a sequenced roadmap across modernization, compliance, integration, and adoption with clear ownership at each phase.",
+    link: "#sap-readiness",
+    cta: "See roadmap inputs",
   },
 ];
 
@@ -89,8 +89,8 @@ const serviceTabs = [
   {
     id: "audit",         label: "SAP Audit & Advisory",   tag: "Advisory",
     headline: "Most enterprises leave significant SAP value untapped.",
-    body: "ITChamps SAP Audit identifies underused capabilities, adoption gaps, redundant processes, and a prioritised roadmap for measurable ROI within 12 months — starting with a complimentary initial assessment.",
-    bullets: ["System, process, and user-behaviour assessment","Licence and cost optimisation analysis","Performance, security, and adoption gap review","Opportunity sizing and ROI quantification","12-month prioritised roadmap with quick wins","Optional complimentary initial assessment"],
+    body: "ITChamps SAP Audit identifies underused capabilities, adoption gaps, and process friction to create a prioritised roadmap for operational reliability, governance maturity, and adoption outcomes.",
+    bullets: ["System, process, and user-behaviour assessment","Landscape rationalization and capability coverage analysis","Performance, security, and adoption gap review","Opportunity sizing with execution dependency mapping","12-month prioritised roadmap with quick wins","Optional complimentary initial assessment"],
     link: "/services#sap-audit",
   },
   {
@@ -236,9 +236,9 @@ export default function SapSolutionsPage() {
               SAP Innovation<br />and Support.<br />On Your Terms.
             </motion.h1>
             <motion.p className="sap-hero__sub" variants={prefersReduced ? fadeIn : fadeUp}>
-              Act now to extend the life of your SAP systems — or migrate to S/4HANA with a partner
-              that has never missed a go-live. ITChamps delivers every SAP program on time, on budget,
-              with full hypercare and two decades of enterprise expertise.
+              Plan your SAP future with clarity: stabilize what runs today, modernize what matters next,
+              and migrate with confidence before ECC deadlines. ITChamps delivers structured programs with
+              accountable governance, controlled cutovers, and enterprise-grade hypercare.
             </motion.p>
             <motion.div className="sap-hero__ctas" variants={prefersReduced ? fadeIn : fadeUp}>
               <Link href="#sap-services" className="button button--primary">Explore our SAP services</Link>
@@ -270,18 +270,18 @@ export default function SapSolutionsPage() {
         </motion.div>
       </section>
 
-      {/* ── Savings Calculator ────────────────────────────── */}
-      <section className="sap-section sap-section--home-bg" id="sap-calculator">
+      {/* ── Readiness Model ───────────────────────────────── */}
+      <section className="sap-section sap-section--home-bg" id="sap-readiness">
         <div className="shell">
           <motion.div className="sap-section-header" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <p className="sap-eyebrow">Calculate your potential savings</p>
-            <h2 className="sap-section-title">How much could you save with ITChamps?</h2>
+            <p className="sap-eyebrow">Readiness and operating model fit</p>
+            <h2 className="sap-section-title">Assess your SAP operating posture</h2>
             <p className="sap-section-sub">
-              Compare your current SAP support spend against ITChamps AMS — and see what you could redirect
-              toward your S/4HANA migration or digital innovation programs.
+              Use this estimator to frame operating complexity, support model pressure, and delivery readiness.
+              The output helps leadership teams prioritize sequencing and governance before migration execution.
             </p>
           </motion.div>
-          <SavingsCalculator />
+          <ReadinessEstimator />
         </div>
       </section>
 
@@ -330,7 +330,7 @@ export default function SapSolutionsPage() {
                 <li>Data quality &amp; master data evaluation</li>
                 <li>Organisational change management</li>
                 <li>Timeline &amp; resource planning</li>
-                <li>Cost-benefit analysis template</li>
+                <li>Governance and ownership matrix</li>
                 <li>Custom solutions roadmap</li>
               </ul>
               <Link href="/#readiness-checklist" className="button button--primary button--compact" style={{ width: "100%", justifyContent: "center", marginTop: "8px" }}>
@@ -634,7 +634,7 @@ export default function SapSolutionsPage() {
         <div className="shell sap-cta-inner">
           <motion.div className="sap-cta-copy" initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}>
             <p className="sap-eyebrow sap-eyebrow--light">Start your SAP journey</p>
-            <h2 className="sap-cta-title">Maximise your SAP investment</h2>
+            <h2 className="sap-cta-title">Define your SAP execution roadmap</h2>
             <p className="sap-cta-body">
               Tell us about your current SAP environment and goals. Our consultants will review your landscape
               and respond within one business day with a tailored assessment and a clear path forward.
@@ -694,18 +694,18 @@ export default function SapSolutionsPage() {
   );
 }
 
-// ─── Savings Calculator ──────────────────────────────────────────────────────
+// ─── Readiness Estimator ─────────────────────────────────────────────────────
 
-function SavingsCalculator() {
+function ReadinessEstimator() {
   const [spend, setSpend]     = useState(500000);
   const [model, setModel]     = useState("sap-standard");
   const [users, setUsers]     = useState("100-500");
   const [calculated, setCalc] = useState(false);
 
-  const savingsRate     = model === "sap-standard" ? 0.40 : model === "sap-enterprise" ? 0.47 : 0.28;
-  const annualSavings   = Math.round(spend * savingsRate);
-  const threeYearSaving = annualSavings * 3;
-  const migrationFund   = Math.round(threeYearSaving * 0.6);
+  const pressureRate = model === "sap-standard" ? 0.34 : model === "sap-enterprise" ? 0.41 : 0.26;
+  const annualPressureIndex = Math.round(spend * pressureRate);
+  const threeYearExposure = annualPressureIndex * 3;
+  const modernizationCapacity = Math.round(threeYearExposure * 0.55);
   const tier = users === "<100" ? "AMS Essentials" : users === "100-500" ? "AMS Advanced" : "AMS Enterprise";
   const modelLabel = model === "sap-standard" ? "SAP Standard" : model === "sap-enterprise" ? "SAP Enterprise" : "in-house";
 
@@ -714,7 +714,7 @@ function SavingsCalculator() {
       {/* ── Left: inputs ── */}
       <div className="sap-calc__inputs">
         <div className="sap-calc__field">
-          <label htmlFor="calc-spend">Current annual SAP support spend</label>
+          <label htmlFor="calc-spend">Current annual SAP operations spend</label>
           <div className="sap-calc__input-wrap">
             <span className="sap-calc__currency">$</span>
             <input id="calc-spend" type="number" min={0} step={10000}
@@ -726,7 +726,7 @@ function SavingsCalculator() {
           <div className="sap-calc__range-labels"><span>$50K</span><span>$5M</span></div>
         </div>
         <div className="sap-calc__field">
-          <label htmlFor="calc-model">Current support model</label>
+          <label htmlFor="calc-model">Current operating model</label>
           <select id="calc-model" value={model} onChange={(e) => { setModel(e.target.value); setCalc(false); }}>
             <option value="sap-standard">SAP Standard Maintenance (22%)</option>
             <option value="sap-enterprise">SAP Enterprise Support (33%)</option>
@@ -743,7 +743,7 @@ function SavingsCalculator() {
           </select>
         </div>
         <button className="button button--primary sap-calc__btn" onClick={() => setCalc(true)}>
-          Calculate my savings
+          Generate readiness estimate
         </button>
       </div>
 
@@ -763,22 +763,22 @@ function SavingsCalculator() {
                 priority
               />
               <div className="sap-calc__visual-overlay">
-                <p className="sap-calc__visual-eyebrow">Typical ITChamps client outcomes</p>
+                <p className="sap-calc__visual-eyebrow">Leadership planning signals</p>
                 <div className="sap-calc__visual-stats">
                   <div className="sap-calc__visual-stat">
-                    <strong>Up to 50%</strong>
-                    <span>savings on annual SAP support fees</span>
+                    <strong>12-18 months</strong>
+                    <span>typical enterprise migration planning runway</span>
                   </div>
                   <div className="sap-calc__visual-stat">
-                    <strong>3× ROI</strong>
-                    <span>on AMS investment within 24 months</span>
+                    <strong>8 phases</strong>
+                    <span>from discovery to post-go-live stabilization</span>
                   </div>
                   <div className="sap-calc__visual-stat">
                     <strong>45+ countries</strong>
-                    <span>with active SAP support operations</span>
+                    <span>covered across compliance-heavy operations</span>
                   </div>
                 </div>
-                <p className="sap-calc__visual-cta">← Enter your spend to see your numbers</p>
+                <p className="sap-calc__visual-cta">← Enter your profile to model execution readiness</p>
               </div>
             </motion.div>
           ) : (
@@ -786,28 +786,28 @@ function SavingsCalculator() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}>
               <div className="sap-calc__result-card sap-calc__result-card--primary">
-                <span className="sap-calc__result-label">Estimated annual savings</span>
-                <span className="sap-calc__result-value">${annualSavings.toLocaleString()}</span>
-                <span className="sap-calc__result-sub">vs. {modelLabel} support</span>
+                <span className="sap-calc__result-label">Estimated annual operating pressure</span>
+                <span className="sap-calc__result-value">${annualPressureIndex.toLocaleString()}</span>
+                <span className="sap-calc__result-sub">based on {modelLabel} operations</span>
               </div>
               <div className="sap-calc__result-card">
-                <span className="sap-calc__result-label">3-year total savings</span>
-                <span className="sap-calc__result-value">${threeYearSaving.toLocaleString()}</span>
+                <span className="sap-calc__result-label">3-year delivery exposure</span>
+                <span className="sap-calc__result-value">${threeYearExposure.toLocaleString()}</span>
               </div>
               <div className="sap-calc__result-card">
-                <span className="sap-calc__result-label">Available for S/4HANA migration</span>
-                <span className="sap-calc__result-value">${migrationFund.toLocaleString()}</span>
+                <span className="sap-calc__result-label">Modernization capacity index</span>
+                <span className="sap-calc__result-value">${modernizationCapacity.toLocaleString()}</span>
               </div>
               <div className="sap-calc__result-card">
-                <span className="sap-calc__result-label">Recommended service tier</span>
+                <span className="sap-calc__result-label">Recommended support posture</span>
                 <span className="sap-calc__result-value sap-calc__result-value--tier">{tier}</span>
               </div>
               <p className="sap-calc__disclaimer">
-                * Based on typical ITChamps client outcomes. Actual savings vary.{" "}
-                <Link href="#contact-sap">Speak to a consultant for a precise analysis.</Link>
+                * Directional planning estimate only. Final roadmap inputs are validated through a structured SAP assessment.{" "}
+                <Link href="#contact-sap">Speak to a consultant for a precise readiness review.</Link>
               </p>
               <button className="sap-calc__reset" onClick={() => setCalc(false)}>
-                ← Recalculate
+                ← Re-run estimator
               </button>
             </motion.div>
           )}

@@ -3,22 +3,22 @@ import { NarrativeBackdrop } from "../../components/NarrativeBackdrop";
 
 const phases = [
   {
-    label: "Urgency",
-    title: "Deadlines, fragmented systems, and risk signals dominate the opening frame.",
+    label: "Readiness",
+    title: "Validate scope, custom complexity, and deadline risk before committing the roadmap.",
     text:
-      "The backdrop starts with warmer alert tones and broken horizontal flow, giving the top of the page a countdown quality rather than a calm product-tour aesthetic."
+      "Start with landscape diagnostics: ECC footprint, integration dependencies, data quality, and business-critical release windows. The objective is clarity before execution."
   },
   {
-    label: "Migration in progress",
-    title: "The middle of the page shows controlled transfer, sequencing, and data movement.",
+    label: "Execution",
+    title: "Run migration as a controlled program with governance gates and cutover discipline.",
     text:
-      "Network paths become more legible and directional. Trails move left to right so the page reads like a workload moving through a defined process."
+      "Sequence work by business value and risk. Operate with fit-gap control, testing rigor, release governance, and decision checkpoints visible to business and IT leadership."
   },
   {
-    label: "Future state",
-    title: "The lower sections resolve into a cleaner, optimized S/4HANA operating model.",
+    label: "Stabilization",
+    title: "Transition into a resilient S/4HANA operating model with measurable adoption.",
     text:
-      "Alert colors recede, the grid stabilizes, and blue-gold harmony replaces fragmentation. The tone shifts from urgency to confidence."
+      "Post go-live, focus on hypercare, performance tuning, user adoption, and control monitoring. The outcome is a stable platform ready for scale, automation, and innovation."
   }
 ];
 
@@ -29,13 +29,19 @@ export default function MigrationPage() {
 
       <section className="hero hero--migration">
         <div className="shell">
-          <p className="eyebrow">Migration narrative</p>
-          <h1>Countdown, controlled movement, and a visible future state.</h1>
+          <p className="eyebrow">Migration hub</p>
+          <h1>S/4HANA migration planning, governance, and execution in one view.</h1>
           <p className="lede">
-            This page pushes the story harder: urgency at the top, structured migration in the middle, and an
-            optimized enterprise system at the bottom.
+            Use this page as an executive snapshot: what to validate first, how to control delivery risk during
+            migration, and what must be stabilized after go-live.
           </p>
           <div className="hero-actions">
+            <Link href="/sap-solutions#sap-playbook" className="button button--primary">
+              Open migration playbook
+            </Link>
+            <Link href="/sap-solutions#contact-sap" className="button button--ghost">
+              Request readiness assessment
+            </Link>
             <Link href="/" className="button button--ghost">
               Back to homepage
             </Link>
@@ -56,11 +62,11 @@ export default function MigrationPage() {
         ))}
 
         <section className="cta-card">
-          <p className="eyebrow">Transformation complete</p>
-          <h2>When the motion settles, the system should feel integrated, observable, and ready to scale.</h2>
+          <p className="eyebrow">Program checkpoints</p>
+          <h2>Migration programs succeed when decisions are governed and transition risk is visible.</h2>
           <p>
-            The visual language stays grounded in enterprise architecture: structured grids, system modules, signal
-            trails, and progression that maps to business readiness.
+            Align business owners, IT leadership, and SI teams around phase-gates, testing readiness, and cutover
+            controls. Treat migration as an operating model change, not only a technical conversion.
           </p>
         </section>
       </div>
