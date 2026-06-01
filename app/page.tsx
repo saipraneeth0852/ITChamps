@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, type MotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ContactSection } from "../components/ContactSection";
 import { NarrativeBackdrop } from "../components/NarrativeBackdrop";
 import { academyHref } from "../lib/site";
 
-function ScrollProgressBar({ scrollYProgress }: { scrollYProgress: any }) {
+function ScrollProgressBar({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
   const scaleX = useSpring(scrollYProgress, { stiffness: 400, damping: 50, restDelta: 0.001 });
   return (
     <motion.div
@@ -158,7 +158,7 @@ const heroTitle = ["Transform Enterprise Operations.", "Achieve Digital Excellen
 const servicesNavItems = [
   {
     category: "SAP Solutions",
-    href: "/services#sap-solutions",
+    href: "/sap-solutions",
     items: [
       { label: "S/4HANA Migration", href: "/services#s4hana-migration" },
       { label: "S/4HANA Implementation", href: "/services#s4-implementation" },
@@ -169,30 +169,42 @@ const servicesNavItems = [
   },
   {
     category: "HR & Payroll",
-    href: "/services#hr-payroll",
+    href: "/hr-payroll",
     items: [
-      { label: "Global Payroll Operations", href: "/services#global-payroll" },
-      { label: "SuccessFactors Integration", href: "/services#successfactors" },
-      { label: "ESS & MSS Portals", href: "/services#ess-mss" },
-      { label: "Payroll Outsourcing", href: "/services#payroll-outsourcing" },
+      { label: "Global Payroll Operations", href: "/hr-payroll#global-payroll" },
+      { label: "SuccessFactors Integration", href: "/hr-payroll#successfactors" },
+      { label: "ESS & MSS Portals", href: "/hr-payroll#ess-mss" },
+      { label: "Payroll Outsourcing", href: "/hr-payroll#payroll-outsourcing" },
     ],
   },
   {
     category: "Enterprise Automation",
-    href: "/services#automation",
+    href: "/enterprise-automation",
     items: [
-      { label: "PEGA Automation", href: "/services#pega" },
-      { label: "Camunda Workflow", href: "/services#camunda" },
-      { label: "DCS Integration", href: "/services#dcs" },
-      { label: "IOT Integration", href: "/services#iot" },
+      { label: "PEGA Automation", href: "/enterprise-automation#pega" },
+      { label: "Camunda Workflow", href: "/enterprise-automation#camunda" },
+      { label: "DCS Integration", href: "/enterprise-automation#dcs" },
+      { label: "IoT Integration", href: "/enterprise-automation#iot" },
     ],
   },
   {
-    category: "Security",
-    href: "/services#security",
+    category: "Cyber Security",
+    href: "/cyber-security",
     items: [
-      { label: "Cyber Security", href: "/services#cyber-security" },
-      { label: "EHS Compliance", href: "/services#ehs" },
+      { label: "SAP Security Assessment", href: "/cyber-security#security-assessment" },
+      { label: "Vulnerability & Pen Testing", href: "/cyber-security#vapt" },
+      { label: "GRC & Segregation of Duties", href: "/cyber-security#grc" },
+      { label: "EHS Compliance", href: "/cyber-security#ehs" },
+    ],
+  },
+  {
+    category: "AI Solutions",
+    href: "/ai",
+    items: [
+      { label: "AI Demand Forecasting", href: "/ai#forecasting" },
+      { label: "Inventory Optimisation", href: "/ai#inventory" },
+      { label: "Predictive Alerts", href: "/ai#alerts" },
+      { label: "INVENTRIX Platform", href: "/ai#capabilities" },
     ],
   },
 ];
@@ -892,7 +904,7 @@ export default function HomePage() {
           </motion.p>
           <motion.h2 variants={allowComplexMotion ? textItem : textItemSimple}>Real Results Across Industries</motion.h2>
           <motion.p variants={allowComplexMotion ? textItem : textItemSimple}>
-            See how we've helped enterprises achieve measurable outcomes, from $15M revenue gains to 30%+ operational efficiency improvements.
+            See how we&apos;ve helped enterprises achieve measurable outcomes, from $15M revenue gains to 30%+ operational efficiency improvements.
           </motion.p>
         </motion.div>
 
