@@ -90,6 +90,16 @@ export function isSameOriginRequest(request: Request) {
   const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
   if (!host) return !isProduction();
 
-  const protocol = request.headers.get("x-forwarded-proto") ?? (isProduction() ? "https" : "http");
-  return origin === `${protocol}://${host}`;
+  const forwardedProto = request.headers.get("x-forwarded-proto");
+  if (forwardedProto) {
+    // Behind a proper proxy — check full origin including protocol
+    return origin === `${forwardedProto}://${host}`;
+  }
+
+  // No proxy — compare host only so HTTP and HTTPS both work
+  try {
+    return new URL(origin).host === host;
+  } catch {
+    return false;
+  }
 }
