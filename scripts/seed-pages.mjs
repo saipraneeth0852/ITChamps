@@ -1,0 +1,443 @@
+#!/usr/bin/env node
+// Run: node --env-file=.env.local scripts/seed-pages.mjs
+// Seeds all 7 service/product/training pages into site_pages table.
+
+import pg from "pg";
+const { Pool } = pg;
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+const pages = [
+  {
+    id: "page-training",
+    slug: "training",
+    type: "training",
+    nav_label: "SAP Training",
+    title: "SAP Training & Certification — Build a Career That Scales.",
+    subtitle: "15+ SAP modules. Four delivery formats. 95% placement rate. Certified instructors with real project experience — not just theory.",
+    eyebrow: "SAP Authorized Education Partner since 2013",
+    hero_cta_href: "#contact-training",
+    hero_cta_label: "Enrol now",
+    footer_blurb: "SAP Authorized Education Partner since 2013. Training, certification, and placement support across 15+ SAP modules.",
+    stats: [
+      { value: "15+", label: "SAP modules taught" },
+      { value: "95%", label: "Placement rate" },
+      { value: "20+", label: "Years SAP education partner" },
+      { value: "4",   label: "Delivery formats" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "How we teach",
+        title: "Four formats. One outcome — job-ready SAP skills.",
+        items: [
+          { title: "Virtual Live Classroom (VLC)", body: "Real-time instruction from certified SAP consultants, accessible from anywhere." },
+          { title: "Instructor-Led Training (ILT)", body: "In-person sessions at our Mysuru and Bengaluru training centres." },
+          { title: "Online Learning (OLT)", body: "Self-paced video content with exercises and assessments." },
+          { title: "Blended Learning", body: "Combination of live sessions and self-paced content for maximum flexibility." },
+        ],
+      },
+      {
+        type: "service-grid",
+        tinted: true,
+        id: "courses",
+        eyebrow: "Course catalog",
+        title: "15+ SAP modules — from ABAP to S/4HANA.",
+        subtitle: "Every course is designed to prepare you for official SAP certification. Our instructors are active SAP consultants, not career trainers.",
+        items: [
+          { title: "ABAP", desc: "Advanced Business Application Programming — custom development on SAP." },
+          { title: "FI / CO", desc: "Financial Accounting and Controlling — core finance module." },
+          { title: "HCM", desc: "Human Capital Management — hire-to-retire HR processes." },
+          { title: "SD", desc: "Sales & Distribution — order-to-cash cycle." },
+          { title: "MM", desc: "Materials Management — procurement and inventory." },
+          { title: "PP", desc: "Production Planning — manufacturing execution." },
+          { title: "PS", desc: "Project System — project-based cost and schedule management." },
+          { title: "QM", desc: "Quality Management — inspection planning and compliance." },
+          { title: "SuccessFactors", desc: "Cloud HCM — multiple specializations including EC and Recruiting." },
+          { title: "SAP BASIS", desc: "System administration, transport management, and landscape governance." },
+          { title: "SAP HANA", desc: "Installation, modeling, and application development on HANA." },
+          { title: "S/4HANA", desc: "Finance, Procurement, Sales, and Manufacturing on S/4HANA." },
+          { title: "BW / BW4HANA", desc: "Business Warehouse — analytics, reporting, and data modeling." },
+          { title: "Plant Maintenance", desc: "PM — equipment maintenance and asset management." },
+          { title: "Hybris / CX", desc: "Commerce and Customer Experience on SAP cloud platforms." },
+        ],
+      },
+      {
+        type: "steps",
+        tinted: false,
+        eyebrow: "Program structure",
+        title: "3 months training. 3 months internship. Placement support.",
+        items: [
+          { num: "01", title: "Counselling", desc: "Free session to identify the right SAP module and delivery format for your goals." },
+          { num: "02", title: "Core Training", desc: "3 months of module-specific instruction with hands-on SAP system access and study materials." },
+          { num: "03", title: "Certification", desc: "Preparation and guidance for official SAP certification examinations." },
+          { num: "04", title: "Internship", desc: "Up to 3 months of practical internship — paid or with ITChamps on live project work." },
+          { num: "05", title: "Placement", desc: "Dedicated placement support with our network: Deloitte, Capgemini, NTT Data, Wipro, and more." },
+        ],
+      },
+      {
+        type: "placements",
+        tinted: true,
+        eyebrow: "Placement record",
+        title: "Our graduates work at the world's leading SAP consultancies.",
+        items: [
+          { title: "Deloitte" }, { title: "Capgemini" }, { title: "NTT Data" },
+          { title: "Wipro" }, { title: "Arteria" }, { title: "ITChamps" },
+        ],
+      },
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Who attends",
+        title: "Built for individuals and corporates alike.",
+        items: [
+          { title: "Job Aspirants", body: "Fresh graduates and career changers looking to break into SAP consulting with a structured, placement-backed program." },
+          { title: "Working Professionals", body: "IT professionals and SAP end-users seeking module certification or a career upgrade within the SAP ecosystem." },
+          { title: "Corporate Upskilling", body: "Organizations that need their implementation or support teams trained on new modules, releases, or S/4HANA specifics." },
+          { title: "University Students", body: "Students across 25+ industry verticals preparing to enter enterprise IT consulting with recognized SAP credentials." },
+        ],
+      },
+      {
+        type: "contact",
+        tinted: false,
+        id: "contact-training",
+        eyebrow: "Get started",
+        title: "Enrol in SAP training or request a corporate program.",
+        body: "Contact our education team to discuss modules, schedules, batch availability, and corporate training packages.",
+        email: "education@itchamps.com",
+        phone: "+91 93421 22665",
+        cta_label: "education@itchamps.com",
+      },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-campus-automation",
+    slug: "campus-automation",
+    type: "product",
+    nav_label: "Campus Automation",
+    title: "Make Education Affordable, Accessible, and Adaptable for All.",
+    subtitle: "Cloud-based SIS, CRM, and ERP solutions purpose-built for higher education. ITChamps delivers and supports Campus Management across 30+ countries.",
+    eyebrow: "Campus Management · Microsoft 2018 Global Education Partner of the Year",
+    hero_cta_href: "#contact-campus",
+    hero_cta_label: "Request a demo",
+    footer_blurb: "Campus Management SIS, CRM, and ERP for higher education institutions. Delivered across 30+ countries by ITChamps.",
+    stats: [
+      { value: "1,100+", label: "Institutions served globally" },
+      { value: "30+",    label: "Countries" },
+      { value: "3",      label: "Core solution pillars" },
+      { value: "2018",   label: "Microsoft Global Education Partner of the Year" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Why Campus Management",
+        title: "One platform. Every stage of the student and institution lifecycle.",
+        items: [
+          { title: "Real-time campus intelligence", body: "Live data across enrolment, finances, and operations — giving leadership the visibility to act before problems escalate." },
+          { title: "Single system for all programmes", body: "Handle traditional, online, accelerated, and competency-based delivery models without juggling separate systems." },
+          { title: "SAP Intelligent Enterprise ready", body: "Connects with the SAP Intelligent Enterprise Framework for institutions that want enterprise-wide digital transformation." },
+          { title: "Built for global compliance", body: "Multi-country, multi-currency, and multi-regulatory support for institutions operating across borders." },
+        ],
+      },
+      {
+        type: "service-list",
+        tinted: true,
+        id: "solutions",
+        eyebrow: "Platform pillars",
+        title: "Three pillars. One integrated campus operating model.",
+        items: [
+          { id: "academic", tag: "Pillar 01", title: "Academic Delivery", headline: "Run complex academic structures from a single system.", body: "Support multiple term structures, academic delivery models, and financial aid frameworks in one cloud instance.", bullets: ["Multiple term and credit hour models in a single system", "Financial aid processing for diverse academic formats", "Course scheduling, section management, and waitlisting", "Curriculum and catalogue management", "Degree audit and graduation planning", "Integration with LMS platforms"] },
+          { id: "student-success", tag: "Pillar 02", title: "Student Success", headline: "Manage the full student lifecycle — from enquiry to alumni.", body: "A higher-education CRM and SIS combined: manage constituent engagement, enrolment, advising, financial aid, and student outcomes.", bullets: ["Higher education CRM for recruitment and engagement", "Admissions and enrolment management", "Academic advising and early alert systems", "Financial aid and scholarship management", "Student portal and mobile self-service", "Alumni engagement and advancement management"] },
+          { id: "operations", tag: "Pillar 03", title: "Operational Efficiency", headline: "Data-driven decisions across the whole institution.", body: "Integrated ERP for campus operations: finance, HR, facilities, and procurement aligned on real-time institutional data.", bullets: ["Integrated campus finance and budgeting", "HR and workforce management", "Facilities and space management", "Procurement and vendor management", "Power BI-ready institutional analytics", "SAP Intelligent Enterprise integration"] },
+        ],
+      },
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Recognition",
+        title: "Industry-recognised leadership in higher education technology.",
+        items: [
+          { title: "2018 Microsoft Global Education Partner of the Year", body: "Recognised as Microsoft's top global education partner for transformative higher education solutions." },
+          { title: "2019 Microsoft Power BI Partner of the Year Finalist", body: "Shortlisted for excellence in data analytics and business intelligence within the education sector." },
+          { title: "1,100+ Institutions Served", body: "Deployed across more than 1,100 higher education institutions in over 30 countries worldwide." },
+        ],
+      },
+      { type: "contact", tinted: true, id: "contact-campus", eyebrow: "Get started", title: "Schedule a Campus Automation demo for your institution.", body: "Talk to our higher education specialists about your institution's current systems, growth plans, and how Campus Management can help.", email: "info@itchamps.com", cta_label: "info@itchamps.com" },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-plm-solutions",
+    slug: "plm-solutions",
+    type: "product",
+    nav_label: "PLM Solutions",
+    title: "PLM Solutions — From Design to End-of-Life, on One Digital Thread.",
+    subtitle: "ITChamps delivers Siemens PLM solutions — Teamcenter, NX, and Solid Edge — for manufacturers who need to connect product development, engineering, and manufacturing into a single, traceable system.",
+    eyebrow: "Siemens Digital Industries Partner",
+    hero_cta_href: "#contact-plm",
+    hero_cta_label: "Get PLM advice",
+    footer_blurb: "Siemens PLM partner — Teamcenter, NX, and Solid Edge implementation and support for manufacturing organisations.",
+    stats: [
+      { value: "Siemens", label: "Technology partner" },
+      { value: "3",       label: "PLM platforms" },
+      { value: "360°",    label: "Product lifecycle coverage" },
+      { value: "20+",     label: "Years manufacturing experience" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Why PLM",
+        title: "Product complexity demands a single source of product truth.",
+        items: [
+          { title: "Eliminate version chaos", body: "One master record for every part, document, BOM, and change — accessible by engineering, manufacturing, and suppliers simultaneously." },
+          { title: "Accelerate time to market", body: "Parallel development, integrated simulation, and automated change management compress the time from concept to production release." },
+          { title: "Connect to SAP ERP", body: "ITChamps' SAP expertise means we connect your PLM system directly to your ERP — so BOMs, routings, and change orders flow without re-entry." },
+          { title: "Digital twin from day one", body: "Build the authoritative digital representation of your product that simulation, manufacturing, and service can all rely on." },
+        ],
+      },
+      {
+        type: "service-list",
+        tinted: true,
+        id: "products",
+        eyebrow: "Siemens PLM portfolio",
+        title: "Four platforms. One partner. Complete product lifecycle coverage.",
+        items: [
+          { id: "teamcenter", tag: "PLM Platform", title: "Teamcenter", headline: "A modern, adaptable PLM system that breaks down barriers between people and processes.", body: "Teamcenter is Siemens' flagship PLM platform — a single, connected source of product knowledge managing every stage of the product lifecycle from concept through end-of-life.", bullets: ["Multi-domain product development management", "Digital thread across design, engineering, and manufacturing", "3D product imaging and visualisation", "Master data management for parts, BOMs, and documents", "Change and configuration management", "Integration with SAP ERP for seamless data flow"] },
+          { id: "nx", tag: "Design & Manufacturing", title: "NX", headline: "The next generation of design, simulation, and manufacturing solutions.", body: "NX delivers an integrated, fully digital approach from concept design through manufacturing, enabling teams to realise the full value of the digital twin.", bullets: ["Concept design through detailed engineering in one tool", "Integrated CAD/CAM/CAE environment", "Digital twin creation and simulation", "Discipline coordination across mechanical, electrical, and software", "Data integrity from design intent to manufacturing output", "Additive and subtractive manufacturing support"] },
+          { id: "solid-edge", tag: "Accessible CAD", title: "Solid Edge", headline: "Addressing all aspects of the product development process — accessibly.", body: "Solid Edge combines the power of direct modelling with parametric design through Siemens' synchronous technology.", bullets: ["Synchronous technology — direct and parametric design", "Sheet metal, frame, and weldment design", "2D and 3D CAD in a single environment", "Built-in simulation and motion analysis", "Affordable and fast to deploy", "Cloud-connected for team collaboration"] },
+          { id: "sdk", tag: "Developer Tools", title: "CAD/CAM Software Development Kits", headline: "Extend and customise CAD/CAM applications with Siemens toolkits.", body: "For organisations building or extending CAD/CAM applications, Siemens' SDKs reduce time, cost, and risk by providing proven 3D software development resources.", bullets: ["Parasolid geometric modelling kernel", "D-Cubed constraint solving and motion simulation", "JT open data exchange format", "Reduce development time and risk", "Build on the same foundation as NX and Solid Edge"] },
+        ],
+      },
+      { type: "contact", tinted: false, id: "contact-plm", eyebrow: "Get started", title: "Find the right Siemens PLM platform for your organisation.", body: "Talk to our PLM specialists about your product development environment, integration requirements, and which platform fits your team.", email: "info@itchamps.com", cta_label: "info@itchamps.com" },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-iemp-power",
+    slug: "iemp-power",
+    type: "product",
+    nav_label: "iEmpPower",
+    title: "iEmpPower & PayCompute — Your Complete HR Self-Service and Payroll Platform.",
+    subtitle: "Employee Self-Service, Manager Self-Service, and global payroll processing — designed by ITChamps, built on SAP HR, deployed for organisations across 45+ countries.",
+    eyebrow: "ITChamps Proprietary Product · Built on SAP HR",
+    hero_cta_href: "#contact-iemp",
+    hero_cta_label: "Request a demo",
+    footer_blurb: "iEmpPower and PayCompute — ITChamps' own ESS, MSS, and global payroll platform built on SAP HR.",
+    stats: [
+      { value: "3",    label: "Integrated modules" },
+      { value: "100%", label: "SAP HR compatible" },
+      { value: "45+",  label: "Countries compliance coverage" },
+      { value: "0",    label: "Payroll errors — design goal" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Why iEmpPower",
+        title: "Built by SAP experts, for organisations that already run SAP HR.",
+        items: [
+          { title: "Native SAP HR integration", body: "iEmpPower is built directly on SAP HR infrastructure — no middleware, no data duplication, no sync jobs. Your payroll data lives where it always has." },
+          { title: "Intuitive front-end, enterprise backbone", body: "A lightweight, responsive UI on top of the full power of SAP HR — so employees and managers get a modern experience without losing any system capability." },
+          { title: "Compliance built in", body: "Regulatory updates for tax laws, statutory deductions, and payroll compliance are managed by ITChamps — so your payroll stays correct as legislation changes." },
+          { title: "Data security and confidentiality", body: "Role-based access, field-level security, and full audit trails ensure payroll and HR data remains confidential and compliant with data protection requirements." },
+        ],
+      },
+      {
+        type: "service-list",
+        tinted: true,
+        id: "modules",
+        eyebrow: "Product modules",
+        title: "Three integrated modules. One employee lifecycle platform.",
+        items: [
+          { id: "ess", tag: "Employee Self-Service", title: "iEmpPower ESS", headline: "Give every employee control over their own HR data.", body: "The Employee Self-Service module puts leave requests, attendance, payslip access, and reimbursement claims directly into the hands of employees — reducing HR administrative load.", bullets: ["Personal information viewing and update requests", "Leave application, approval tracking, and balance view", "Attendance regularisation and timesheet submission", "Payslip viewing and download (current and historical)", "Expense and reimbursement claim submission", "TDS detail viewing and tax declarations", "Mobile-responsive, intuitive interface"] },
+          { id: "mss", tag: "Manager Self-Service", title: "iEmpPower MSS", headline: "Managers act without waiting for HR to be the middleman.", body: "MSS gives line managers the visibility and workflow tools to approve requests, monitor their team's attendance, and initiate HR actions — all with proper authorisation controls.", bullets: ["Leave and attendance approval with delegation support", "Team availability and absence calendar", "Performance and goal management workflows", "Payroll reporting and compensation visibility", "HR action initiation (transfers, confirmations, exits)", "Exception-based alerting for attendance and compliance"] },
+          { id: "paycompute", tag: "Payroll Processing", title: "PayCompute", headline: "Consistent, error-free payroll — every cycle, every country.", body: "PayCompute is ITChamps' payroll processing engine, built on SAP HR's core architecture and extended for global compliance. It handles every pay component, statutory deduction, and regulatory reporting requirement.", bullets: ["Multi-country payroll processing on a single platform", "Automated statutory and tax computation (TDS, PF, ESI, etc.)", "Pay component, allowance, and deduction management", "Off-cycle payroll and arrears processing", "Bank transfer file generation and net pay disbursement", "Payroll reconciliation and variance reporting", "Automated regulatory update management", "Full audit trail and data security compliance"] },
+        ],
+      },
+      { type: "contact", tinted: false, id: "contact-iemp", eyebrow: "Get started", title: "See iEmpPower and PayCompute running on your SAP landscape.", body: "Book a demonstration with our product team to see ESS, MSS, and PayCompute configured for your organisation's payroll structure and compliance requirements.", email: "info@itchamps.com", cta_label: "Book a demo — info@itchamps.com" },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-cloud-erp",
+    slug: "cloud-erp",
+    type: "service",
+    nav_label: "Cloud ERP",
+    title: "One Cloud ERP That Grows With Your Business — Without the Enterprise Price Tag.",
+    subtitle: "SAP Business ByDesign gives small and mid-sized organisations the integrated financial, operational, and HR backbone of a large enterprise — delivered entirely in the cloud, with no infrastructure to manage.",
+    eyebrow: "SAP Business ByDesign · Cloud ERP for Growing Businesses",
+    hero_cta_href: "#contact-cloud",
+    hero_cta_label: "Free assessment",
+    footer_blurb: "SAP Business ByDesign cloud ERP for growing businesses — implementation and support by ITChamps, a SAP Silver Partner.",
+    stats: [
+      { value: "SAP",  label: "Business ByDesign" },
+      { value: "SMB",  label: "Built for growing businesses" },
+      { value: "100%", label: "Cloud — no on-premise hardware" },
+      { value: "14+",  label: "Years SAP implementation experience" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Who it's built for",
+        title: "Growing businesses that have outgrown spreadsheets and point solutions.",
+        items: [
+          { title: "Replacing disconnected systems", body: "Multiple spreadsheets, standalone accounting tools, and separate CRM and inventory apps — Business ByDesign replaces all of them with one integrated system." },
+          { title: "Scaling across geographies", body: "Multi-entity, multi-currency, and multi-language from day one — designed for businesses expanding regionally or globally without building new IT infrastructure." },
+          { title: "Preparing for M&A or IPO", body: "The financial consolidation, audit trail, and reporting standard required for due diligence, acquisition readiness, and public market compliance." },
+          { title: "Reducing IT overhead", body: "No servers to manage, no upgrade projects to plan, no infrastructure costs. SAP handles uptime, security, and updates — your team focuses on the business." },
+        ],
+      },
+      {
+        type: "service-grid",
+        tinted: true,
+        id: "capabilities",
+        eyebrow: "What's included",
+        title: "Every business function. One system. One data model.",
+        subtitle: "Business ByDesign is not a bundle of separate tools — it is a single, integrated ERP where finance, operations, HR, and sales all share the same data in real time.",
+        items: [
+          { title: "Financial Management", desc: "General ledger, accounts payable/receivable, cash management, and multi-currency financial consolidation — all in real time." },
+          { title: "Inventory & Procurement", desc: "End-to-end supply chain visibility from purchase order through warehouse and delivery, with integrated financial impact." },
+          { title: "Sales & Customer Management", desc: "CRM, sales order management, pricing, and customer analytics in one connected system — no separate CRM required." },
+          { title: "Project Management", desc: "Time and expense tracking, project billing, and resource management for service businesses running project-based delivery." },
+          { title: "HR & Payroll", desc: "Core HR, payroll, and workforce management for growing teams — integrated with finance and project systems." },
+          { title: "Reporting & Analytics", desc: "Embedded analytics and pre-built reports across every business function — giving management real-time insight without manual data exports." },
+        ],
+      },
+      {
+        type: "steps",
+        tinted: false,
+        eyebrow: "How we implement",
+        title: "Go live in weeks, not years — with a 100% success delivery record.",
+        items: [
+          { num: "01", title: "Rapid Assessment", desc: "Map your current processes, data, and integration requirements against Business ByDesign standard capabilities." },
+          { num: "02", title: "Configuration", desc: "Configure the system to your business model — chart of accounts, organisational structure, and process flows." },
+          { num: "03", title: "Data Migration", desc: "Migrate master data, open items, and historical balances with full validation and reconciliation." },
+          { num: "04", title: "Training", desc: "Role-based training for finance, operations, and management users — ensuring adoption from day one." },
+          { num: "05", title: "Go-Live & Support", desc: "Controlled go-live with hypercare support, followed by ongoing managed service and system optimisation." },
+        ],
+      },
+      { type: "contact", tinted: true, id: "contact-cloud", eyebrow: "Get started", title: "Find out if SAP Business ByDesign is right for your business.", body: "Our SAP consultants will assess your current systems, business model, and growth plans — and give you an honest view of whether Business ByDesign is the right fit.", email: "info@itchamps.com", cta_label: "Free assessment — info@itchamps.com" },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-eppm",
+    slug: "eppm",
+    type: "service",
+    nav_label: "EPPM",
+    title: "EPPM — See Every Project, Resource, and Investment Decision in One View.",
+    subtitle: "SAP EPPM gives engineered-to-order manufacturers and project-driven businesses the portfolio governance, project execution control, and resource visibility they need to deliver profitably at scale.",
+    eyebrow: "SAP Enterprise Portfolio and Project Management",
+    hero_cta_href: "#contact-eppm",
+    hero_cta_label: "Request a consultation",
+    footer_blurb: "SAP EPPM implementation for project-driven and engineered-to-order organisations — portfolio governance, project control, and resource management.",
+    stats: [
+      { value: "360°",      label: "Portfolio visibility" },
+      { value: "ETO",       label: "Engineered-to-order ready" },
+      { value: "Real-time", label: "Resource and cost tracking" },
+      { value: "SAP",       label: "Native integration" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Why EPPM",
+        title: "Project-driven businesses need project-grade controls — not generic ERP.",
+        items: [
+          { title: "Engineered-to-order ready", body: "Built for manufacturers where every order is a project — EPPM handles complex WBS structures, multi-phase schedules, and project-level P&L natively." },
+          { title: "Finance integration without interfaces", body: "Project costs, revenues, and commitments flow directly into SAP finance — no reconciliation, no batch jobs, no spreadsheet exports." },
+          { title: "Portfolio-level decisions with project-level data", body: "Leadership sees the aggregated portfolio view while project managers have the detailed execution tools — one system, not two layers of reporting." },
+          { title: "Resource bottleneck prevention", body: "See cross-project resource demand before it becomes a delivery risk — enabling proactive staffing decisions rather than reactive firefighting." },
+        ],
+      },
+      {
+        type: "service-list",
+        tinted: true,
+        id: "capabilities",
+        eyebrow: "Core capabilities",
+        title: "Portfolio, project, and resource — governed end to end.",
+        items: [
+          { id: "portfolio", tag: "Portfolio Management", title: "Enterprise Portfolio Management", headline: "Decide which projects to fund, sequence, and kill — with data.", body: "EPPM gives leadership a structured framework for evaluating, prioritising, and governing the full project portfolio.", bullets: ["Project pipeline management and scoring", "Strategic alignment and prioritisation scoring", "Investment and benefit tracking", "Portfolio-level risk aggregation", "Scenario analysis for portfolio rebalancing", "Executive dashboards and board-level reporting"] },
+          { id: "project", tag: "Project Execution", title: "Project Management", headline: "Plan, execute, and close projects with complete financial control.", body: "From WBS creation through time recording, procurement, and project billing — EPPM integrates project execution directly with SAP finance.", bullets: ["Work breakdown structure (WBS) and network planning", "Integrated project scheduling with Gantt visibility", "Resource demand and capacity planning", "Time and expense recording against project tasks", "Project procurement and purchase order management", "Earned value management and variance analysis"] },
+          { id: "resource", tag: "Resource Management", title: "Resource & Capacity Planning", headline: "Match project demand to available capacity — before it becomes a problem.", body: "See resource demand across all projects, identify bottlenecks early, and make staffing decisions based on real availability data — not estimates.", bullets: ["Cross-project resource demand aggregation", "Skill-based resource matching and assignment", "Capacity utilisation and overload identification", "Scenario planning for resource reallocation", "Integration with HR organisational structure", "Contractor and third-party resource tracking"] },
+        ],
+      },
+      { type: "contact", tinted: false, id: "contact-eppm", eyebrow: "Get started", title: "Build a portfolio and project management model that actually controls delivery.", body: "Talk to our EPPM specialists about your project types, current tools, and what a structured SAP EPPM implementation would deliver for your organisation.", email: "info@itchamps.com", cta_label: "info@itchamps.com" },
+    ],
+    status: "published",
+  },
+  {
+    id: "page-professional-services",
+    slug: "professional-services",
+    type: "service",
+    nav_label: "Professional Services",
+    title: "Professional Services Solutions — Project-to-Cash, Resource-to-Revenue.",
+    subtitle: "Consulting, engineering, legal, and managed service firms run on tight margins and complex billing. ITChamps implements SAP solutions that connect project delivery, resource management, and client financials into one operating model.",
+    eyebrow: "SAP for Professional Services",
+    hero_cta_href: "#contact-ps",
+    hero_cta_label: "Request a consultation",
+    footer_blurb: "SAP solutions for professional services — project-to-cash, resource management, and client billing for consulting and services firms.",
+    stats: [
+      { value: "100%", label: "Project success rate" },
+      { value: "45+",  label: "Countries delivered" },
+      { value: "20+",  label: "Years in professional services" },
+      { value: "120+", label: "Certified consultants" },
+    ],
+    sections: [
+      {
+        type: "value-grid",
+        tinted: false,
+        eyebrow: "Why services firms choose ITChamps",
+        title: "We deliver the solutions we sell — on every engagement.",
+        items: [
+          { title: "We are a professional services firm", body: "ITChamps is itself a professional services business — so we understand billable utilisation, margin pressure, and client delivery in a way that product-only vendors do not." },
+          { title: "Project-to-cash in one system", body: "From winning an engagement through resourcing, delivery, time recording, billing, and revenue recognition — one SAP system handles the complete cycle without reconciliation." },
+          { title: "Compliance without complexity", body: "IFRS 15, ASC 606, and country-specific tax rules built in — so finance teams close faster and auditors find nothing surprising." },
+          { title: "Built for global delivery", body: "Multi-entity, multi-currency, and cross-border project structures for firms delivering across multiple countries and legal entities." },
+        ],
+      },
+      {
+        type: "service-list",
+        tinted: true,
+        id: "solutions",
+        eyebrow: "Solution areas",
+        title: "Three connected solution areas for services firms.",
+        items: [
+          { id: "psa", tag: "Professional Services Automation", title: "SAP Professional Services", headline: "Run your services business on the same platform as your clients.", body: "ITChamps implements SAP's Professional Services solution for consulting, legal, engineering, and managed service firms — giving them project-to-cash visibility, resource optimisation, and client billing accuracy.", bullets: ["Opportunity-to-project transition management", "Resource demand, capacity, and utilisation tracking", "Time and expense management with client approval workflows", "Project billing, milestone invoicing, and revenue recognition", "Client profitability and engagement analytics", "SAP Fiori mobile for remote project teams"] },
+          { id: "finance", tag: "Finance & Compliance", title: "Financial Management for Services", headline: "Automate client billing, revenue recognition, and compliance.", body: "Revenue recognition rules (IFRS 15 / ASC 606), multi-entity consolidation, and automated project billing reduce the finance team's close cycle and eliminate manual reconciliation.", bullets: ["IFRS 15 / ASC 606 automated revenue recognition", "Multi-entity, multi-currency project accounting", "Automated invoice generation from time and expense", "Budget vs actuals tracking at project and portfolio level", "Intercompany billing and transfer pricing", "Audit-ready financial reporting"] },
+          { id: "crm", tag: "Client Management", title: "CRM & Engagement Management", headline: "Win and retain clients with full relationship visibility.", body: "From pipeline management through engagement delivery and renewal — SAP's CRM for professional services firms keeps client relationships, contracts, and delivery history in one system.", bullets: ["Opportunity and pipeline management", "Contract and statement of work management", "Client engagement history and relationship mapping", "Renewal and cross-sell opportunity identification", "Client satisfaction tracking and NPS integration", "Partner and subcontractor management"] },
+        ],
+      },
+      { type: "contact", tinted: false, id: "contact-ps", eyebrow: "Get started", title: "Build the operating model your professional services firm deserves.", body: "Talk to our team about your current systems, billing complexity, and what a connected project-to-cash model would deliver for your firm.", email: "info@itchamps.com", cta_label: "info@itchamps.com" },
+    ],
+    status: "published",
+  },
+];
+
+try {
+  console.log("Seeding site_pages...");
+  for (const page of pages) {
+    await pool.query(
+      `INSERT INTO site_pages
+        (id,slug,type,nav_label,title,subtitle,eyebrow,hero_cta_href,hero_cta_label,footer_blurb,stats,sections,status)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+       ON CONFLICT (id) DO UPDATE SET
+        slug=$2,type=$3,nav_label=$4,title=$5,subtitle=$6,eyebrow=$7,
+        hero_cta_href=$8,hero_cta_label=$9,footer_blurb=$10,
+        stats=$11,sections=$12,status=$13,updated_at=NOW()`,
+      [
+        page.id, page.slug, page.type, page.nav_label, page.title, page.subtitle,
+        page.eyebrow, page.hero_cta_href, page.hero_cta_label, page.footer_blurb,
+        JSON.stringify(page.stats), JSON.stringify(page.sections), page.status,
+      ],
+    );
+    console.log(`  ✓ ${page.slug}`);
+  }
+  console.log("Done. 7 pages seeded.");
+} finally {
+  await pool.end();
+}

@@ -1,15 +1,61 @@
 "use client";
 
 import { ChangeEvent, useMemo, useState } from "react";
-import type { BlogRecord, CaseStudyRecord } from "../../lib/cms/types";
+import type { BlogRecord, CaseStudyRecord, SitePage } from "../../lib/cms/types";
 
-type Tab = "case-studies" | "blogs";
+type Tab = "case-studies" | "blogs" | "pages";
 type FormState = Record<string, string>;
 
 interface AdminDashboardProps {
   initialCaseStudies: CaseStudyRecord[];
   initialBlogs: BlogRecord[];
+  initialPages: SitePage[];
   showSecurityNotice: boolean;
+}
+
+const SECTION_TEMPLATE = JSON.stringify(
+  [
+    { type: "value-grid", tinted: false, eyebrow: "Why choose us", title: "Section title", items: [{ title: "Card 1", body: "Description" }, { title: "Card 2", body: "Description" }, { title: "Card 3", body: "Description" }, { title: "Card 4", body: "Description" }] },
+    { type: "service-list", tinted: true, eyebrow: "What we offer", title: "Section title", items: [{ tag: "Tag", title: "Item title", headline: "Short headline", body: "Body paragraph", bullets: ["Bullet 1", "Bullet 2", "Bullet 3"] }] },
+    { type: "service-grid", tinted: false, eyebrow: "Features", title: "Section title", items: [{ title: "Feature 1", desc: "Description" }, { title: "Feature 2", desc: "Description" }, { title: "Feature 3", desc: "Description" }] },
+    { type: "steps", tinted: false, eyebrow: "How it works", title: "Section title", items: [{ num: "01", title: "Step 1", desc: "Description" }, { num: "02", title: "Step 2", desc: "Description" }] },
+    { type: "placements", tinted: true, eyebrow: "Partners", title: "Section title", items: [{ title: "Company A" }, { title: "Company B" }] },
+    { type: "contact", tinted: false, id: "contact", eyebrow: "Get started", title: "Contact title", body: "Contact body", email: "info@itchamps.com", phone: "+91 93421 22665", cta_label: "Email us" },
+  ],
+  null,
+  2,
+);
+
+const emptyPage: Record<string, string> = {
+  slug: "",
+  type: "service",
+  nav_label: "",
+  title: "",
+  subtitle: "",
+  eyebrow: "",
+  hero_cta_href: "#contact",
+  hero_cta_label: "Get in touch",
+  footer_blurb: "",
+  stats: "",
+  sections: "[]",
+  status: "draft",
+};
+
+function toPageForm(p: SitePage): Record<string, string> {
+  return {
+    slug: p.slug,
+    type: p.type,
+    nav_label: p.nav_label,
+    title: p.title,
+    subtitle: p.subtitle,
+    eyebrow: p.eyebrow,
+    hero_cta_href: p.hero_cta_href,
+    hero_cta_label: p.hero_cta_label,
+    footer_blurb: p.footer_blurb,
+    stats: p.stats.map((s) => `${s.value}|${s.label}`).join("\n"),
+    sections: JSON.stringify(p.sections, null, 2),
+    status: p.status,
+  };
 }
 
 const IMAGE_RULES = {
@@ -290,14 +336,17 @@ function ImageField({
   );
 }
 
-export function AdminDashboard({ initialCaseStudies, initialBlogs, showSecurityNotice }: AdminDashboardProps) {
+export function AdminDashboard({ initialCaseStudies, initialBlogs, initialPages, showSecurityNotice }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<Tab>("case-studies");
   const [caseStudies, setCaseStudies] = useState(initialCaseStudies);
   const [blogs, setBlogs] = useState(initialBlogs);
+  const [pages, setPages] = useState(initialPages);
   const [selectedCaseStudyId, setSelectedCaseStudyId] = useState<string | null>(initialCaseStudies[0]?.id ?? null);
   const [selectedBlogId, setSelectedBlogId] = useState<string | null>(initialBlogs[0]?.id ?? null);
+  const [selectedPageId, setSelectedPageId] = useState<string | null>(initialPages[0]?.id ?? null);
   const [caseStudyForm, setCaseStudyForm] = useState<FormState>(initialCaseStudies[0] ? toCaseStudyForm(initialCaseStudies[0]) : emptyCaseStudy);
   const [blogForm, setBlogForm] = useState<FormState>(initialBlogs[0] ? toBlogForm(initialBlogs[0]) : emptyBlog);
+  const [pageForm, setPageForm] = useState<FormState>(initialPages[0] ? toPageForm(initialPages[0]) : emptyPage);
   const [message, setMessage] = useState("");
   const [pending, setPending] = useState(false);
 
@@ -309,6 +358,10 @@ export function AdminDashboard({ initialCaseStudies, initialBlogs, showSecurityN
     () => blogs.find((item) => item.id === selectedBlogId) ?? null,
     [blogs, selectedBlogId]
   );
+  const selectedPage = useMemo(
+    () => pages.find((item) => item.id === selectedPageId) ?? null,
+    [pages, selectedPageId]
+  );
 
   function updateCaseStudyField(key: string, value: string) {
     setCaseStudyForm((current) => ({ ...current, [key]: value }));
@@ -316,6 +369,52 @@ export function AdminDashboard({ initialCaseStudies, initialBlogs, showSecurityN
 
   function updateBlogField(key: string, value: string) {
     setBlogForm((current) => ({ ...current, [key]: value }));
+  }
+
+  function updatePageField(key: string, value: string) {
+    setPageForm((current) => ({ ...current, [key]: value }));
+  }
+
+  function pickPage(item: SitePage) {
+    setSelectedPageId(item.id);
+    setPageForm(toPageForm(item));
+    setMessage("");
+  }
+
+  async function savePage() {
+    setPending(true);
+    setMessage("");
+    const url = selectedPage ? `/api/content/pages/${selectedPage.id}` : "/api/content/pages";
+    const method = selectedPage ? "PATCH" : "POST";
+    const response = await fetch(url, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pageForm),
+    });
+    const payload = await response.json();
+    setPending(false);
+    if (!response.ok) { setMessage(payload.error ?? "Unable to save page."); return; }
+    if (selectedPage) {
+      setPages(pages.map((item) => item.id === payload.item.id ? payload.item : item));
+    } else {
+      setPages([payload.item, ...pages]);
+    }
+    setSelectedPageId(payload.item.id);
+    setPageForm(toPageForm(payload.item));
+    setMessage("Page saved.");
+  }
+
+  async function removePage() {
+    if (!selectedPage || !window.confirm(`Delete page "${selectedPage.nav_label}"?`)) return;
+    setPending(true);
+    const response = await fetch(`/api/content/pages/${selectedPage.id}`, { method: "DELETE" });
+    setPending(false);
+    if (!response.ok) { setMessage("Unable to delete page."); return; }
+    const next = pages.filter((item) => item.id !== selectedPage.id);
+    setPages(next);
+    setSelectedPageId(next[0]?.id ?? null);
+    setPageForm(next[0] ? toPageForm(next[0]) : emptyPage);
+    setMessage("Page deleted.");
   }
 
   function pickCaseStudy(item: CaseStudyRecord) {
@@ -449,6 +548,7 @@ export function AdminDashboard({ initialCaseStudies, initialBlogs, showSecurityN
         <div className="admin-tabs">
           <button className={activeTab === "case-studies" ? "is-active" : ""} onClick={() => setActiveTab("case-studies")}>Case studies</button>
           <button className={activeTab === "blogs" ? "is-active" : ""} onClick={() => setActiveTab("blogs")}>Blogs</button>
+          <button className={activeTab === "pages" ? "is-active" : ""} onClick={() => setActiveTab("pages")}>Pages</button>
         </div>
 
         {activeTab === "case-studies" ? (
@@ -612,6 +712,104 @@ export function AdminDashboard({ initialCaseStudies, initialBlogs, showSecurityN
             </section>
           </div>
         )}
+
+        {activeTab === "pages" ? (
+          <div className="admin-grid">
+            <aside className="admin-list">
+              <button className="admin-add" onClick={() => {
+                setSelectedPageId(null);
+                setPageForm(emptyPage);
+                setMessage("");
+              }}>+ New page</button>
+              {pages.map((item) => (
+                <button
+                  key={item.id}
+                  className={item.id === selectedPageId ? "admin-list-item is-selected" : "admin-list-item"}
+                  onClick={() => pickPage(item)}
+                >
+                  <strong>{item.nav_label || item.slug}</strong>
+                  <span>{item.type} · {item.status}</span>
+                </button>
+              ))}
+            </aside>
+
+            <section className="admin-editor">
+              <div className="admin-form-grid">
+                {/* Basic fields */}
+                {[
+                  { key: "slug",           label: "URL slug (e.g. my-service)",  long: false },
+                  { key: "nav_label",      label: "Nav / footer label",          long: false },
+                  { key: "eyebrow",        label: "Hero eyebrow text",           long: false },
+                  { key: "title",          label: "Hero headline",               long: false },
+                  { key: "subtitle",       label: "Hero subtext",                long: true  },
+                  { key: "hero_cta_href",  label: "Hero CTA link (e.g. #contact)", long: false },
+                  { key: "hero_cta_label", label: "Hero CTA label",              long: false },
+                  { key: "footer_blurb",   label: "Footer blurb",                long: true  },
+                ].map(({ key, label, long }) => (
+                  <label key={key} className={long ? "admin-field admin-field--full" : "admin-field"}>
+                    <span>{label}</span>
+                    {long
+                      ? <textarea value={pageForm[key] ?? ""} rows={3} onChange={(e) => updatePageField(key, e.target.value)} />
+                      : <input value={pageForm[key] ?? ""} onChange={(e) => updatePageField(key, e.target.value)} />}
+                  </label>
+                ))}
+
+                <label className="admin-field">
+                  <span>Type</span>
+                  <select value={pageForm.type ?? "service"} onChange={(e) => updatePageField("type", e.target.value)}>
+                    <option value="service">Service</option>
+                    <option value="product">Product</option>
+                    <option value="training">Training</option>
+                  </select>
+                </label>
+
+                <label className="admin-field">
+                  <span>Status</span>
+                  <select value={pageForm.status ?? "draft"} onChange={(e) => updatePageField("status", e.target.value)}>
+                    <option value="draft">draft</option>
+                    <option value="published">published</option>
+                  </select>
+                </label>
+
+                <label className="admin-field admin-field--full">
+                  <span>Stats (one per line: value|label)</span>
+                  <textarea value={pageForm.stats ?? ""} rows={5} onChange={(e) => updatePageField("stats", e.target.value)} placeholder={"15+|SAP modules\n95%|Placement rate"} />
+                </label>
+
+                <label className="admin-field admin-field--full">
+                  <span>Sections (JSON array)</span>
+                  <div style={{ display: "flex", gap: "8px", marginBottom: "6px" }}>
+                    <button type="button" className="button button--ghost" style={{ fontSize: "0.8rem", padding: "4px 10px" }}
+                      onClick={() => { navigator.clipboard.writeText(SECTION_TEMPLATE); setMessage("Template copied to clipboard."); }}>
+                      Copy section template
+                    </button>
+                    <a href={`/${pageForm.slug}`} target="_blank" rel="noreferrer" className="button button--ghost" style={{ fontSize: "0.8rem", padding: "4px 10px" }}>
+                      Preview page
+                    </a>
+                  </div>
+                  <textarea
+                    value={pageForm.sections ?? "[]"}
+                    rows={20}
+                    onChange={(e) => updatePageField("sections", e.target.value)}
+                    style={{ fontFamily: "monospace", fontSize: "0.82rem" }}
+                  />
+                </label>
+              </div>
+
+              <p className="admin-help">
+                Section types: <code>value-grid</code>, <code>service-list</code>, <code>service-grid</code>, <code>steps</code>, <code>placements</code>, <code>contact</code>.
+                Click &ldquo;Copy section template&rdquo; for a full example of each type.
+              </p>
+
+              <div className="admin-editor-actions">
+                <button className="button button--primary" disabled={pending} onClick={savePage}>
+                  {pending ? "Saving..." : "Save page"}
+                </button>
+                {selectedPage ? <button className="button admin-delete" disabled={pending} onClick={removePage}>Delete</button> : null}
+              </div>
+            </section>
+          </div>
+        ) : null}
       </section>
     </main>
   );

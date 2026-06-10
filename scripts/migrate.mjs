@@ -8,6 +8,27 @@ const { Pool } = pg;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
 const schema = `
+CREATE TABLE IF NOT EXISTS site_pages (
+  id              TEXT PRIMARY KEY,
+  slug            TEXT UNIQUE NOT NULL,
+  type            TEXT NOT NULL DEFAULT 'service',
+  nav_label       TEXT NOT NULL,
+  title           TEXT NOT NULL,
+  subtitle        TEXT NOT NULL,
+  eyebrow         TEXT NOT NULL DEFAULT '',
+  hero_cta_href   TEXT NOT NULL DEFAULT '#contact',
+  hero_cta_label  TEXT NOT NULL DEFAULT 'Get in touch',
+  footer_blurb    TEXT NOT NULL DEFAULT '',
+  stats           JSONB NOT NULL DEFAULT '[]',
+  sections        JSONB NOT NULL DEFAULT '[]',
+  status          TEXT NOT NULL DEFAULT 'draft',
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_site_pages_slug   ON site_pages (slug);
+CREATE INDEX IF NOT EXISTS idx_site_pages_status ON site_pages (status);
+CREATE INDEX IF NOT EXISTS idx_site_pages_type   ON site_pages (type);
+
 CREATE TABLE IF NOT EXISTS case_studies (
   id              TEXT PRIMARY KEY,
   slug            TEXT UNIQUE NOT NULL,

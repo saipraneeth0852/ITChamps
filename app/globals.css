@@ -10578,3 +10578,267 @@ select::placeholder {
   letter-spacing: 0.04em;
   border: 1px solid rgba(217, 154, 0, 0.22);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   INNER SERVICE / PRODUCT PAGES  — shared classes
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Hero: h1 and eyebrow in dark hero context */
+.sap-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.sap-hero .eyebrow {
+  color: var(--sap-accent, #008fd3);
+  opacity: 0.9;
+}
+.sap-hero__copy { /* first grid column — no extra style needed */ }
+.sap-hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.sap-hero__actions .button--ghost {
+  border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
+}
+.sap-hero__actions .button--ghost:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Stat cards in hero (used with .sap-hero__stats grid) */
+.sap-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 24px 20px;
+  backdrop-filter: blur(10px);
+}
+.sap-stat__value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.sap-stat__label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+}
+
+/* Section header: plain h2 / p inside .sap-section-header */
+.sap-section-header h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.sap-section-header p {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* Value card center modifier */
+.sap-value-card--center {
+  text-align: center;
+}
+
+/* Service grid (3-col) */
+.sap-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.sap-service-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 28px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.sap-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(0,40,80,0.08);
+}
+.sap-service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+.sap-service-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* Service list — vertical accordion-style items */
+.sap-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sap-service-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0;
+}
+.sap-service-item__header {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  padding: 36px 32px;
+}
+.sap-service-item__tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(0,143,211,0.1);
+  color: #008fd3;
+  margin-bottom: 14px;
+}
+.sap-service-item__header h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.sap-service-item__headline {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.6;
+}
+.sap-service-item__body {
+  padding: 36px 32px;
+}
+.sap-service-item__body > p {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+/* Numbered steps */
+.sap-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+}
+.sap-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 28px 32px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s;
+}
+.sap-step:last-child { border-bottom: none; }
+.sap-step:hover { background: #f8fafc; }
+.sap-step__num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0,143,211,0.1);
+  color: #008fd3;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+}
+.sap-step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.sap-step p {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* CTA section copy column */
+.sap-cta-copy h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.sap-cta-copy p {
+  font-size: 0.97rem;
+  color: #475569;
+  line-height: 1.75;
+}
+.sap-cta-copy .eyebrow { margin-bottom: 12px; }
+
+/* Bullet list with accent dots */
+.sap-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sap-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.55;
+}
+.sap-bullets li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #008fd3;
+  margin-top: 6px;
+}
+
+/* ── Responsive overrides for inner pages ───────────────── */
+@media (max-width: 900px) {
+  .sap-service-grid { grid-template-columns: 1fr 1fr; }
+  .sap-service-item { grid-template-columns: 1fr; }
+  .sap-service-item__header { border-right: none; border-bottom: 1px solid #e2e8f0; }
+}
+@media (max-width: 640px) {
+  .sap-service-grid { grid-template-columns: 1fr; }
+  .sap-step { gap: 16px; padding: 20px; }
+  .sap-service-item__header,
+  .sap-service-item__body { padding: 24px 20px; }
+  .sap-value-grid { grid-template-columns: 1fr; }
+}

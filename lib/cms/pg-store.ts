@@ -1,5 +1,5 @@
 import { getPool } from "../db";
-import type { BlogRecord, CaseStudyRecord, PublishStatus } from "./types";
+import type { BlogRecord, CaseStudyRecord, PublishStatus, SitePage, SitePageStat, SitePageSection } from "./types";
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -207,5 +207,92 @@ export async function pgUpdateBlog(id: string, updates: Partial<BlogRecord>): Pr
 
 export async function pgDeleteBlog(id: string): Promise<boolean> {
   const { rowCount } = await getPool().query("DELETE FROM blogs WHERE id = $1", [id]);
+  return (rowCount ?? 0) > 0;
+}
+
+// ── Site pages ────────────────────────────────────────────────────────────────
+
+function rowToPage(row: Record<string, unknown>): SitePage {
+  return {
+    id: row.id as string,
+    slug: row.slug as string,
+    type: row.type as SitePage["type"],
+    nav_label: row.nav_label as string,
+    title: row.title as string,
+    subtitle: row.subtitle as string,
+    eyebrow: row.eyebrow as string,
+    hero_cta_href: row.hero_cta_href as string,
+    hero_cta_label: row.hero_cta_label as string,
+    footer_blurb: row.footer_blurb as string,
+    stats: (row.stats as SitePageStat[]) ?? [],
+    sections: (row.sections as SitePageSection[]) ?? [],
+    status: row.status as PublishStatus,
+    created_at: (row.created_at as Date).toISOString(),
+    updated_at: (row.updated_at as Date).toISOString(),
+  };
+}
+
+export async function pgGetPages(scope: "public" | "admin"): Promise<SitePage[]> {
+  const pool = getPool();
+  const filter = scope === "public" ? "WHERE status = 'published'" : "";
+  const { rows } = await pool.query<Record<string, unknown>>(
+    `SELECT * FROM site_pages ${filter} ORDER BY type, nav_label`,
+  );
+  return rows.map(rowToPage);
+}
+
+export async function pgGetPageBySlug(slug: string): Promise<SitePage | null> {
+  const { rows } = await getPool().query<Record<string, unknown>>(
+    "SELECT * FROM site_pages WHERE slug = $1 LIMIT 1",
+    [slug],
+  );
+  return rows[0] ? rowToPage(rows[0]) : null;
+}
+
+export async function pgGetPageById(id: string): Promise<SitePage | null> {
+  const { rows } = await getPool().query<Record<string, unknown>>(
+    "SELECT * FROM site_pages WHERE id = $1 LIMIT 1",
+    [id],
+  );
+  return rows[0] ? rowToPage(rows[0]) : null;
+}
+
+export async function pgCreatePage(record: SitePage): Promise<SitePage> {
+  await getPool().query(
+    `INSERT INTO site_pages
+      (id,slug,type,nav_label,title,subtitle,eyebrow,hero_cta_href,hero_cta_label,footer_blurb,stats,sections,status)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
+    [
+      record.id, record.slug, record.type, record.nav_label, record.title,
+      record.subtitle, record.eyebrow, record.hero_cta_href, record.hero_cta_label,
+      record.footer_blurb, JSON.stringify(record.stats), JSON.stringify(record.sections),
+      record.status,
+    ],
+  );
+  return (await pgGetPageById(record.id))!;
+}
+
+export async function pgUpdatePage(id: string, updates: Partial<Omit<SitePage, "id" | "created_at" | "updated_at">>): Promise<SitePage | null> {
+  const current = await pgGetPageById(id);
+  if (!current) return null;
+  const next: SitePage = { ...current, ...updates, id: current.id, created_at: current.created_at, updated_at: new Date().toISOString() };
+  await getPool().query(
+    `UPDATE site_pages SET
+      slug=$1,type=$2,nav_label=$3,title=$4,subtitle=$5,eyebrow=$6,
+      hero_cta_href=$7,hero_cta_label=$8,footer_blurb=$9,
+      stats=$10,sections=$11,status=$12,updated_at=$13
+     WHERE id=$14`,
+    [
+      next.slug, next.type, next.nav_label, next.title, next.subtitle, next.eyebrow,
+      next.hero_cta_href, next.hero_cta_label, next.footer_blurb,
+      JSON.stringify(next.stats), JSON.stringify(next.sections),
+      next.status, next.updated_at, id,
+    ],
+  );
+  return next;
+}
+
+export async function pgDeletePage(id: string): Promise<boolean> {
+  const { rowCount } = await getPool().query("DELETE FROM site_pages WHERE id = $1", [id]);
   return (rowCount ?? 0) > 0;
 }

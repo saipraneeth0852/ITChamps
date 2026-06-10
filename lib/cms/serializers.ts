@@ -1,4 +1,4 @@
-import type { BlogRecord, CaseStudyMetric, CaseStudyRecord, CaseStudyStep, PublishStatus } from "./types";
+import type { BlogRecord, CaseStudyMetric, CaseStudyRecord, CaseStudyStep, PublishStatus, SitePage, SitePageSection, SitePageStat, SitePageType } from "./types";
 
 function toLines(value: unknown) {
   return typeof value === "string"
@@ -83,6 +83,41 @@ export function parseCaseStudyPayload(body: CMSPayload): Omit<CaseStudyRecord, "
     duration: String(body.duration ?? "").trim(),
     teamSize: String(body.teamSize ?? "").trim(),
     countries: body.countries ? Number(body.countries) : undefined,
+    status: toStatus(body.status),
+  };
+}
+
+export function parsePagePayload(body: CMSPayload): Omit<SitePage, "id" | "created_at" | "updated_at"> {
+  const rawStats = typeof body.stats === "string"
+    ? body.stats.split("\n").map((l) => l.trim()).filter(Boolean).map((l) => {
+        const [value, ...labelParts] = l.split("|").map((p) => p.trim());
+        return { value: value ?? "", label: labelParts.join(" | ") ?? "" } as SitePageStat;
+      })
+    : Array.isArray(body.stats) ? (body.stats as SitePageStat[]) : [];
+
+  let sections: SitePageSection[] = [];
+  try {
+    const raw = typeof body.sections === "string" ? body.sections : JSON.stringify(body.sections ?? []);
+    sections = JSON.parse(raw) as SitePageSection[];
+  } catch {
+    sections = [];
+  }
+
+  const typeVal = String(body.type ?? "service").trim();
+  const type: SitePageType = typeVal === "product" ? "product" : typeVal === "training" ? "training" : "service";
+
+  return {
+    slug: String(body.slug ?? "").trim(),
+    type,
+    nav_label: String(body.nav_label ?? "").trim(),
+    title: String(body.title ?? "").trim(),
+    subtitle: String(body.subtitle ?? "").trim(),
+    eyebrow: String(body.eyebrow ?? "").trim(),
+    hero_cta_href: String(body.hero_cta_href ?? "#contact").trim(),
+    hero_cta_label: String(body.hero_cta_label ?? "Get in touch").trim(),
+    footer_blurb: String(body.footer_blurb ?? "").trim(),
+    stats: rawStats,
+    sections,
     status: toStatus(body.status),
   };
 }

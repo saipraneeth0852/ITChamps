@@ -20,7 +20,8 @@
     "lint": "eslint .",
     "seed:firebase": "node --env-file=.env.local scripts/seed-firestore.mjs",
     "db:migrate": "node --env-file=.env.local scripts/migrate.mjs",
-    "db:seed": "node --env-file=.env.local scripts/seed-pg.mjs"
+    "db:seed": "node --env-file=.env.local scripts/seed-pg.mjs",
+    "db:seed-pages": "node --env-file=.env.local scripts/seed-pages.mjs"
   },
   "dependencies": {
     "@types/pg": "^8.20.0",

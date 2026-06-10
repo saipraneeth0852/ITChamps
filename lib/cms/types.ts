@@ -73,3 +73,53 @@ export interface CMSData {
   caseStudies: CaseStudyRecord[];
   blogs: BlogRecord[];
 }
+
+/* ── Site pages (services / products / training) ─────────────── */
+
+export interface SitePageStat {
+  value: string;
+  label: string;
+}
+
+export type SitePageSectionType =
+  | "value-grid"
+  | "service-list"
+  | "service-grid"
+  | "steps"
+  | "placements"
+  | "contact";
+
+export type SitePageType = "service" | "product" | "training";
+
+export interface SitePageSection {
+  type: SitePageSectionType;
+  tinted?: boolean;
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  items?: Record<string, unknown>[];
+  body?: string;
+  email?: string;
+  phone?: string;
+  cta_label?: string;
+  cta_href?: string;
+}
+
+export interface SitePage {
+  id: string;
+  slug: string;
+  type: SitePageType;
+  nav_label: string;
+  title: string;
+  subtitle: string;
+  eyebrow: string;
+  hero_cta_href: string;
+  hero_cta_label: string;
+  footer_blurb: string;
+  stats: SitePageStat[];
+  sections: SitePageSection[];
+  status: PublishStatus;
+  created_at: string;
+  updated_at: string;
+}

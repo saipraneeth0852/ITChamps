@@ -82,6 +82,9 @@ jobs:
             cd /var/www/itchamps
             DATABASE_URL="${{ secrets.DATABASE_URL }}" node scripts/migrate.mjs
 
+            # Seed pages if not already present
+            DATABASE_URL="${{ secrets.DATABASE_URL }}" node scripts/seed-pages.mjs
+
             # Restart app
             pm2 restart itchamps --update-env || pm2 start ecosystem.config.js
             pm2 save

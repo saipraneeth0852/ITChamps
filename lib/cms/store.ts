@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
 import { createSeedData } from "./seed";
-import type { BlogRecord, CaseStudyRecord, CMSData, PublishStatus } from "./types";
+import type { BlogRecord, CaseStudyRecord, CMSData, PublishStatus, SitePage } from "./types";
 import { getFirebaseDb, isFirebaseConfigured } from "../firebase-admin";
 import { isPgConfigured } from "../db";
 import {
@@ -10,6 +10,8 @@ import {
   pgCreateCaseStudy, pgUpdateCaseStudy, pgDeleteCaseStudy,
   pgGetBlogs, pgGetBlogBySlug, pgGetBlogById,
   pgCreateBlog, pgUpdateBlog, pgDeleteBlog,
+  pgGetPages, pgGetPageBySlug, pgGetPageById,
+  pgCreatePage, pgUpdatePage, pgDeletePage,
 } from "./pg-store";
 
 const DATA_DIR = path.join(process.cwd(), "content");
@@ -385,4 +387,42 @@ export async function deleteBlog(id: string) {
 
 export function normalizeStatus(value: string | undefined): PublishStatus {
   return value === "draft" ? "draft" : "published";
+}
+
+// ── Site pages (PG-only — no Firebase/file fallback) ──────────────────────────
+
+export async function getPages(scope: "public" | "admin" = "public"): Promise<SitePage[]> {
+  if (!isPgConfigured()) return [];
+  return pgGetPages(scope);
+}
+
+export async function getPageBySlug(slug: string): Promise<SitePage | null> {
+  if (!isPgConfigured()) return null;
+  return pgGetPageBySlug(slug);
+}
+
+export async function getPageById(id: string): Promise<SitePage | null> {
+  if (!isPgConfigured()) return null;
+  return pgGetPageById(id);
+}
+
+export async function createPage(input: Omit<SitePage, "id" | "created_at" | "updated_at">): Promise<SitePage> {
+  if (!isPgConfigured()) throw new Error("Database not configured.");
+  const record: SitePage = {
+    ...input,
+    id: `page-${crypto.randomUUID()}`,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+  return pgCreatePage(record);
+}
+
+export async function updatePage(id: string, updates: Partial<Omit<SitePage, "id" | "created_at" | "updated_at">>): Promise<SitePage | null> {
+  if (!isPgConfigured()) return null;
+  return pgUpdatePage(id, updates);
+}
+
+export async function deletePage(id: string): Promise<boolean> {
+  if (!isPgConfigured()) return false;
+  return pgDeletePage(id);
 }
