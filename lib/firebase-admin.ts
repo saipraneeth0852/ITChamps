@@ -1,5 +1,6 @@
 import { applicationDefault, cert, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 function getPrivateKey() {
   const key = process.env.FIREBASE_PRIVATE_KEY;
@@ -16,8 +17,8 @@ export function isFirebaseConfigured() {
   );
 }
 
-export function getFirebaseDb() {
-  const app = getApps()[0] ?? initializeApp({
+function getFirebaseApp() {
+  return getApps()[0] ?? initializeApp({
     credential: process.env.FIREBASE_CLIENT_EMAIL && process.env.FIREBASE_PRIVATE_KEY
       ? cert({
           projectId: process.env.FIREBASE_PROJECT_ID,
@@ -26,7 +27,20 @@ export function getFirebaseDb() {
         })
       : applicationDefault(),
     projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET ?? process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   });
+}
 
-  return getFirestore(app);
+export function getFirebaseDb() {
+  return getFirestore(getFirebaseApp());
+}
+
+export function getFirebaseStorageBucket() {
+  const bucketName = process.env.FIREBASE_STORAGE_BUCKET ?? process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+  if (!bucketName) {
+    throw new Error("FIREBASE_STORAGE_BUCKET is required for production image uploads.");
+  }
+
+  getFirebaseApp();
+  return getStorage().bucket(bucketName);
 }

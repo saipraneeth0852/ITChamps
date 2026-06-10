@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { FirebaseAnalytics } from "../components/FirebaseAnalytics";
 import "./globals.css";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://itchamps.com";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -25,12 +27,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transform Your SAP Landscape With ITChamps",
     description: "Two decades of proven expertise. 100% project success rate. Let's build your digital future.",
-    url: "https://it-champs.vercel.app/",
+    url: SITE_URL,
     siteName: "ITChamps Software",
     type: "website"
   },
   alternates: {
-    canonical: "https://it-champs.vercel.app/"
+    canonical: SITE_URL
   }
 };
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "../../../../../lib/cms/auth";
+import { isAdminAuthenticated, isSameOriginRequest } from "../../../../../lib/cms/auth";
 import { deleteCaseStudy, getCaseStudyById, getCaseStudyBySlug, updateCaseStudy } from "../../../../../lib/cms/store";
 import { parseCaseStudyPayload } from "../../../../../lib/cms/serializers";
 
@@ -26,6 +26,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 }
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  if (!isSameOriginRequest(request)) {
+    return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  }
+
   if (!await isAdminAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -40,6 +44,10 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
 }
 
 export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  if (!isSameOriginRequest(_)) {
+    return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  }
+
   if (!await isAdminAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

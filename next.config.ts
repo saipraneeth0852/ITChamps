@@ -11,14 +11,16 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  experimental: {
-    devtoolSegmentExplorer: false,
-  },
+  output: "standalone",
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
       }
     ]
   },

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { NarrativeBackdrop } from "../../components/NarrativeBackdrop";
 
 // ─── Animation variants ──────────────────────────────────────────────────────
@@ -250,6 +250,58 @@ const industries = [
   { name: "Financial Services", icon: "F" },
   { name: "Automotive", icon: "A" },
   { name: "Education", icon: "Ed" },
+];
+
+type EcosystemCluster =
+  | { center: true }
+  | {
+      label: string;
+      side: "left" | "right";
+      modules: Array<{ name: string; gold: boolean }>;
+    };
+
+const ecosystemClusters: EcosystemCluster[] = [
+  {
+    label: "Finance & Controlling",
+    side: "left",
+    modules: [
+      { name: "FI – Financial Accounting", gold: false },
+      { name: "CO – Controlling", gold: false },
+      { name: "TRM – Treasury Mgmt", gold: true },
+      { name: "FSCM – Credit & Risk", gold: true },
+    ],
+  },
+  {
+    label: "Supply Chain",
+    side: "left",
+    modules: [
+      { name: "MM – Materials Mgmt", gold: false },
+      { name: "SD – Sales & Distribution", gold: false },
+      { name: "PP – Production Planning", gold: true },
+      { name: "QM – Quality Mgmt", gold: true },
+    ],
+  },
+  { center: true },
+  {
+    label: "HR & People",
+    side: "right",
+    modules: [
+      { name: "SAP HCM Payroll", gold: false },
+      { name: "SuccessFactors", gold: true },
+      { name: "ESS / MSS Portals", gold: false },
+      { name: "Global Payroll", gold: true },
+    ],
+  },
+  {
+    label: "Technology & Analytics",
+    side: "right",
+    modules: [
+      { name: "SAP BTP", gold: false },
+      { name: "Analytics Cloud", gold: true },
+      { name: "BW/4HANA", gold: false },
+      { name: "Integration Suite", gold: true },
+    ],
+  },
 ];
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -624,50 +676,8 @@ export default function ServicesPage() {
           </motion.div>
 
           <div className="svc-ecosystem__diagram">
-            {[
-              {
-                label: "Finance & Controlling",
-                side: "left",
-                modules: [
-                  { name: "FI – Financial Accounting", gold: false },
-                  { name: "CO – Controlling", gold: false },
-                  { name: "TRM – Treasury Mgmt", gold: true },
-                  { name: "FSCM – Credit & Risk", gold: true },
-                ],
-              },
-              {
-                label: "Supply Chain",
-                side: "left",
-                modules: [
-                  { name: "MM – Materials Mgmt", gold: false },
-                  { name: "SD – Sales & Distribution", gold: false },
-                  { name: "PP – Production Planning", gold: true },
-                  { name: "QM – Quality Mgmt", gold: true },
-                ],
-              },
-              { center: true },
-              {
-                label: "HR & People",
-                side: "right",
-                modules: [
-                  { name: "SAP HCM Payroll", gold: false },
-                  { name: "SuccessFactors", gold: true },
-                  { name: "ESS / MSS Portals", gold: false },
-                  { name: "Global Payroll", gold: true },
-                ],
-              },
-              {
-                label: "Technology & Analytics",
-                side: "right",
-                modules: [
-                  { name: "SAP BTP", gold: false },
-                  { name: "Analytics Cloud", gold: true },
-                  { name: "BW/4HANA", gold: false },
-                  { name: "Integration Suite", gold: true },
-                ],
-              },
-            ].map((cluster, i) =>
-              (cluster as any).center ? (
+            {ecosystemClusters.map((cluster, i) =>
+              "center" in cluster ? (
                 <motion.div
                   key="center"
                   className="svc-eco-center"
@@ -686,19 +696,19 @@ export default function ServicesPage() {
                 </motion.div>
               ) : (
                 <motion.div
-                  key={(cluster as any).label}
+                  key={cluster.label}
                   className="svc-eco-cluster"
-                  initial={{ opacity: 0, x: (cluster as any).side === "left" ? -24 : 24 }}
+                  initial={{ opacity: 0, x: cluster.side === "left" ? -24 : 24 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.09 }}
                 >
-                  <div className="svc-eco-cluster__label">{(cluster as any).label}</div>
-                  {(cluster as any).modules?.map((mod: any, j: number) => (
+                  <div className="svc-eco-cluster__label">{cluster.label}</div>
+                  {cluster.modules.map((mod, j) => (
                     <motion.div
                       key={mod.name}
                       className={`svc-eco-module${mod.gold ? " svc-eco-module--gold" : ""}`}
-                      initial={{ opacity: 0, x: (cluster as any).side === "left" ? -14 : 14 }}
+                      initial={{ opacity: 0, x: cluster.side === "left" ? -14 : 14 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.09 + j * 0.07, duration: 0.38 }}

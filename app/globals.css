@@ -1705,6 +1705,12 @@ input {
   gap: 2px;
 }
 
+.nav-dropdown__group--ai {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 123, 181, 0.12);
+}
+
 .nav-dropdown__group-title {
   font-size: 0.66rem;
   font-weight: 700;
@@ -2851,6 +2857,9 @@ h3 {
 }
 
 /* Higher specificity to override .section-heading p { color: var(--muted) } */
+.cap-hub .cap-hub__eyebrow { color: rgba(240, 171, 0, 0.9); }
+.cap-hub .cap-hub__title { color: #fff; }
+.cap-hub .cap-hub__sub { color: rgba(255, 255, 255, 0.8); }
 .cap-hub__tile .cap-hub__tile-desc {
   color: rgba(255, 255, 255, 0.88);
 }

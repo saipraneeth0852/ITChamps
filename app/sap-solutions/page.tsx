@@ -677,7 +677,7 @@ export default function SapSolutionsPage() {
                 <a href="https://itchamps.com/company/" target="_blank" rel="noreferrer">
                   Company Profile
                 </a>
-                <a href="/#readiness-checklist">S/4HANA Checklist</a>
+                <Link href="/#readiness-checklist">S/4HANA Checklist</Link>
               </div>
               <div>
                 <h3>Connect</h3>

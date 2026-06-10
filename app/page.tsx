@@ -470,7 +470,7 @@ export default function HomePage() {
             </button>
             <div className={`nav-dropdown__panel${mobileServicesOpen ? " nav-dropdown__panel--open" : ""}`}>
               {servicesNavItems.map(group => (
-                <div className="nav-dropdown__group" key={group.category}>
+                <div className={`nav-dropdown__group${group.category === "AI Solutions" ? " nav-dropdown__group--ai" : ""}`} key={group.category}>
                   <Link href={group.href} className="nav-dropdown__group-title nav-dropdown__group-title--link" onClick={closeNav}>{group.category}</Link>
                   {group.items.map(item => (
                     <Link key={item.label} href={item.href} className="nav-dropdown__item" onClick={closeNav}>{item.label}</Link>

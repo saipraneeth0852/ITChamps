@@ -1,21 +1,6 @@
 import { NextResponse } from "next/server";
 import { getFirebaseDb, isFirebaseConfigured } from "../../../lib/firebase-admin";
-
-// In-memory rate limiter: 5 requests per IP per 60 seconds
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT = 5;
-const WINDOW_MS = 60_000;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-  if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
-    return false;
-  }
-  entry.count += 1;
-  return entry.count > RATE_LIMIT;
-}
+import { getClientIp, isRateLimited } from "../../../lib/rate-limit";
 
 type ContactPayload = {
   fullName?: string;
@@ -39,12 +24,9 @@ function isEmail(value: string) {
 
 export async function POST(request: Request) {
   try {
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
-      request.headers.get("x-real-ip") ??
-      "unknown";
+    const ip = getClientIp(request);
 
-    if (isRateLimited(ip)) {
+    if (isRateLimited(`contact:${ip}`, 5, 60_000)) {
       return NextResponse.json(
         { error: "Too many requests. Please wait a minute before trying again." },
         { status: 429 }

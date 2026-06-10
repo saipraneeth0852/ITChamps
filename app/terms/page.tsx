@@ -47,7 +47,7 @@ export default function TermsPage() {
         <section>
           <h2>4. Disclaimer of Warranties</h2>
           <p>
-            This website is provided "as is" without warranties of any kind. ITChamps does
+            This website is provided &quot;as is&quot; without warranties of any kind. ITChamps does
             not warrant that the website will be uninterrupted, error-free, or free of
             viruses or other harmful components.
           </p>

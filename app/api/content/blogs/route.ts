@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "../../../../lib/cms/auth";
+import { isAdminAuthenticated, isSameOriginRequest } from "../../../../lib/cms/auth";
 import { createBlog, getBlogs } from "../../../../lib/cms/store";
 import { parseBlogPayload } from "../../../../lib/cms/serializers";
 
@@ -14,6 +14,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  if (!isSameOriginRequest(request)) {
+    return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  }
+
   if (!await isAdminAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

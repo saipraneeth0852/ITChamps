@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <section>
           <h2>1. Who We Are</h2>
           <p>
-            ITChamps Software Private Limited ("ITChamps", "we", "us", or "our") is an SAP
+            ITChamps Software Private Limited (&quot;ITChamps&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is an SAP
             consulting and technology services company. Our registered office is in India.
             This policy explains how we handle personal data collected through{" "}
             <strong>itchamps.com</strong> and any related services.
@@ -82,8 +82,9 @@ export default function PrivacyPage() {
         <section>
           <h2>7. Cookies</h2>
           <p>
-            This website uses only essential cookies required for site functionality. We do
-            not use tracking or advertising cookies.
+            This website uses essential cookies required for site functionality. When analytics
+            is enabled, we may use privacy-conscious measurement tools to understand aggregate
+            website usage and improve the service.
           </p>
         </section>
 

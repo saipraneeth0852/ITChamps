@@ -47,7 +47,9 @@ function toBoolean(value: unknown) {
   return false;
 }
 
-export function parseCaseStudyPayload(body: any): Omit<CaseStudyRecord, "id" | "createdAt" | "updatedAt"> {
+type CMSPayload = Record<string, unknown>;
+
+export function parseCaseStudyPayload(body: CMSPayload): Omit<CaseStudyRecord, "id" | "createdAt" | "updatedAt"> {
   return {
     slug: String(body.slug ?? "").trim(),
     client: String(body.client ?? "").trim(),
@@ -85,7 +87,7 @@ export function parseCaseStudyPayload(body: any): Omit<CaseStudyRecord, "id" | "
   };
 }
 
-export function parseBlogPayload(body: any): Omit<BlogRecord, "id" | "createdAt" | "updatedAt"> {
+export function parseBlogPayload(body: CMSPayload): Omit<BlogRecord, "id" | "createdAt" | "updatedAt"> {
   return {
     slug: String(body.slug ?? "").trim(),
     featured: toBoolean(body.featured),

@@ -4,6 +4,13 @@ import path from "path";
 import { createSeedData } from "./seed";
 import type { BlogRecord, CaseStudyRecord, CMSData, PublishStatus } from "./types";
 import { getFirebaseDb, isFirebaseConfigured } from "../firebase-admin";
+import { isPgConfigured } from "../db";
+import {
+  pgGetCaseStudies, pgGetCaseStudyBySlug, pgGetCaseStudyById,
+  pgCreateCaseStudy, pgUpdateCaseStudy, pgDeleteCaseStudy,
+  pgGetBlogs, pgGetBlogBySlug, pgGetBlogById,
+  pgCreateBlog, pgUpdateBlog, pgDeleteBlog,
+} from "./pg-store";
 
 const DATA_DIR = path.join(process.cwd(), "content");
 const DATA_FILE = path.join(DATA_DIR, "cms-data.json");
@@ -89,6 +96,7 @@ async function getBlogsFromFirebase(scope: "public" | "admin") {
 }
 
 export async function getCaseStudies(scope: "public" | "admin" = "public") {
+  if (isPgConfigured()) return pgGetCaseStudies(scope);
   if (isFirebaseConfigured()) {
     return getCaseStudiesFromFirebase(scope);
   }
@@ -101,6 +109,7 @@ export async function getCaseStudies(scope: "public" | "admin" = "public") {
 }
 
 export async function getCaseStudyBySlug(slug: string) {
+  if (isPgConfigured()) return pgGetCaseStudyBySlug(slug);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const snapshot = await getFirebaseDb()
@@ -116,6 +125,7 @@ export async function getCaseStudyBySlug(slug: string) {
 }
 
 export async function getCaseStudyById(id: string) {
+  if (isPgConfigured()) return pgGetCaseStudyById(id);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const doc = await getFirebaseDb().collection(CASE_STUDIES_COLLECTION).doc(id).get();
@@ -135,6 +145,7 @@ export async function createCaseStudy(input: Omit<CaseStudyRecord, "id" | "creat
     updatedAt: now,
   };
 
+  if (isPgConfigured()) return pgCreateCaseStudy(record);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const db = getFirebaseDb();
@@ -161,6 +172,7 @@ export async function createCaseStudy(input: Omit<CaseStudyRecord, "id" | "creat
 }
 
 export async function updateCaseStudy(id: string, updates: Partial<CaseStudyRecord>) {
+  if (isPgConfigured()) return pgUpdateCaseStudy(id, updates);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const db = getFirebaseDb();
@@ -209,6 +221,7 @@ export async function updateCaseStudy(id: string, updates: Partial<CaseStudyReco
 }
 
 export async function deleteCaseStudy(id: string) {
+  if (isPgConfigured()) return pgDeleteCaseStudy(id);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const ref = getFirebaseDb().collection(CASE_STUDIES_COLLECTION).doc(id);
@@ -227,6 +240,7 @@ export async function deleteCaseStudy(id: string) {
 }
 
 export async function getBlogs(scope: "public" | "admin" = "public") {
+  if (isPgConfigured()) return pgGetBlogs(scope);
   if (isFirebaseConfigured()) {
     return getBlogsFromFirebase(scope);
   }
@@ -239,6 +253,7 @@ export async function getBlogs(scope: "public" | "admin" = "public") {
 }
 
 export async function getBlogBySlug(slug: string) {
+  if (isPgConfigured()) return pgGetBlogBySlug(slug);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const snapshot = await getFirebaseDb()
@@ -254,6 +269,7 @@ export async function getBlogBySlug(slug: string) {
 }
 
 export async function getBlogById(id: string) {
+  if (isPgConfigured()) return pgGetBlogById(id);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const doc = await getFirebaseDb().collection(BLOGS_COLLECTION).doc(id).get();
@@ -273,6 +289,7 @@ export async function createBlog(input: Omit<BlogRecord, "id" | "createdAt" | "u
     updatedAt: now,
   };
 
+  if (isPgConfigured()) return pgCreateBlog(record);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const db = getFirebaseDb();
@@ -299,6 +316,7 @@ export async function createBlog(input: Omit<BlogRecord, "id" | "createdAt" | "u
 }
 
 export async function updateBlog(id: string, updates: Partial<BlogRecord>) {
+  if (isPgConfigured()) return pgUpdateBlog(id, updates);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const db = getFirebaseDb();
@@ -347,6 +365,7 @@ export async function updateBlog(id: string, updates: Partial<BlogRecord>) {
 }
 
 export async function deleteBlog(id: string) {
+  if (isPgConfigured()) return pgDeleteBlog(id);
   if (isFirebaseConfigured()) {
     await ensureFirebaseSeeded();
     const ref = getFirebaseDb().collection(BLOGS_COLLECTION).doc(id);

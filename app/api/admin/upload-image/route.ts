@@ -2,7 +2,8 @@ import { randomUUID } from "crypto";
 import { mkdir, writeFile } from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
-import { isAdminAuthenticated } from "../../../../lib/cms/auth";
+import { getFirebaseStorageBucket, isFirebaseConfigured } from "../../../../lib/firebase-admin";
+import { isAdminAuthenticated, isSameOriginRequest } from "../../../../lib/cms/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,10 @@ function sanitizeFolder(input: string) {
 }
 
 export async function POST(request: Request) {
+  if (!isSameOriginRequest(request)) {
+    return NextResponse.json({ error: "Invalid request origin" }, { status: 403 });
+  }
+
   if (!await isAdminAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -41,15 +46,39 @@ export async function POST(request: Request) {
 
   const extension = ALLOWED_TYPES[file.type];
   const fileName = `${folder}-${randomUUID()}.${extension}`;
+  const storagePath = `uploads/${folder}/${fileName}`;
+
+  const buffer = Buffer.from(await file.arrayBuffer());
+
+  if (isFirebaseConfigured()) {
+    const bucket = getFirebaseStorageBucket();
+    const storageFile = bucket.file(storagePath);
+
+    await storageFile.save(buffer, {
+      metadata: {
+        contentType: file.type,
+        cacheControl: "public, max-age=31536000, immutable",
+      },
+    });
+    await storageFile.makePublic();
+
+    return NextResponse.json({
+      src: `https://storage.googleapis.com/${bucket.name}/${encodeURI(storagePath)}`,
+      size: file.size,
+    });
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json({ error: "Firebase Storage is required for production uploads." }, { status: 500 });
+  }
+
   const outputDir = path.join(process.cwd(), "public", "uploads", folder);
   const outputPath = path.join(outputDir, fileName);
-
   await mkdir(outputDir, { recursive: true });
-  const buffer = Buffer.from(await file.arrayBuffer());
   await writeFile(outputPath, buffer);
 
   return NextResponse.json({
-    src: `/uploads/${folder}/${fileName}`,
+    src: `/${storagePath}`,
     size: file.size,
   });
 }
